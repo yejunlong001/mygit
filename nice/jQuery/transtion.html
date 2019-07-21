@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title>测试1</title>
+   <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+
+
+
+
+
+<body>
+   <div>
+      <i class="iconArrow">⏷</i>
+
+      <i id="icon" class="user-arrow">⏷</i>
+   </div>
+
+
+
+
+   <div class="user-list-title">标准点播-<small>体验版</small>
+
+      <img src="http://i1.letvimg.com/lc07_lecloud/201610/09/11/32/userCenter/jiantoublue1.png" >
+
+   </div>
+
+
+
+
+
+
+   <style>
+      .iconArrow {
+         width: 30px;
+         height: 30px;
+         border: 1px #000 solid;
+         text-align: center;
+         line-height: 30px;
+         font-style: normal;
+      }
+
+
+
+
+      .user-arrow {
+
+         
+
+        
+
+         text-align: center;
+         line-height: 30px;
+         font-style: normal;
+
+         
+
+         cursor: pointer;
+         display: inline-block;width: 30px;
+         height: 30px;
+         border: 1px #000 solid;
+
+      }
+
+
+
+      .rotate {
+
+         transform-origin: center center;
+         transform: rotate(180deg);
+
+
+         transition: transform 0.2s;
+
+
+      }
+
+      .rotate1 {
+
+         transform-origin: center center;
+
+         transform: rotate(0deg);
+
+
+         transition: transform 0.2s;
+
+
+      }
+   </style>
+
+
+
+
+   <script>
+
+      // $('#icon').click(function(){
+
+      // $(this).removeClass('right1').addClass('right2')
+
+      // });
+
+
+      $(function () {
+
+         var usercenter = {
+
+            init: function () {
+
+               this.modal();
+
+            },
+
+            modal: function () {
+
+               $(".user-arrow").click(function () {
+
+                  if ($(this).hasClass("rotate")) { //点击箭头旋转180度
+
+                     $(this).removeClass("rotate");
+
+                     $(this).addClass("rotate1");
+
+                  } else {
+
+                     $(this).removeClass("rotate1"); //再次点击箭头回来
+
+                     $(this).addClass("rotate");
+
+                  }
+
+               })
+
+            }
+
+         }
+
+         usercenter.init();
+
+      })
+
+   </script>
+</body>
+
+</html>
