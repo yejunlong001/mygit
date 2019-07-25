@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>测试1</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+<div id="app">
+    <button @click='openIt'>打开</button>333333
+   <div id="box" class="hide">
+        <button @click='closeIt'>关闭</button>
+   </div>
+
+</div>
+
+<style>
+#box{ 
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+ }
+ .show{
+   display: block;
+   animation: fadeIn 0.5s;
+ }
+ .hide{
+   display: none;
+ }
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to   {opacity:0.6 ;}
+}
+</style>
+
+<script>
+    new Vue({
+      el: '#app',
+      data: function(){
+            return { 
+                
+            }
+          },
+       methods:{
+          closeIt:function(){
+             document.querySelector('#box').className  = 'hide';
+          },
+          openIt:function(){
+              document.querySelector('#box').className = 'show';
+          },
+       },
+    })
+  </script>
+</body>
+</html>
