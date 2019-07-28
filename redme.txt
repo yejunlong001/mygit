@@ -1,5 +1,2250 @@
-﻿abc123
 
- 我是李晓旭.....777
+=======================================
+js笔记总结：
+jquery的方法总结：
+toggleClass('topBar'): 点击移除样式topBar，再点击又添加上topBar这个class
+hasClass():检查第一个 元素是否包含 "topBar" 类：$("#myId").hasClass("topBar") //返回布尔值
 
-  你好吗，hello1235555555555
+0.js最美妙之处就在于，js是同步执行代码，只会从上往下一行一行向下执行，并不会跳过任何一行代码，属于堵塞性执行，宁愿卡在某一行，
+  也不往下执行其他的代码，不然非常危险，数据就会乱套。异步除外。
+0.if..else语句或者if..else if语句或者其他条件语句，它只会满足一个条件，在同一条件下只会打印有且只有一个结果。谨记。
+  而for循环正好相反，它是把所有的条件都打印出来。因为人太懒惰或者嫌麻烦，所以用for循环。
+
+1.jquery去除input里面所有的空格字符，包括前后，中间的空白空格代码：
+  $("#ipt").val().trim().replace(/\s/g,"")
+
+1.1. jQuery实时监听input输入框值变化
+     答： $("#input1").bind("input propertychange",function(event){   console.log($("#input1").val()) //这里面放逻辑 });
+
+2.vue去除input里面所有的空格字符，包括前后，中间的空白空格代码：
+  v-on:change="deleteKongbai"
+  methods:{ deleteKongbai:function(){this.name = $("#ipt").val().trim().replace(/\s/g,"")} }
+  等价于：
+  nameTrim:function(){this.name = this.$refs.goodName.value.trim().replace(/\s/g,"")},
+  //这个就是利用thsi.$refs去获取都没节点，而没有用jQuery，可以减少资源消耗。  
+
+3.使用div或者span来模拟表格table的写法：table-cell    
+  请参考：https://www.cnblogs.com/joshinrai/p/6668392.html
+  首先给作为父div(tr)的标签加上display:table
+  然后再给作为子标签的span(td)或者div(td)加上 display:table-cell样式 就能模拟出td的效果，可以上下对齐，但是要为ie7写hack
+  例子：<div class="table">
+            <div class="tr">
+               <div class="td">1</div>
+            </div>
+       </div>
+       //css
+       .table{width:300px;}
+       .table .tr{width:100%;display:table}
+       .table .tr .td{width:33%;display:table-cell;}
+
+4.vue子组件传值给父组件分为：传值的目的和技巧就是想进办法去修改父组件data的对应值。
+  （1）只传一个值：this.$emit('jianting',this.name)
+   (2)传两个值，以对象的方式：this.$emit('jianting',this.name1,this.name2,this.name3)
+      接收值：v-on:jianting(arguments)
+      或者：methods:{fatherEvent:function(one,two,three){ this.name = one, this.name2 = two ..... }
+   (3) 以数组的格式传多个值得时候：this.$emit('jianting',[this.name1,this.name2,this.name3])
+       接收值：v-on:jianting='fatherEvent' 得到的就是一个数组格式
+
+5.indexOf()的用法:  特点：他每一次都会从头到尾的去检索
+  检测该“字符串”是否在该对象之中？注意只检测字符串，不检测对象或者数组。区分大小写。
+  返回字符中indexof（stringMe）中字串"stringMe"在父串中首次出现的位置，从0开始！没有返回-1
+  例如：
+  var imgType = event.target.files[0]; //得到上传图片的类型格式gif/jpg.........
+  data：{
+          imgData: { accept: 'image/gif, image/jpeg, image/png, image/jpg',} //imgData是一个字符串对象
+        }
+  if(this.imgData.accept.indexOf(type) == -1){
+                alert('请选择我们支持的图片格式！');
+                return false;
+            }
+  ***************************
+  indexOf() 在数组中的应用： 特点：他每一次都会从头到尾的去检索新的数组
+  indexOf() 方法可返回数组中某个指定的元素位置。即返回该元素在数组中的下标。
+  该方法将"从头到尾"地检索数组，看它是否含有对应的元素。
+  如果找到一个 item，则返回 item 的第一次出现的位置。
+  开始位置的索引为 0。以此类推1,2,3,4.......
+  如果在数组中"第一次检索"没找到指定元素则返回 -1。
+  例如：数组去重
+  var obj = [3,4,5,6,6,8,8,9,"刘德华"];
+  var objNew = [];
+  for(var i=0;i<obj.length;i++){
+    if(objNew.indexOf(obj[i])==-1){  //假如在空的数组中，第一次检索，没有找到匹配的项就push到这个空的数组
+        objNew.push(obj[i])
+    }
+  }
+  console.log(objNew); //结果[3,4,5,6,8,9,"刘德华"]
+
+
+6.文件上传:event.target.files[0]这句代码是什么含义？
+  可以依次打印出：<input type="file" value="文件上传" name="01" @change='fileUpload'>
+  $('input').change(function(event){
+                     console.log(event);  //得到Event
+                     console.log(event.target); //得到<input>
+                     console.log(event.target.files); //得到FileList是个数组
+                     console.log(event.target.files[0]); //得到点击当前的input所有属性值
+                     console.log(event.target.files[0].type); //得到上传图片的类型：type: "image/jpeg"
+                     console.log(event.target.files[0].size); //得到上传图片的大小：size: 7401 B字节
+                     console.log(event.target.files[0].name); //得到上传图片的名称：name: "2.jpg"
+                  })
+
+5.v-model的原理是什么：
+  答：v-model其实是采用了语法糖的格式，
+     即在input上面即绑了一个属性:v-bind:value="age"
+     也同时绑了一个方法：        v-on:input="age = $event.target.value"    //input有change、keyup、input、keydown等事件
+     例如：
+     <input type="text" v-bind:value='age' v-on:input='age = $event.target.value'>
+     等价于
+     <input type="text" v-model='age'>
+
+
+7.Javascript模块化编程:
+  就是用define()来定义js模块 然后就是用require来读取 
+  参考：http://www.ruanyifeng.com/blog/2015/05/require.html
+       https://blog.csdn.net/qq_37755555/article/details/78688525    写的不错
+  如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。
+      define(function(require, exports, module) {
+            // 模块代码
+      });
+  例如：
+  define(function(require, exports, module) {
+          var clock = require('clock');
+          clock.start();
+      });
+  export导出模块
+  export语法声明用于导出函数、对象、指定文件（或模块）的原始值。
+  export { myFunction }; // 导出一个已定义的函数
+  export const foo = Math.sqrt(2); // 导出一个常量
+
+
+8.jquery打印网页
+  先下载：jquery.PrintArea.min.js
+  $("#prinrBlock").printArea();  //打印当前id范围
+  $("body").printArea();  //全屏打印
+
+9.New FormData()
+
+
+10.JS编程风格:参考以下网址：
+   http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html
+
+
+11.点击空白处，收起div，模拟select事件  //参考fileUpload-9.html
+      $(function(){
+                 $(document).click(function(event){
+                       if ($('#selectBoxOption').css('display')=='block') { $('#selectBoxOption').slideToggle()};
+                   });
+              })
+
+12.监听input，若是没有输入值，点击提交的话就，就红框提示
+
+
+
+13.dataPinker怎么运用？(需要用到jQuery-ui.js) //永久时间设置为：9999-12-31
+  第一：html代码：<input type='text' id='datePicker' class='date' readonly="readonly"> //readonly表示只读，而不能编辑input框
+  第二：vue代码：mounted：function(){
+                        var _this = this;
+                        $(function(){//可以不需要这个
+                            $('#datePicker').datepicker({ //括号里面的是配置参数
+                                changeYear: true,       //选择年份
+                                changeMonth: true,      //选择月份
+                                yearRange: '1900:c+50', //设置年份范围，c代表当前年份
+                                maxDate: 0,  //表示当前日期之后的 0 天，也就是只显示当天日期之前，当天之后的日期不能选择，置灰。
+                                minDate: -5, //表示当前日期之前的5天，之前的第6天就开始置灰，不能选择了。
+                                dateFormat:'yy-mm-dd',  //设置日期格式
+                                showButtonPanel: true,  //是否显示按钮+必要的
+                                currentText: '今天/本月',  //当前按钮“今天”
+                                closeText: '关闭',      //“关闭”按钮
+              monthNamesShort: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+                                onSelect:function(val){
+                                   _this.myTime = val; //把选择到的时间写进vue的model里面
+                                }
+                            });
+                        })
+                     };
+    第三：文本框默认获取当天的时间：$('#datePicker').datepicker().datepicker('setDate', 'today') //链式设置
+         $('#datePicker').datepicker({changeYear: true,....}).datepicker('setDate', 'today')
+
+
+13.2 日期互控。   
+     原理：通过onSelect,来控制对方的minDate、maxDate,达到互控的目的。
+     实例：
+     <div class="box">
+        <h2>开始时间：当前日期之"后"置灰：<input type="text" id="time1"></h2>
+        <h2>结束时间：当前日期之"前"置灰：<input type="text" id="time2"></h2>
+    </div>
+    <script>
+       $("#time1").datepicker({
+              changeYear : true,
+              changeMonth : true,
+              showButtonPanel: true,
+              maxDate:0,
+              onSelect : function(val) {
+                     $("#time2").datepicker("option", "minDate", val);  
+                  }
+           });
+      $("#time2").datepicker({
+              changeYear : true,
+              changeMonth : true,
+              showButtonPanel: true,
+              onSelect : function(val) {
+                    $("#time1").datepicker("option", "maxDate", val);  
+                }
+          });
+    </script> //end
+
+
+14.computed set与get函数  //参考：https://www.cnblogs.com/gsgs/p/6687711.html
+   setter：设置值时触发。（用方法触发的时候）
+   getter：获取值时触发，与setter是没有必然联系的。
+ <template >
+  <div>
+    <button @click='fn'>设置</button> //点击后fn函数执行。
+    <button @click='fn1'>获取</button> //点击fn1函数执行。
+  </div>
+</template>   
+<script>
+  export default {
+    methods:{
+      fn(){
+      this.msg1=5　　//msg1设置值
+      },
+      fn1(){　　　　　
+        console.log(this.msg1)//msg1获取值  上面虽然设置了5，但是这儿是返回6，get函数返回值是6，跟set是没有必然关系的。
+      }
+    },
+    computed:{
+      msg1:{
+        set(){  
+          console.log('我被设置了')   //msg1设置值时此处触发 
+        },
+        get(){
+          console.log('我被调用了') //msg1获取值时触发
+          return 6         //这儿返回值将是msg1的值。
+        }
+      }
+    }
+  }
+</script>
+
+
+15.监听input是否有输入值，没有就红框，有的话就黑色框：  //参考：fileUpload-14.html
+     <h3>请输入年龄：<input type="text" v-on:keyup='isHasValue($event)' ref="age" v-model='age'>{{age}}</h3>
+     data:{
+            age:'',
+            cssRed:'border:1px #ff0000 solid;outline:none;',
+            cssBlack:'border:1px #a9a9a9 solid;outline:none;',
+         },
+     //检测是否为空值
+     isHasValue:function(e){
+                var input = e.target; //拿到input节点**
+                if(input.value==''||input.value==null||input.value.length==0||input.value==' '){
+                     input.style = this.cssRed;}//为空就显示红线框
+                else{input.style = this.cssBlack;};//否则就显示黑线框
+                this.age = input.value.trim().replace(/\s/g,""); //去空格处理，这里只需要改换“age”变量
+            },
+     //点提交按钮再次判断      
+     subMit:function(){
+            if(this.$refs.age.value==null||this.$refs.age.value.length==0){
+                alert('年龄必填，不能为空');
+                this.$refs.age.style = this.cssRed;
+                return;
+            };
+        },
+
+16. 控制textArea的文本长度maxlength语句：
+    <textarea maxlength="10" onkeydown="if(this.value.length>10){ return false}"></textarea>
+
+17. js如何阻止alert会被先执行呢？
+    可以利用setTimeout("alert('你好吗，马云')",0);
+    例子：function alertBox(){
+         var a =1;
+         var b =1;
+         var c = a + b;
+         setTimeout("alert("+c+")",0);
+         alert(100);
+    };
+    alertBox();  //结果：会先输出 100，然后在输出0
+    为什么？
+    因为：
+    javaScript是单线程运行的，js会将阻塞的操作放入一个“事件队列”中，
+    cpu先执行同步的代码，在同步代码都执行完之后，再来读取事件队列中的代码，
+    因此会出现不管alert()放在那里都会比同等级的代码先执行。
+
+18. 循环$.each(); 序号index在前，项目在后。
+    var arr = ['tom','candy','lisa'];
+    $.each(arr,function(index,item){
+        console.log(index);
+        console.log(item);
+    });
+
+19. (1).对象可以是一个数组格式：//对象里面可以存好多的数组
+        var obj = {
+                    name:[a:"tom",b:"jack",c:3],
+                    good:[a:"jim",b:"lisa",c:4]
+                  };  
+    (2).对象里面可以包含多个对象：
+        var obj = {
+                    "100":{name:"刘德华",age:"33"},
+                    "200":{name:"郭富城",age:"44"},
+                    "300":{name:"张学友",age:"55"}
+                  }
+    (3).对象里面可以存函数：
+        var person = {
+                  name:'刘德华',
+                  play:function(val){console.log(val);console.log(this.age);},
+                  age:'33岁',
+                  height:'170cm',
+                  arr:[{a:"20"},{b:"55"}]
+            };
+            person.play('什么鬼')
+            console.log(person.height);
+            console.log(person.arr[1].b); 
+    总结：对象{}里面可以存变量，存对象，存数组，存函数： var obj = {a:常量/变量/对象/数组/函数/方法}
+
+20. 删除对象"属性":delete() //既删除“键”也删除对应的“值”
+            var obj = {name:"tom",age:"33岁"}
+            var res = delete(obj["age"]); 
+            console.log(obj); //结果：{name:"tom"}
+
+21. 输入内容/元素,找到其在当前数组的下标： $.inArray()   
+    //目的：找到下标之后，通过下标去删除所要删除的内容
+    $.inArray() 函数用于在数组中查找指定值，并返回它的下标。（如果没有找到，则返回-1）
+    例子：var arrList = [ 4, "Pete", 8, "John" ];
+         var res = $.inArray("Pete",arrList); //返回"Pete"在数组中的下标
+         console.log(res); //结果：1
+
+     例子：var arr = ["tom","刘德华","lisa","mike",{name:'1234',code:"0100"}];
+          console.log($.inArray("lisa",arr));  //结果：2
+          console.log($.inArray({name:'1234',code:"0100"},arr));  //结果：-1,因为对象{...}匹配不到，只能是找“单个元素”
+
+22.for in 循环,即可以用来循环对象的，也可以循环数组：    //打印对象中的每一项健和值，通过“键”取得对应的“值” 
+   var data = {a:1,b:2,c:3,d:3};
+   for(var key in data){
+       console.log(key);  //输出对象的键，即a,b,c,d
+       console.log(data[key]); //输出对象的值，即1,2,3,4
+   };
+   例子二：合并对象,遍历赋值
+   <script>
+    var a = {a:1,b:2,c:3};
+    var b = {d:4,e:5}
+    var c = {}
+    for(var key in a){
+       c[key] = a[key]
+    }
+    for(var key in b){
+       c[key] = b[key]
+    }
+    console.log(c);
+  </script>
+  总结：for是用来循环遍历数组的[ ]，for in 是用来循环遍历对象的{ }。
+
+
+23.this指向问题：
+   (1).this指向的问题，与是否立即运行了函数否，有没有被其他对象调用或者new实例化有关系。 而与静态定义没啥关系。
+   var fullname = 'John Doe';
+   var obj = {
+     fullname: 'Colin Ihrig',
+     prop: {
+        fullname: 'Aurelio De Rosa',
+        getFullname: function() {
+           return this.fullname;
+        }
+     }
+  };
+  console.log(obj.prop.getFullname()); //结果：Aurelio De Rosa//此时this指向的是prop对象 //括号()代表立即运行当前的函数
+  var test = obj.prop.getFullname; //此时this指向windows，是全局的函数，此时test=function() {return this.fullname;}
+                                   //此句话的意思就是，仅仅是调用该对象的属性，而并不运行该函数。相当于读取对象的某个属性(未带括号)，并没有立即执行。
+  console.log(test()); //结果：John Doe //当加上()括号之后，才真正的运行。此时的this就指向了window
+
+   (2) A：没有绑定规则和没有被new实例化的时候，所有函数的this都指向window，内部外部函数嵌套函数都是这样
+       B: 当有绑定规则和被new实例化的时候，函数就指向当前绑定或者实例化的对象，但是其内部/嵌套函数还是指向window
+       C: 当有绑定规则或者new实例化的时候，并且有多层的时候，this则指向最后一层的绑定对象，也就是最里面一层的绑定对象。
+       实例A:
+       function user(){
+         var a = 1;     //用var定义的变量a永远属于user私有的变量，别人无法访问。
+         console.log(this.a); //undefined，
+         console.log(this); //此时的this指向window
+         function inFn(){
+            console.log(this) //此时的this指向window
+         }
+         inFn()
+       }
+       user();
+
+       实例B:
+       function foo() { 
+           console.log( this.a );
+        }
+        var a = 2;
+        var obj = { 
+            a: 3,
+            foo: foo 
+        };
+        obj.foo();  //输出3，当有绑定规则的时候，this指向当前obj，当函数运行的时候，this指向了obj对象
+
+        实例C:
+        function foo() { 
+            console.log( this.a );
+        }
+        var a = 2;
+        var obj1 = { 
+            a: 4,
+            foo: foo 
+        };
+        var obj2 = { 
+            a: 3,
+            obj1: obj1
+        };
+        obj2.obj1.foo(); //输出4，当有绑定规则或者new实例化的时候，并且有多层的时候，this则指向最后一层的绑定对象，也就是最里面一层的绑定对象。
+
+
+
+
+
+
+
+
+
+24.vue里面的v-for循环，既可以循环数组[]，页可以循环对象{}
+      循环数组的时候：v-for='(item,index) in arr' //item代表数组中的每一个对象，index代表序号
+      循环对象的时候：v-for='(value,key,index) in arr' //value代表对象里面的每个值，key代表对象的每个键，index代表序号
+   例子：
+   var arr = [{name:'张学友',age:'22',sex:'男'},{name:'范冰冰',age:'33',sex:'女'},{name:'周杰伦',age:'11',sex:'男'}]
+   <tr v-for='(item,index) in arr'>  //这个循环是用来循环数组的，item代表数组中的每一个对象，index代表序号
+       <td v-for='(value,key,index) in item'> 
+          {{index}}--{{value}}        //这个循环是用来循环对象的，value代表对象里面的每个值，key代表对象的每个键，index代表序号
+       </td>
+   </tr>
+
+25.vue里面可以这样传值：方法里面的参数可以直接是v-bind的里面的值，即这里面的params这个变量是相通的。
+   例如：
+   <select v-bind:value='params' v-bind:change='changeMe("params")'>
+       <option v-bind:value='params'></option>
+   </select>
+
+26.如何用js求得一个对象的长度？
+   答：利用Object.keys()
+   例： var obj = {a:"10",b:"20",c:"30",d:"40"}
+       var arr = Object.keys(obj); //把对象里面的“键”都取出来存到arr数组中
+       var len = arr.length;
+       console.log(arr); //结果：[a,b,c,d]
+       console.log(len); //结果：4
+
+27.怎么利用NPM来开发Vue.js?
+   (1).什么是NPM？
+       答：NPM是随同NodeJS一起安装的包管理工具！安装了NodeJS，就代表NPM也安装完毕了。
+   (2).如何安装NPM?
+       答：由于新版的nodejs已经集成了npm，所以安装了NodeJS，也就一并安装好了NPM。
+   (3).怎么检测NPM安装成功
+       答：cmd打开命令行输入：npm -v
+
+28.怎么搭建vue脚手架？
+    请看如下步骤：
+    第(1)步：安装node.js。 安装nodeJS之后，就表示npm也一起已经安装完毕。       检测node版本：node -v // 检测npm版本：npm -v
+    第(2)步：安装淘宝镜像cnpm(全局的)。    在命令行输入代码：npm install cnpm -g --registry=https://registry.npm.taobao.org 
+    第(3)步：安装vue脚手架(全局的)：cnpm install --global vue-cli 。脚手架只需安装一次即可，以后都不用再安装。检测脚手架版本vue --version
+    第(4)步：安装项目名称： 先cd到需要安装的文件夹按回车键，然后再在输入命令：vue init webpack xiangmumingcheng  ， 
+
+29.怎么新建一个vue项目
+   只需要两步：
+   第(1)步：先cd到需要安装的文件夹按回车键， 例如：cd Desktop/vue/demo/ 或者  先F: 再 cd vue/demo/  
+   第(2)步：然后再在输入指令创建项目名称：   例如：vue init webpack xiangmumingcheng         ***cls 是cmd的清除命令。
+            
+
+30.怎么启动一个vue项目？
+    第(1)步：打开cmd 找到该项目文件夹路径输入命令代码: cd Desktop/vue/xiangmu-1/two // f: cd 你的文件夹/demo
+    第(2)步：输入命令代码启动项目：npm run dev 
+    第(3)步：浏览器输入地址访问端口：http://localhost:8080 。若是端口号冲突，可以改成8089或者8082等等
+
+31.如何安装vue插件？
+   答：其实和安装vue脚手架一样安装，利用cnpm install安装：
+   例如安装vue-router,vue-resource,vue-x,jQuery，sass等等
+
+   a.安装vue-resource：
+   第(1)步：使用命令行安装：cnpm install vue-resource --save
+   第(2)步：安装完毕后，在main.js中导入，
+           import  VueResource  from 'vue-resource'
+           Vue.use(VueResource)       
+
+   b.安装jQuery：
+   第(1)步：使用命令行安装：cnpm install jquery --save-dev
+   第(2)步：在main.js中导入：import jquery  from 'jquery'
+   第(3)步：安装完毕后，找到这个文件：build/webpack.base.conf.js， 
+           写入代码：var webpack = require('webpack'); 
+           在module.exports的最后加入： 
+            plugins: [
+                new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery",
+                jquery: "jquery",
+                "window.jQuery": "jquery"
+               })
+            ], //end
+
+   c.安装Vuex:
+   第(1)步：使用命令行安装：cnpm install vuex --save-dev
+   第(2)步：在"src"文件里面，新创建一个文件夹store，然后在这个文件夹里面新建一个js文件命名：store.js
+           往里面加入代码：
+            import Vue from 'vue'  //引入vue和Vuex
+            import Vuex from 'vuex'
+            Vue.use(Vuex)   //引入之后，对vuex进行引用
+
+   第(3)步：打开并在main.js 中引入vuex文件：
+           import {store} from './store/store'
+           new Vue({
+                      store:store,    //*****store：store,要放在el："app"，的上面或者前面。不然要报错************
+                      el: '#app',
+                      router,
+                      components: { App },
+                      template: '<App/>',
+                    })
+
+32.怎么发布打包vue脚手架文件?
+   第(1)步：找到文件config/index.js , 再找到 build:{assetsPublicPath: '/'}, 然后修改成：assetsPublicPath: './'
+   第(2)步：在cmd命令里面运行：npm run bulid
+   第(3)步：文件被生成在dist文件夹里面。打包这个文件夹即可发布部署。
+
+33.发布打包vue的时候不想压缩代码该怎么办？
+   (1):不想html代码被压缩
+       答：先找到build/webpack.prod.conf文件，然后找到 new HtmlWebpackPlugin({ minify:{.........} )代码
+          修改成：new HtmlWebpackPlugin({ minify:false )
+   (2):不想css代码被压缩
+       答：先找到build/webpack.prod.conf文件，然后找到 new OptimizeCSSPlugin({.....}) 将这段代码删除或者注释掉即可
+   (3):不想js代码被压缩
+       答：先找到build/webpack.prod.conf文件，然后找打 new UglifyJsPlugin({........}) 将这段代码删除或者注释掉即可
+   
+34.vue脚手架里面的文件是怎么相互关联作用起来的呢？
+   (1):index.html :称为html文件，只写需要挂载的根div#app
+                   例如：<div id='app'></div>
+   (2):main.js ：  称为js入口文件。
+      //类似：相当于单页面CDN引用的<script src='js/vue.js'></script>的入口作用。
+      //作用：是把需要所有的js文件放这里，从这里引入作为js插件的入口。并且new一个vue({el:'#app'})根实例也是放在这里
+                 例如：
+                  import Vue from 'vue'
+                  import App from './App'
+                  import router from './router'
+                  import VueResource  from 'vue-resource' 
+                  import jquery  from 'jquery'  
+                  Vue.use(VueResource)    
+                  Vue.config.productionTip = false //它会阻止你显示生产模式的消息,而采用开发版模式开发 
+                  var app = new Vue({el:'#app'}); //这是根实例
+   (3):index.js :建立了路由相关的内容，把各种子组件和路由路径和路由信息放在了里面。
+                 例如：
+                 import Vue from 'vue'
+                 import Router from 'vue-router'
+                 import HelloWorld from '@/components/HelloWorld' //引入子组件1
+                 import TestWorld from '@/components/TestWorld'   //引入子组件2
+                 Vue.use(Router)
+                 routes: [
+                            {
+                              path: '/',
+                              name: 'HelloWorld',
+                              component: HelloWorld
+                            },
+                            {
+                              path: '/testPage',
+                              name: 'TestWorld',
+                              component: TestWorld
+                            },
+                          ]
+  (4):App.vue  :称为根组件，里面存放了路由的跳转，和路由显示。
+                ***重要****
+                其实App.vue这个组件是被挂载到new vue({}),根目录里面了。以App.vue组件作为总的模板挂载，
+                其他所有的组件都要进入到App.vue这个组件，进行渲染。所有其他的组件都需要汇聚到App.vue当中。
+                相当于总的组件管理中心。
+                例如：
+                <router-link to='/'>首页</router-link>
+                <router-view></router-view>
+
+
+
+ 35.vue脚手架的使用经验：
+    (1)其实main.js就是用来配置哪些js需要引入，配置基础的js，也配置vue根实例。
+    (2)在index.js页面配置：可以把url里面的#去除。在routes：里面配置上这个就行mode:'history'。因为vue-Router默认hash模式修改为history
+    (3)在vue打包发布的时候用这个mode:'history'属性的时候，有个坑。页面跳转有问题。解决办法是：第一，是注释掉这行代码，第二：后端配置。
+    (4)**记得做每个项目要做一个404的页面，警告备用共用。例如：routes：[ { path: '*', component:{template:'<div>404</div>'} },]
+    (5)**记得每次做项目都要，把路由组件设置成异步组件，利用import方法或者require方法即可。
+         component: Home => require(['@/components/Home'],resolve) 或者
+         const Home = () => import('@/components/Home') 或者
+    (6)安装插件都是用cnpm install XXXXXXXXXX --save 的语法就行，(xxxxxx就是你想要安装的插件)
+    (7)安装插件vue-resource完了的时候，cnpm install vue-resource --save 然后在main.js里面配置这两步就行：
+       ①：import resource from 'vue-resource'    //插件不需要路径，不需要添加"./"前缀
+       ②：Vue.use(resource)
+    (8)安装axios, cnpm install axios --save ,因为axios不是vue的插件，所以不能用Vue.use(),应该以下步骤
+       第一种使用方法：全局使用，
+       但是在vuex不能使用。
+       ①：import axios from 'axios'      //不需要加前缀路径"./"
+       ②：Vue.prototype.$axios = axios   //使用的时候应该随意命名一个变量"$axios"挂载到Vue实例的原型上面。
+                                           然后调用的时候就和this.$http一样调用this.$axios
+       第二种使用方法：单个组件使用，和vuex的store.js的使用方法
+       ①：import axios from 'axios' //直接在单个组件页面引入即可使用，vuex的store.js也是如此引用即可。
+          在使用的时候直接写：axios.get('url').then()即可，不需要加this.axios关键字。
+
+    (9)安装jquery插件 : npm install jquery --save-dev
+       使用方法： 1.局部引入：
+                  即在只需要的单个组件里面引用即可
+                  在需要引入jquery的单个组件中通过import $ from 'jquery'引入即可使用,不需要路径的前缀“./”
+                2.全局使用：
+                  ①：在项目目录下build下的webpack.base.conf.js文件
+                  ②：然后在头部加入var webpack = require('webpack')
+                  ③：并在module.exports的尾部加入以下代码：然后重启服务 npm run dev生效
+                      plugins: [
+                      　　new webpack.optimize.CommonsChunkPlugin('common.js'),
+                      　　new webpack.ProvidePlugin({
+                      　　　　jQuery: "jquery",
+                      　　　　$: "jquery"
+                      　　})
+                        ]
+                   ④：然后再mounted方面里面用jQuery的方法就行了。
+
+    (10)安装babel-polyfill插件，其能使ES6转换解析为ES5语法，那么就可以兼容ie浏览器啦：同时也解决了vuex不能在ie下面运行的问题
+         ①：语法:cnpm install babel-polyfill --save
+         ②：然后在项目main.js 入口文件引入：import 'babel-polyfill'即可使用啦 然后重启服务 npm run dev生效,不需要路径前缀
+
+    (11)安装vuex插件
+        ①：语法:npm install vuex --save
+        ②：在src文件夹下创建一个新的文件夹store；并在里面创建store.js文件。然后再store.js里面写入以下代码：
+            import Vue from 'vue'      //记得首字母大写
+            import Vuex from 'vuex'    //记得首字母大写
+            Vue.use(Vuex)
+            export default new Vuex.Store({
+                state:{},
+                getters:{},
+                mutations:{},
+                actions:{}
+            })
+         ③：在main.js中导入创建好的store.js文件：import store from './store/store'
+            并记得在根实例new Vue({})上面挂载store,即可使用啦。
+
+      (11).安装bootstrap插件
+           ①：语法:npm install 使用npm install bootstrap@4 --save
+           ②：再安装jQuery，只能再mounted里面使用$
+           ③：然后在src\assets文件加下面把下载下来的Bootstrap文件夹放进去。
+           ④：再在入口页面mian.js中加入以下代码:
+              import './assets/bootstrap/js/bootstrap.min.js'
+              import './assets/bootstrap/css/bootstrap.min.css'
+
+       *******可以直接在页面用绝对网址cdn的形式引入Bootstrap
+              然后在index.html文件中引入<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+           
+
+
+      (12).在vuex中的input是如何使用v-model双向数据绑定呢？
+           答：采用get()和set()设置。
+            computed: {
+            test: {
+              get () {
+                return this.$store.state.test
+              },
+              set (val) {  //val表示input的实时输入的新值
+                this.$store.commit('setTest', val)
+                  }
+                }
+              }
+              然后在mutations这么设置
+              mutations:{
+                          setTest(state,canshu){
+                                state.age = canshu;
+                          },
+                        },
+
+        (13)***重要***在vuex里面怎么使用vue-resource的这个this.$http.get()呢？
+                在vuex的action{}中不能直接使用this.$http.get()获取数据，而应该写成：Vue.http.get().就没有this指向的问题了。
+                或者不把异步请求放在action{}里面，而是直接写在各个组件的methods里面，然后commit('fangfa',请求到的data)通过传参的方式
+                直接提交给mutations，而不提交给action{};就不存在异步数据更改state的问题了。
+
+        (14)***重要***在vuex里面怎么使用axios.get()呢？
+               第一种使用方法：全局使用，
+               但是在vuex不能使用。
+               ①：import axios from 'axios'      //不需要加前缀路径"./"
+               ②：Vue.prototype.$axios = axios   //使用的时候应该随意命名一个变量"$axios"挂载到Vue实例的原型上面。
+                                                   然后调用的时候就和this.$http一样调用this.$axios
+               第二种使用方法：单个组件使用，和vuex的store.js的使用方法
+               ①：import axios from 'axios' //直接在单个组件页面引入即可使用，vuex的store.js也是如此引用即可。
+                  在使用的时候直接写：axios.get('url').then()即可，不需要加this.axios关键字。
+    要注意的要点：
+    ***********vue中的方法 methods定义里面的函数时不要使用箭头函数，因为会出现this指向的问题，
+                          应该用这种格式,hanshuName(){。。。。}，既没有箭头也没有冒号。
+                          computed定义和methods一样格式为：methods:{。。。。},computed:{。。。。。。。}
+                          data定义的时候也用这种格式,data(){return{。。。。。。}} 既没有箭头也没有冒号。
+                          created定义的时候也用这种格式,created(){.。。。。。。。} 既没有箭头也没有冒号。
+                      
+    ***********在导入以下两个js插件的时候记得首字母一定要大写。因为实例化new Vue({})或者实例化new Vuex({})都是首字母大写的：
+               import Vue  from 'vue'
+               import Vuex from 'vuex'
+
+    ***********如何解决webpack Invalid Host/Origin header在ie下面报错的问题?
+               答案：在build文件夹下面找到这个js文件webpack.dev.conf.js，然后找到：devServer: { }
+                    再这里加入disableHostCheck: true,即可，就不会ie报错了。
+
+    ***********如何解决 vuex requires a Promise polyfill in this browser.在ie下面报错的问题?
+               答案：在build文件夹下面找到这个js文件webpack.base.conf.js，
+                    把这行代码：app: './src/main.js'
+                    改成：app: ['babel-polyfill', './src/main.js']即可使用啦。
+
+    ***********在vuex里面推荐使用axios来获取数据。
+    ***********computed里面接受属性的时候一定记得加上return关键字!!!!!!!!
+
+
+
+
+
+
+35. vue实现数据双向绑定的原理是什么？
+    (1).vue实现数据双向绑定的原理就是用Object.defineproperty()重新定义（set方法）对象设置属性值和（get方法）获取属性值的操纵来实现的
+    (2).Object.property()方法的解释：Object.property(参数1，参数2，参数3)   返回值为该对象obj
+    (3).其中参数1为该对象（obj），参数2为要定义或修改的对象的属性名，参数3为属性描述符，属性描述符是一个对象，
+        主要有两种形式：数据描述符和存取描述符。这两种对象只能选择一种使用，不能混合使用。而get和set属于存取描述符对象的属性。
+        这个方法会直接在一个对象上定义一个新属性或者修改对象上的现有属性，并返回该对象
+        var keyvalue=1;
+        var obj={};
+        Object.defineproperty(obj,"key",{
+            enumberable:true,
+            configurable:true,
+            set:function (newvalue) {
+            keyvalue=newvalue
+            console.log("keyvalue的值已经发生了改变，目前的值是:${keyvalue}")
+        },
+            get : function () { 
+            return keyvalue
+          }
+        })
+       对象obj获取key属性时，会触发 get方法，得到是变量keyvalue的值。
+       当重新设置key值时，会触发set方法，将变量keyvalue的值设置成已经变换的值。
+       如此 就实现了一个简单的数据双向绑定，当改变变量keyvalue的值的时候，obj.key也会发生改变，设置obj.key时，变量keyvalue也会改变。
+       vue的数据双向绑定是通过数据劫持和发布-订阅者功能来实现的
+
+36. js中window对象是什么意思？     //得出结论：window 对象是 DOM 中所有对象的父对象。
+    答案：js中window对象和Object对象的关系是什么？
+         浏览器对象层次结构的,顶部就是 window 对象。
+         它代表什么呢？就是一个浏览器窗口。
+         一个用户可以在浏览器内部打开多个窗口，其中每个窗口都是一个独立的 window 对象，
+         它们可能会加载不同的 url，即使同样的 url 地址，它们也是相互独立的。
+         换种说法， window 对象是浏览器 DOM 中所有对象的父对象，
+         父对象也是对象，因此 window 对象的祖宗也是 Object。Object最大。
+
+
+37. js闭包实例代码：
+    函数内部既可以返回变量return sumObj ，也可以返回函数return function(){。。。。} ,要注意看清楚。
+    <script type="text/javascript">
+         //定义一个闭包函数，访问函数里面的值或者访问函数里面的局部变量，然后传到外部使用。此时返回的是一个“函数”
+         function add(x){
+                 return function(y){
+                   return x+y;
+                 }
+         };
+         var a = add(10);  //此时a = function(y){ return 10 +y }; 此时的a是一个函数，而非变量
+         var val = a(5);
+         console.log(val); //15
+
+         var b = add(14);  //此时b = function(){ return 14 + y }; 此时的a是一个函数，而非变量
+         var res = b(15);
+         console.log(res); //29
+
+         var c = add(3)(6) //等价于，相当于先执行 c = add(3),然后再执行闭包函数c(5)
+         console.log(c); //9
+    </script>
+    参考网址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
+            https://www.cnblogs.com/cxying93/p/6103375.html
+
+
+38. js如何模拟类
+    答：在js中采用函数的形式来模拟类，例如：function person(){} //定义一个类，也就是一个函数，
+                                      var example = new person(); //然后new一个实例，代表创建类的实例
+       类函数里面既有私有方法也有公有的方法，用var定义的就是私有方法，用this定义的就是公有方法，可以被实例调用，
+       用var定义的私有函数方法此时的this指向了window。
+       用this定义的公有方法此时的this指向了实例本身,也就是指向了person这个方法。
+       例子：
+       function person(){ //定义一个类 
+          var name = '刘德华';         //定义一个私有变量，只能局部使用，或者内部函数(闭包)可以调用
+          this.sex = '男';            //定义一个公有的变量，只能给实例使用，或者外部函数使用
+          this.job = function(){      //定义一个公有的函数，外部实例可以调用这个方法
+               console.log(this);     //this指向了person(),==> person {}
+               console.log(name);     //结果：刘德华。 可以访问到私有变量
+               console.log(this.sex); //结果：男
+               console.log(sex);      //结果：报错：sex is not defined
+          };
+          var print = function(){     //定义一个私有的函数,外部或者实例不能调用这个函数
+               console.log(this);     //this指向了windows
+               console.log(name);     //结果：刘德华。 可以访问到私有变量
+               console.log(this.sex); //结果：undefined
+               console.log(sex);      //结果：报错：sex is not defined
+           };
+           print();//运行私有函数
+       }//类end
+      var example = new person();  //创建实例
+      example.job();               //调用实例的公有方法
+      example.print();             //报错啦
+
+39. 做Excel导入功能的时候，怎么解决二次导入不触发的事件？
+    原理：采用清空值得做法来做第二次导入。
+    答：<input type='file' id='idFile'> //上传Excel
+       //写一个导入Excel的函数方法：importExcel
+       <script>
+          importExcel(){
+                          $('#idFile').val();               //先拿到file--Excel的值，
+                          if(val == null || val == ''){     //判断是否有导入文件
+                               return;
+                            };
+                          var excel = $("#idFile")[0].files[0];      //拿到所要上传的当前文件
+                          var formData = new FormData(excel);        //利用FormData把他上传
+                          $("#idFile").val("");                      //获取文件上传后就清空值， *****这一步非常重要********
+                          $.ajax({
+                              type,
+                              url,
+                              data:formData,
+                              success,
+                              complete:function(){ $("#idFile").val("") }    //或者在complete里面设置清空值
+                          }); 
+                      } 
+               </script>
+
+
+40.computed：用法总结及注意事项：
+   例一：
+   注意事项：******不能在data和computed里面同时取同一个名字，会报错。*******
+   <div id="app">
+        <h2>姓：<input type="text" v-model='firstName'></h2>
+        <h2>名：<input type="text" v-model='lastName'></h2>
+        <h1>全名：{{fullName}}</h1>  
+    </div> 
+    <script>
+    var app = new Vue({
+              el:'#app',
+              data:{
+                  firstName:'liu',
+                  lastName:'de hua',
+              },
+              computed:{
+                  fullName:function(){
+                      return this.firstName +" "+ this.lastName;
+                  },
+              },
+          });
+    </script>
+    
+    例二：数组合并
+    注意事项：******不能在data和computed里面同时取同一个名字，会报错。*******
+    <div id="app">
+          <h2>姓：<input type="text" v-model='a'></h2>
+          <h2>名：<input type="text" v-model='b'></h2>
+          <h1>全名：{{newArr}}</h1>
+          <button @click='copyMe'>点击我</button>
+          <h1>{{c}}</h1>
+      </div> 
+      <script>
+      var app = new Vue({
+                el:'#app',
+                data:{
+                    a:[1,2,3,4,5],
+                    b:[6,7,8,9,10],
+                    c:[],
+                },
+                computed:{
+                    newArr:function(){
+                             var arr = []; 
+                             var arr = this.a.concat(this.b); //数组合并
+                             return arr;
+                       },
+                },
+                methods:{
+                    copyMe:function(){
+                        this.c = this.newArr;
+                    },
+                },
+            });
+      </script>
+
+41. 数组合并
+    第一：concat方法，不影响原数组！相当于是深拷贝
+    var a=[1,2,3];
+    var b=[4,5,6];
+    var c=a.concat(b);
+    console.log(c);    // 1,2,3,4,5,6
+    console.log(a);    // 1,2,3  //不改变本身,不影响原理数组
+
+42. 对象合并
+    第一：$.extend()方法，会影响原来的对象！相当于浅拷贝
+    var obj1= {'a': 1};
+    var obj2= {'b': 1};
+    var c = $.extend(obj1, obj2);
+    console.log(obj1); // {a: 1, b: 1}  obj1已被修改
+
+43. 变量提升
+    *变量提升，只是变量提升值不提升，值保持在原来的位置
+    //总结：
+  //当js首行要执行代码的时候：先找到首行要执行的代码，以此类推。
+  // 1.变量提升，距离首行要执行的代码最远，var arg = undefined;
+  // 2.形参赋值，距离首行要执行的代码次之，    arg = 88
+  // 3.函数提升，距离首行要执行的代码最近，    arg = function(){....}
+  // 4.执行代码，我就是首行要执行的代码哦，console.log(arg)  
+  // 5.赋值覆盖，在首行执行代码之前或之后位置是固定死了，不会提升，var arg = '100'
+
+  //例子一：
+  function a(){
+     var name = '刘德华';
+     function name(){ console.log('1111')};
+     console.log(name); //这是“首行要执行代码”，非常重要的概念
+     //等价于
+     //var name = undefined;
+     //    name = function name(){ console.log('1111') };
+     //    name = '刘德华';
+     //console.log(name);
+  }
+  a(); //输出：刘德华
+
+  //例子二：
+  function b(arg){
+      var arg = 20;
+      console.log(arg); //这是“首行要执行代码”，非常重要的概念
+      function arg(){ console.log(22222)};
+      //等价于
+      //var arg = undefind
+      //    arg = 99;
+      //    arg = function(){console.log(22222)}
+      //var arg = 20;
+      //console.log(arg);
+  };
+  b('99') //结果：20
+
+  例子三：
+  function c(arg){
+      console.log(arg); //这是“首行要执行代码”，非常重要的概念
+      var arg = 'hello';
+      function arg(){ console.log(11111)};
+      console.log(arg);
+      //等价于
+      //var arg = undefind
+      //    arg = 88
+      //    arg = function(){console.log(11111)}
+      //console.log(arg);
+      //var arg = 'hello'
+      //console.log(arg)
+  }
+  c('88'); //结果：ƒunction arg(){ console.log(11111)}   //hello
+
+  例子四：
+  c=5; 
+  function test3(){
+      window.c=3;
+      console.log(c);
+      var c;
+      console.log(window.c);
+
+      //等价于
+      //var c = undefined;
+      //window.c =3;
+      //console.log(c);  //结果undefined，因为此时的c是一个局部变量
+      //console.log(window.c);  //结果：3，因为此时的c是一个全局变量
+    }
+  test3();
+
+
+44. js里面toString()方法什么意思
+     (1)答：是将数字或者布尔值转换成字符串
+        例如：
+        var a = 5;
+        var b = 6;
+        var c = a + b;
+        console.log(c); //结果11
+        console.log(a.toString()+b.toString()); //结果56，转换成字符串之后就不能相加，只能拼接了。
+
+        js里面Number()方法什么意思？
+        答：是将数字为字符串类型的数字，转换为纯数字类型的的数字。
+        例如：
+        var str = "123.100" //这是一个字符串类型的数字
+        var num = Number(str)  //此时的num就是一个typeof为纯数字类型的数字了，兼容性好。
+
+    (2)js十进制转换为二进制:
+        语法：toString(2)
+        例如：把99转换成二进制
+             var count = 99；
+             var result = count.toString(2)  //转换为二进制
+             console.log(result);            //结果：1100011
+        **注意**
+        当toString(参数)里面的参数为空的时候，默认是参数默认是10，代表10进制
+
+    (3)js二进制转十进制：
+         语法：parseInt(number,2)
+         例如：把"1011000"转换成十进制
+         var count = "1011000";
+         var res = parseInt(count,2);     //转换为十进制
+         console.log(res);                //结果：88
+
+
+
+
+
+
+44.1  js里面toFixed(x)方法什么意思？
+      答：此方法是专门用来处理带有小数点数字的方法。 
+         记住*****要处理小数，就用这个方法toFixed(x)方法。 
+         表示把数字舍入为仅有x位小数的数字。  //此方法是截取小数点后面的多少位数字。x代表小数点后截取的长度
+      var num =2.446242342;
+      num = num.toFixed(2); //输出结果为 2.45
+
+
+45. apply、call、bind的区别、用法？
+    (1).都是用来改变函数的this对象的指向的。
+    (2).数组追加(只能追加两个数组，超过3个就不行) 有顺序之分，是把后面的数组追加到前面的数组，前面的数组变长，后面的数组不变。  
+    var array1 = [1,2,3,4]; 
+    var array2 = [5,6,7]; 
+    Array.prototype.push.apply(array1,array2);      
+    console.log(array1);   //array1合并结果变长[1,2,3,4,5,6,7]
+    console.log(array2);   //array2结果不变[5,6,7]
+    总结：**
+           Array.prototype.push.apply(array1,array2)这句代码
+    等价于：[].push.apply(array1, array2);
+
+    他们三者的区别在哪里你娥？
+    看实例：
+      var xw = {
+              name : "小王",
+              gender : "男",
+              age : 24,
+              say : function() {
+                      alert(this.name + " , " + this.gender + " ,今年" + this.age);                                
+              }
+            }
+       var xh = {
+                    name : "小红",
+                    gender : "女",
+                    age : 18
+                 }
+        xw.say();  
+        //本身没什么好说的，显示的肯定是小王 ， 男 ， 今年24。
+        //那么如何用xw的say方法来显示xh的数据呢。
+        xw.say.call(xh)       //对于call可以这样：
+        xw.say.apply(xh)      //对于apply可以这样：
+        xw.say.bind(xh)()     //而对于bind来说需要这样：
+        
+        那么call和apply有什么区别呢？我们把例子稍微改写一下。
+        var xw = {
+                  name : "小王",
+                  gender : "男",
+                  age : 24,
+                  say : function(school,grade) {
+                          alert(this.name + " , " + this.gender + " ,今年" + this.age + " ,在" + school + "上" + grade);                                
+                  }
+                }
+        var xh = {
+                name : "小红",
+                gender : "女",
+                age : 18
+             }
+        可以看到say方法多了两个参数，我们通过call/apply的参数进行传参。
+        xw.say.call(xh,"实验小学","六年级");                      //对于call来说是这样的   
+        xw.say.apply(xh,["实验小学","六年级郑州牛皮癣医院"]);       //而对于apply来说是这样的
+
+        看到区别了吗，call后面的参数与say方法中是一一对应的，而apply的第二个参数是一个数组，数组中的元素是和say方法中一一对应的，
+        这就是两者最大的区别。
+        那么bind怎么传参呢？它可以像call那样传参。
+         xw.say.bind(xh,"实验小学","六年级")(); 或者下面这样传参
+         xw.say.bind(xh)("实验小学","六年级");
+
+
+45.  怎么去判断数据类型，怎么去判断数组的类型
+     答：用typeof去判断数据类型 ：              //console.log(typeof '刘德华')               //结果：string
+        用instanceof去判断数组类型  ，         //console.log(['1','2'] instanceof Array)   //结果：true
+
+        语法格式：object instanceof constructor
+        参数解释：object表示要检测的对象,constructor表示某个构造函数(比如Array(),Number(), String(),Object()都称为构造函数) 
+                                                每一个对象都有构造函数：var a=8, console.log(a.constructor) //结果：Number(){}
+        判断数组类型：
+        var arr = [];
+        console.log(arr instanceof Array)      //true   或者
+        console.log(arr.constructor == Array)  //true   constructor其实是对象下面的一个隐形的属性。相当于a.name = 10一样。
+
+        //实例一
+        function action(){
+             var a = b = 4
+           //等价于
+           //b = 4;       //相当于b是全局变量
+           //var a = b;   //a还是私有变量
+        };
+        action();
+        console.log(a)  // a is not defined
+        console.log(b)  //4
+        console.log(typeof a)
+        console.log(typeof b)
+        console.log(typeof a !== 'undefined') //false
+        console.log(typeof b !== 'undefined') //true
+
+        //实例二
+        var bar = null
+        console.log(typeof bar == 'object') //true
+
+ 
+
+46.RequireJS （竟然兼容ie7）
+       什么是RequireJS呢？   //英[rɪˈkwaɪə] 理解为：依赖的js，需要的js，项目才能跑起来。
+   答：它是一个JS模块加载器，专门用来加载小型的js文件。
+   优点：(1)模块化：彼此之间互不影响
+        (2)不会阻塞页面:是异步的(因为HTML页面代码也是按从上到下的顺序一行一行执行代码的，页面上面的js会阻塞div/css的加载)
+        (3)按需加载：什么时候触发点击事件，什么时候才会加载js
+   使用步骤：
+        (1)第一步：先去下载require.js文件。          //它的作用就是加载js模块，
+        (2)第二步：创建一个main.js文件，            //它的作用是管理js模块，//然后配置以下两个方法即可：
+                  并且将其引入到HTML页面，并加上data-main.js     //<script data-main="js/main.js" src="js/require.js">
+                  main.js作如下配置：
+                  A: 配置require.config()方法     //作用：配置js模块的路径
+                                                //只接受一个参数就是一个对象，对象里面再放各个js的路径。
+                                                //例如：require.config({ paths:{....模块1：js路径,模块2：js路径...} })
+
+                  B: 配置require()方法           //它接受两个参数。第一个参数必须是数组，里面是所依赖模块，第二个参数是一个回调函数，
+                                                //例如：require([模块1，模块2，模块3 ] ,function(){ })
+                                                //当数组里面的模块加载成功后，回调函数才被调用。加载数组里的模块会以参数的形式传入该函数
+                                                //从而在回调函数内部就可以使用这些模块。是用来处理加载完毕后的逻辑
+                                                //**require()方法会异步加载每个模块，浏览器不会失去响应。网页不会卡死。
+                                                //**只有前面的模块都加载成功后，回调函数才会运行，解决了依赖性的问题。
+        (3)第三步：在各个模块加上define()           //如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中   
+                                                //如果这个js文件还依赖其他模块，那么define([],function(){})函数的第一个参数，必须是一个数组，指明该模块的依赖性
+                                                  
+        总结:require.js主要掌握三个语法就能实现一定的功能，即配置js路径require.config()、加载模块require()、定义模块define()。
+
+        什么是CMD 和AMD？
+        异步模块定义（AMD）是Asynchronous Module Definition的缩写，是RequireJS 在推广过程中对模块定义的规范化产出。
+        通用模块定义（CMD）是Common Module Definition的缩写，是SeaJS 在推广过程中对模块定义的规范化产出。
+        RequireJS 和 SeaJS 都是模块化框架的代表，AMD和CMD，是他们各自定义模块化的方式，大同小异，主要是代码风格和API不同
+
+
+
+47. SeaJS。
+    seajs简介
+    Sea.js是一个很纯粹小巧的模块加载器，他只解决一个问题：前端代码的模块化。
+    Sea.js可以将大量javascript代码封装成一个个小模块，然后轻松实现模块的加载和依赖管理,
+    Sea.js 推崇一个模块一个文件，遵循统一的写法：
+    为什么命名成Sea.js
+    蓝天碧海之间，沙滩爱侣相伴。无论生活还是工作，我们都期望能享受如此良辰美景。SeaJS 在努力让我们的生活变得更美好。
+
+    快速入门：
+    (1)第一步：首先先去下载sea.js文件。
+              并在HTML页面把他引入<script type="text/javascript" src="../js/sea.js"> 
+
+    (2)第二步：在HTML页面配置和使用sea.js
+              seajs.config({ })   //配置js路径paths，和设置别名alias方便调用
+                                  //seajs.config({ alias: { 'jquery': 'js/1.7.2/jquery.js'} });
+              seajs.use()         //seajs.use(['./hello', 'jquery'],function(hello, $){ }); 
+                                  //若是要支持jQuery的话，需要对jQuery源码进行修改。(百度怎么修改) *****************
+
+    (3)第三步：定义模块define()。
+                当传递一个参数时候：参数是函数function(最常用):
+                这个函数有三个参数：define(function(){require,exports,module})
+                    Require：用于引用其他模块的方法,相当于import导入的意思。
+                    Exports：返回接口对象，相当于导出的意思。
+                    Module：模块属性
+                    //实例：
+                    //书写模块代码：
+                    define(function(require, exports, module) {
+                        var $ = require('jquery');
+                        exports.sayHello = function() {
+                          $('#hello').toggle('slow');
+                        };
+                     });
+
+                    //html页面通过 SeaJS 来加载使用了
+                    seajs.config({
+                          alias: {
+                            'jquery': 'http://modules.seajs.org/jquery/1.7.2/jquery.js'
+                          }
+                        });
+
+                        seajs.use(['./hello', 'jquery'], function(hello, $) {
+                          $('#beautiful-sea').click(hello.sayHello);
+                      });       
+                      参考：https://www.cnblogs.com/goloving/p/7712310.html
+
+
+48.闭包
+   闭包的特点:
+   (1)被函数嵌套的函数
+   (2)需要用return关键字
+   为什么要用闭包？
+   (1)平行函数要访问另一个平行函数里面的值的时候只能用闭包，把值传出来。利用函数可以return的原理。
+   (2)谨记要在函数外面var一个变量来接收这个返回出来的函数。
+   场景：有两个平行函数m1和m2,m2为了能访问到m1函数里面的变量a的值，就在m1函数里面再新建了一个m3函数，那么m3就称为闭包函数
+   例如：
+   function m1(){
+     var a = 10;
+     return function m3(){ //m3就是闭包函数啦
+         return a; //访问到了a的值
+     }
+   }
+   var result = m1(); //var一个"全局"变量result来接收返回出来的函数,这样就变成了全局的值，其他函数都可以调用啦。
+                      //等价于：var result = function m3(){ return a; } //相当于一个快捷方式
+                      //*********这个中间变量result很重要**********
+   function m3(){
+       var value = result(); //当result()运行完之后，这个时候value就接收到了return 出来的a的值啦,这样就等价于m3函数间接的访问到了m1函数的值。
+       console.log(value); //结果10
+   }
+   m3()  //运行m3();
+
+
+
+49. 前端性能优化方案都有哪些？
+    优化的目的：
+    (1)、从用户角度而言：  优化性能能够让页面加载更快、操作响应更及时，提供更友好的体验。
+    (2)、从服务商角度而言：优化性能能够减少页面请求数、减小请求带宽量，节省可观的资源。
+    
+    优化方法：
+    (1)、页面优化
+        ①：减少HTTP请求数。     
+        ②：js、css、压缩合并，减小资源体积。
+        ③：图片懒加载，图片压缩，图片定宽高或者百分比。
+        ④：将外部脚本置底。
+    (2)、代码优化
+        ①：减少对DOM的操作，采用虚拟Dom，在内存中操作Dom。             
+        ②：减少作用域链查找。
+        ③：使用JSON格式来进行数据交换
+        ④：缓存DOM节点查找的结果。
+
+
+       //*****对应注释*********
+       //每一个完整的HTTP请求都需要经过 DNS寻址、与服务器建立连接、发送数据、等待服务器响应、接收数据这样一个 “漫长”而复杂的过程，增加用户的等待时间。
+       //因为DOM操作应该是脚本中最耗性能的一类操作，例如增加、修改、删除 DOM元素
+       //低效率的写法：
+        var globalVar = 1;   // 全局变量 
+          function myCallback(){ 
+            for( var i = 100000; i--;){ 
+                   globalVar += i;       //每次访问 globalVar 都需要查找到作用域链最顶端，本例中需要访问 100000 次 
+              }
+          }
+      //更高效的写法：
+      // 全局变量 
+      var globalVar = 1; 
+          function myCallback(info){ 
+              var localVar = globalVar;   //用局部变量缓存全局变量 
+              for( var i = 100000; i--;){ 
+                   localVar += i; 
+              } 
+              globalVar = localVar;     //本例中只需要访问 2次全局变量
+            }
+      
+
+50. 如何让一个固定宽高的div在水平和垂直方向同时居中的css
+    <div id="box"></div>
+    <style>
+    #box{ position: absolute; 
+          border:1px #ff0000 solid; 
+          width: 400px; 
+          height: 200px; 
+          top: 50%; 
+          left: 50%;
+          margin-top: -100px;
+          margin-left: -200px;
+      } 
+    </style>
+
+    position(五种属性)
+             1. position: relative;相对定位  //不会使元素脱离文档流
+             2. position: absolute;绝对定位  //使元素完全脱离文档流
+             3. position: fixed;固定定位
+             4. position: static;默认值     //默认布局,元素出现在正常的流中
+             5. position: sticky;粘性定位   //一直粘在窗口，和滚动条绝缘了，不支持ie类。
+
+    float的几种常用的清除浮动方法：
+             1.父级div定义伪类：after和zoom
+             2.在结尾处添加空div标签clear:both
+             3.父级div定义height
+             4.父级div定义overflow:hidden
+             5.父级div也一起浮动
+             6、结尾处加br标签clear:both
+
+
+51. Vue-router路由学习：
+    为什么要有路由导航守卫呢？
+    答：路由导航守卫,主要用来通过跳转或取消的方式守卫导航。      //也就是所谓的路由钩子函数；
+    
+    (1).全局的路由导航守卫：
+                         ①：beforeEach()    //全局前置守卫 luyou.beforeEach(function(to,from,next){ ....next()..... }
+                         ②：afterEach()     //全局后置守卫 luyou.beforeEach(function(to,from){ ......... }
+
+    (2).组件内(局部)导航守卫：
+                         ①：beforeRouteEnter(fn)  //进入这个组件时守卫
+                         ②：beforeRouteLeave(fn)  //离开这个组件时守卫
+                         
+                         例子：
+                         {
+                           data:{},
+                           beforeRouteEnter:function(to,from,next){ //这里是组件内守卫 alert(to.path) ; next(); },
+                           methods:{},
+                           computed:{},
+                         }
+
+    (3).路由独享的守卫:    beforeEnter(fn)    //用法与全局守卫一致。只是，将其写进其中一个路由对象中，只在这个路由下起作用。
+                                           //{ path:'/login', component:Login , beforeEnter(to,from,next){
+                                                                                     alert('我是路由独享守卫')
+                                                                                     next();
+                                                                                   }
+                                                                                 };
+    fn里面是三个参数：
+    to:   当前导航将要进入的导航，即它正要去哪里？
+    from：当前导航正要离开的导航，即它是从哪里来？
+    next：进行管道中的下一个钩子.一定要调用这个next()这个方法，不然要报错。
+
+
+
+
+52. Vue-router路由导航总结：*****重要****
+    总结：
+    (1).所有的"组件"的路由都在index.js里面配置！
+    (2).标签替换：tag的用法：因为router-link默认是一个a链接标签，那么可以用tag来把它替换成span标签：<router-link tag="span" to='/'>
+    (3).设置默认路径：redirect的用法：①:当在url地址栏输错了地址时，默认到这个路由：{ path:'*' , redirect:'/' } //输错就默认跳转到主页
+                                  ②:或者设置二级路由的默认显示路由：当有多个路由但是需要设置主路由的时候，或者一进页面就想要显示的路由这样设置
+                                  //{
+                                       path:'/music' ,
+                                       name:'music' , 
+                                       compoent: 'music',
+                                       redirect: 'one',   //为二级路由设置默认显示的路由为one.vue
+                                       children:[
+                                                  {path:'/music/one',name:'one',component:'one'},
+                                                  {path:'/music/two',name:'two',component:'two'},
+                                                  {path:'/music/three',name:'three',component:'three'}
+                                                ]
+                                     },
+      (4).设置404页面路由：当所有路由找不到，或者url输入错误的时候，就跳转到当前页面：{path:"*",component:"notfound"}
+                                    //或者：{path:"*",component:{template:'<div>404，对不起，页面不存在！</div>'}}
+      (5).给主页设置默认路由：当主路由有多个组件的时候，要为主路由指明，默认显示的组件
+                                    //{ path:'/',
+                                        name:"homeLink",
+                                        components:{                //注意这里是带s的components
+                                                    default:Home,   //设置默认显示的主页，即使没有下面3个，home一直会作为主页存在
+                                                    'ctp1':componentOne,
+                                                    'cpt2':componentTwo,
+                                                    'cpt3':componentThree
+                                                 }
+                                       },
+                                    //然后在App.vue中设置"router-view复用"
+                                      <router-view></router-view>                //这个是主显示区，不能删除
+                                      <router-view name="cpt1"></router-view>    //这个是路由复用显示区
+                                      <router-view name="cpt2"></router-view>    //这个是路由复用显示区
+                                      <router-view name="cpt3"></router-view>    //这个是路由复用显示区
+
+       (6).二级路由，三级路由：****很重要*****
+           App.vue为什么要存在呢？
+           答案：因为App.vue是一个总组件管理器，所有的组件显示路由都要来到App.vue里面加工处理。
+                在这App.vue里面始终默认有一个router-view显示区域。
+                而当有些组件里面的一些子组件不想在App.vue里面的大框架显示的话，就要为当前其这个路由配置二级路由啦。
+                例如：
+                {path:'/about',
+                 name:'aboutLink',
+                 component:About,
+                 redirect:'/about/contact',  //这个是设置二级路由默认显示的路由组件
+                 children:[                  //这个就是二级路由啦
+                            {path:'/about/contact',name:"contactLink",component:contact},
+                            {path:'/about/law',    name:"lawLink",    component:law},
+                            {path:'/about/job',    name:"jobLink",    component:job}
+                          ]
+                 },
+                 //在about.vue里面要这样设置：
+                   <router-link to='/about'>关于我们<router-link>
+                   <router-view></router-view>  //*****这个要记得加上，这个和App.vue里面的router-view不冲突，因为设置了二级路由。
+          (7).路由导航守卫只要记住常用的4个就行
+              导航全局前置守卫：beforeEach()
+              导航全局后置守卫：afterEach()
+              组件内守卫进入：beforeRouteEnter() 
+              组件内守卫离开：beforeRouteLeave() 
+                   
+
+
+
+
+52. 什么是vue全家桶?
+    答案：
+    1.项目构建工具、          //脚手架
+    2.路由、                //vue-router
+    3.状态管理、            //vuex
+    4.http,ajax请求工具    //vue-resouce/axios
+
+53.Vuex学习：
+   什么是vuex: 它是存放vue所有数据的商店(store),是一个数据商店，或者数据超市！
+   vuex的原理： ???
+
+   (0)语法：
+   新建一个实例商店
+   var myStore = new Vuex.Store({
+                   state:{},      //相当于data,写法一模一样，
+                   getters:{},    //复数形式带s,相当于computed,写法一模一样，
+                   mutations:{},  //复数形式带s,相当于methods,写法一模一样，***是唯一能改变state里面值的方法。
+                   actions:{}     //复数形式带s
+                }); 
+
+   (1)state的用法：
+     页面组件怎么获取vuex里面的state值呢？
+     第一种：写在该组件的computed里面；   //***千万不能写在data里面,不然无法二次渲染。
+     第二种：直接写在组件的template里面{{this.$store.state.homeName}}；
+     例如：
+     获取1：template:'<div>2我是音乐页面哦{{this.$store.state.homeName}}-----{{newHomeName}}---</div>',
+     获取2：computed:{newHomeName:function(){ return this.$store.state.homeName},},
+                
+   (2)getters的用法：
+      getters相当于组件里面的computer方法,仅仅是用来处理state的值，但是不会改变state原值。会返回一个新值，但是原值不变
+      getters里面也是一个函数，而且要给函数传入参数state，并且要用关键字return返回新值，和computed处理data一模一样。
+      例如：
+      设置：getters:{ newTotal: function(state){ return state.total/100 } }  //记得传参数state，和return新值
+      获取1：template:'<div>我是音乐页面哦{{this.$store.getters.total}}-----{{newTotal}}---</div>',
+      获取2：computed:{ newTotal:function(){ return this.$store.getters.total },},    //***千万不能写在data里面,不然无法二次渲染。
+
+    (3)mutations的用法： 
+       mutations相当于组件里的methods方法,仅仅是用来存放需要的方法,这些方法是用来改变state的值.也是唯一能改变state值的方法
+       mutations里面是若干个函数，每个函数里面要传入参数state，若是还有别的参数要传，继续写在state后面，一起传进来。
+       怎么调用mutations里面的方法呢？：
+       答：采用commit('fangfa',canshu)
+       通过在组件的methods或者created里使用this.$store.commit('fangfaming',参数1,参数2,对象，数组，this.name等...)
+       例如：
+       //commit不传参的时候：
+       设置1：mutations:{ fangfaOne:function(state){ state.total = 99/3 } }
+       获取1：在组件里面：methods:{ getFangfa:function(){ this.$store.commit("fangfaOne") }}
+       //commit传参的时候：
+       设置2：mutations:{ fangfaOne:function(state,canshu){ state.total = canshu.total/canshu.num //等价于66除以3 } }
+       获取2：在组件里面：methods:{ getFangfa:function(){ this.$store.commit("fangfaOne",{total:66,num:3}) }}
+       获取2：在组件里面：methods:{ getFangfa:function(){ this.$store.commit("fangfaOne",this.name) }}
+
+    (4)actions的用法：
+       actions是用来存储异步数据的，Ajax取到的数据只能先放在actions里面，然后再去commit提交mutations的方法，去改变state的值。
+       actions里面也是有若干个函数，每个函数里面也要传入参数，其中context是必须传的参数，context等价于“this.$store”的省略。
+       怎么调用actions里面的方法呢？：
+       答：采用dispatch('fangfa',canshu)
+       通过在组件的methods或者created里使用this.$store.dispatch('fangfaming',参数1,参数2,对象，数组，this.name等...)
+       设置1：actions:{ fangfaTwo:function(context,canshu){ context.commit('addFangfa',canshu) }}
+       获取1：在组件里面：methods:{ getFangfa:function(){ this.$store.dispatch("fangfaTwo",canshu) }}
+
+    总结：
+         ①：mutations和actions，都是用来存放静态方法，里面有若干个静态的函数。
+         ②：actions是用来存放异步方法，而mutations是用来存放同步方法。
+         ③：mutations这是唯一能修改state里面的值的方法。
+         ④：actions只能通过触发mutations方法再去修改state里面的值。
+         ⑤：要想用mutations里面的方法必须使用commit('方法名',参数)
+         ⑥：要想用actions里面的方法必须先调用dispatch('方法名',参数)然后再掉context.commit() //此处的context等价于this.$store
+         ⑦：在组件的methods和created里面可以直接使用commit和dispatch方法的调用。
+         ⑧：最后，通过两种方法来获取vuex里面的state值：
+            第一种：写在该组件的computed里面；   //***千万不能写在data里面,不然无法二次渲染。
+            第二种：直接写在组件的template里面 <div>{{this.$store.state.homeName}}</div>；
+
+        ***重要***在vuex里面怎么使用this.$http.get()呢？
+            在vuex的action{}中不能直接使用this.$http.get()获取数据，而应该写成：Vue.http.get().就没有this指向的问题了。
+            或者不把异步请求放在action{}里面，而是直接写在各个组件的methods里面，然后commit('fangfa',请求到的data)通过传参的方式
+            直接提交给mutations，而不提交给action{};就不存在异步数据更改state的问题了。
+
+        ***重要***在vuex里面怎么使用axios.get()呢？
+           第一种使用方法：全局使用，
+           但是在vuex不能使用。
+           ①：import axios from 'axios'      //不需要加前缀路径"./"
+           ②：Vue.prototype.$axios = axios   //使用的时候应该随意命名一个变量"$axios"挂载到Vue实例的原型上面。
+                                               然后调用的时候就和this.$http一样调用this.$axios
+           第二种使用方法：单个组件使用，和vuex的store.js的使用方法
+           ①：import axios from 'axios' //直接在单个组件页面引入即可使用，vuex的store.js也是如此引用即可。
+              在使用的时候直接写：axios.get('url').then()即可，不需要加this.axios关键字。
+
+54.vuex的语法糖写法：...map辅助函数。
+   ① ...mapGetters([。。。。。。。])
+   ② ...mapMutations([。。。。。。。])
+   ③ ...mapActions([。。。。。。。])
+   操作步骤：
+   ①：在所在的组件里面引入：import { mapGetters, mapMutations, mapActions } from 'vuex'
+   ②：computed:{  
+                 ...mapGetters(["coo","doo"]),   //这里面是数组，对应的是store.js里面的getters方法名
+                 },
+      methods:{
+                 ...mapMutations(['foo','too']), //这里面是数组，对应的是store.js里面的mutations方法名
+                 ...mapActions(['aoo','boo']),   //这里面是数组，对应的是store.js里面的actions方法名
+              },
+    //其实语法糖map的写法就是省去了commit和dispatch这两个单词。用map来封装掉了。
+
+
+54.vue填坑技巧
+   <script src="js/polyfill.js" type="text/javascript"></script>      <!-- polyfill解决vuex在ie浏览器报错问题 -->
+   <script src="js/browser.min.js" type="text/javascript"></script>   <!-- browser解决在ie浏览器不兼容ES6写法的问题 -->
+   <!--要ES6兼容IE浏览器，记得在script加上type = text/babel -->
+   <script type='text/babel'>......your code.......</script> 
+
+   在vuex里面，input的v-model不能直接绑定state里面的值，因为只能单向绑定，不能双向改变state里面的值，因为要改变state的值只能通过mutation方法，其他的方法都行不通。
+
+54.Vue-router路由懒加载：
+   目的：延迟加载或按需加载，
+        即在需要的时候的点击的时候才进行加载
+   方法1：vue异步组件实现懒加载 
+         语法：
+         // component：resolve => (require(['需要加载的路由组件地址'])，resolve)
+         // var  Foo = resolve => require(['./Foo.vue'], resolve) 
+         例子：
+         routes: [{path: '/', component:resolve => (require(["@/components/HelloWorld.vue"],resolve))}]
+         routes: [{path: '/', component:Foo }]  //不需要改变任何路由配置，跟之前一样使用 Foo：
+         总结：
+         像vue这种单页面应用，如果没有应用懒加载，运用webpack打包后的文件将会异常的大，造成进入首页时，需要加载的内容过多，时间过长，
+         会出啊先长时间的白屏，即使做了loading也是不利于用户体验，而运用懒加载则可以将页面进行划分，需要的时候加载页面，可以有效的分担首页所承担的加载压力，减少首页加载用时。 简单的说就是：进入首页不用一次加载过多资源造成用时过长！！！
+
+    方法2：es提出的import(推荐使用这种方式)
+          语法：const HelloWorld = （）=> import('需要加载的模块地址')
+          //const Home =  () => import(/* webpackChunkName: 'ImportFuncDemo' */ '@/components/home')
+          //routes: [{path: '/', component: Home }] 
+    安装步骤：
+          1. 安装 syntax-dynamic-import 插件
+             如果在 vue-cli 使用了 babel ，需要添加 syntax-dynamic-import插件，才能使 Babel 可以正确地解析语法。
+             安装完成后，配置文件 babel.config.js
+          2.修改路由配置：在 router.js 中的组件引用，  //https://www.cnblogs.com/cckui/p/10330563.html
+          ******vue-router路由懒加载其实就是脚手架自带的方法，为了不影响babel(他是用来使es6转换成es5让浏览器间接支持es6)的正常使用，
+                就先安装 syntax-dynamic-import 这个插件
+
+                
+
+55.vue的优点：
+             ①：轻量级
+             ②：组件化
+             ③：运行速度快
+             ④：数据双向绑定
+             ⑤：数据和视图结构分离
+             ⑥：数据驱动Dom
+             ⑦：虚拟DOM，内存操作。
+
+56.MVC、MVVM区别：
+             MVC的思想：换句话说就是在Controller里面把Model的数据赋值给View
+             MVVM主要解决了MVC中大量的DOM操作使页面渲染性能降低
+             利用MVVM可以使我们的代码更加专注于处理业务逻辑,而不是去关心DOM操作。
+             vue有组件化概念，angular中没有
+             angular：依赖对数据做脏检测，所以watcher越来越多；
+             vue使用基于依赖追踪的观察系统并且异步列队更新，所有的数据变化都是独立地触发
+             
+
+
+
+
+
+58.熟悉HTTP协议
+   (1)问：为什么要熟悉http协议呢？
+      答：主要意思：简称超文本传输协议，HTTP协议是基于TCP/IP协议的“应用层协议”。
+         主要作用：规定了客户端和服务端之间的通信格式。
+         主要目的：传输数据（HTML，图片，文件，查询结果）。
+
+   (2)Http协议请求方式有哪些？
+          HEAD： 获得报文首部，与GET方法类似，只是不返回报文主体，一般用于验证URI是否有效。
+          GET： 用于请求访问已经被URI（统一资源标识符）识别的资源，可以通过URL传参给服务器
+          POST：用于传输信息给服务器，主要功能与GET方法类似，但一般推荐使用POST方式。
+          PUT： 传输文件，报文主体中包含文件内容，保存到对应URI位置。
+          DELETE：删除文件，与PUT方法相反，删除对应URI位置的文件。
+
+    (3)Http协议组成部分：
+          ①：请求报文包含三部分：
+                请求行：包含请求方法(get,post)、URI、HTTP版本信息
+                请求首部字段
+                请求内容实体
+          ②：响应报文包含三部分：
+                状态行：包含HTTP版本、状态码、状态码的原因短语
+                响应首部字段
+                响应内容实体
+
+     (4)HTTP状态码有：
+          ①：有三位数字组成
+          ②：第一个数字定义了响应的类别
+          ③：共分五种类别：
+                    1xx：指示信息（表示请求已接收，继续处理）
+                    2xx：成功（表示请求已被成功接收，理解，接受）
+                    3xx：重定向（要完成请求必须进行更进一步的操作）
+                    4xx：客户端错误（请求有语法错误或请求无法实现）
+                    5xx：服务器端错误（服务器未能实现合法的请求）
+
+      (5)GET方法与POST方法的区别
+          区别一：Get重点在从服务器上获取资源，post重点在向服务器发送数据；
+          区别三：Get传输的数据量小；Post可以传输大量数据；
+          区别二：Get传输数据是通过URL+字段请求，这个过程用户可见，还可能会乱码。，不安全；
+                 post是将字段与对应值封存在请求实体中发送给服务器，这个过程对用户是不可见，安全。
+
+      (6)Http与Https优缺点？
+          ①：通信使用明文不加密，内容可能被窃听。
+          ②：不验证通信方身份，可能遭到伪装
+          ③：无法验证报文完整性，可能被篡改
+             HTTPS就是HTTP加上加密处理+身份认证+完整性保护
+
+      (7)Http协议有那些特征？
+            ①：支持客户/服务器模式；简单快速；灵活；无连接；无状态。
+            ②：什么是Http协议无状态协议？
+               无状态协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息
+               无状态协议解决办法： 通过1、Cookie 2、通过Session会话保存。
+
+59. 事件冒泡和事件捕获：
+    (1).分两步
+        第一步：1、事件捕获 ：从最外层往最里层触发的顺序。
+        第二步：2、事件冒泡 ：从最里层往最外层的触发顺序。
+                          比喻：事件的过程：就像往水里丢一个木块，它先会从上往下沉，然后又会从下往上浮起
+        非IE浏览器使用这个添加事件：addEventListener(event, listener, useCapture)
+                                参数定义：  
+                                event---（事件名称，如click，不带on），
+                                listener---事件监听函数fn，
+                                useCapture---是否采用事件捕获进行事件捕捉：true,false
+        IE浏览器使用这个添加事件：attachEvent(event,listener)
+                              参数定义：
+                              event---（事件名称，如onclick，带on），
+                              listener---事件监听函数。
+        事件冒泡兼容所有浏览器写法：
+        <button onclick="console.log('1')">点我</button>
+        var oBtn = document.getElementsByTagName('button')[0];
+        function addEvent(ele, event, fn) {
+          if (ele.addEventListener) {
+            ele.addEventListener(event, fn, false)
+          } else if (ele.attachEvent('on' + event, fn));
+        }
+        addEvent(oBtn, 'click', function(){console.log('1')})
+        addEvent(oBtn, 'click' , function(){console.log('第二次')});  //参考：https://www.cnblogs.com/can-i-do/p/7412298.html
+        
+        删除监听事件：
+        非IE浏览器：removeEventListener()
+        IE浏览器的：detachEvent();
+
+    (2).事件冒泡与委托机制:
+        <div id="obj1">
+            welcome
+            <h5 id="obj2">hello</h5>
+            <h5 id="obj3">world</h5>
+        </div>
+        委托机制：
+        obj1.addEventListener('click',function(e){
+            var e=e||window.event;
+            if(e.target.nodeName.toLowerCase()=='h5'){
+                alert(e.target.innerHTML);
+            }
+
+        },false);
+        //由于事件冒泡机制，点击了h5后会冒泡到div,此时就会触发绑定在div上的点击事件，再利用target找到事件实际发生的元素，就可以达到预期的效果。
+        //这种做法在h5较少的时候可以使用，但如果有一万个h5，那就会导致性能降低。这时就需要事件代理出场了。 
+        //参考:https://blog.csdn.net/chenjuan1993/article/details/81347590
+
+    (3).两种方式来阻止事件冒泡。
+        方式一：event.stopPropagation();     //$("#div1").mousedown(function(event){ event.stopPropagation(); });
+        方式二：return false;                //$("#div1").mousedown(function(event){return false;});       
+                                              但是这两种方式是有区别的。return false 不仅阻止了事件往上冒泡，而且阻止了事件本身。
+                                              event.stopPropagation() 则只阻止事件往上冒泡，不阻止事件本身。 
+
+
+
+60. HTML5中的data-*属性和jQuery中的.data()方法使用
+    
+    我们往往会根据需要在HTML标记上添加自定义的属性来存储和操作数据，但是前端技术在向着规范化前进。HTML5标准规定，自定义的属性都已data—*开头，这样就区分开了固有属性和自定义属性。
+
+    <div id="testDiv" data-name="张三" data-e-age="33岁">测试在元素上存储一个key-value</div>  
+
+    js获取：document.getElementById("testDiv").dataset.name
+    js设置：document.getElementById("testDiv").dataset.name = "ZS"
+           document.getElementById("testDiv").dataset.eAge  //"33岁" //区分大小写 
+
+    jquery获取：$("#testDiv").data("name")
+    jquery设置：$("#testDiv").data("name", "我是张三");  
+               $("#testDiv").data("eAge")  //"33岁" //区分大小写 ，当有data-e-age这种写法的时候区分大小写
+    
+
+
+60.map()和forEach()使用方法：//只能遍历数组哦
+   (1).map定义 
+        语法:
+        arr.map(fn(a,b,c){})
+        map()方法返回一个新数组，
+        map()方法按照原始数组元素"顺序"依次处理元素。 
+        注意： 
+        map不会对空数组进行检测 
+        map不会改变原始数组 
+        var newArr = arr.map(function(item，index，array){ 按顺序操作item，然后return }}) 
+            //其实fn里面也可以var一个空的数组，符合条件的就push(item),也是可以的
+    (2).forEach定义
+         语法:
+         arr.forEach(fn(a,b,c){})
+         forEach()方法不会返回执行结果，而是undefined
+         forEach()方法会改变原来数组
+
+    
+61.$.map()和$.each()使用方法：
+   
+   (1).$.each():既可以遍历数组，也可以遍历对象。  //返回的只是原数组，而不是生成新数组*/
+   结构为：$.each(array/object,function(index/key,value){ code })
+   需要退出循环可使回调函数返回 false
+
+   (2).$.map():既可以遍历数组，也可以遍历对象。   //返回值是新数组
+     结构：$.map(array/object,function(value,index/key){ code })
+     需要退出循环可使回调函数返回 false
+
+
+  62.toArray()方法：
+     toArray() 方法以数组的形式返回 jQuery 选择器匹配的元素。
+     语法
+     $(selector).toArray()
+     例如:
+     将 li 元素转换为数组，然后输出该数组元素的 innerHTML ：
+      $("button").click(function(){
+        x=$("li").toArray()
+        for (i=0;i<x.length;i++)
+          {
+          alert(x[i].innerHTML);
+          }
+      });
+
+
+ 63.cookie登入界面：
+    (1).设置cookie：
+        语法
+        $.cookie('cookie名字', 'cookie名字的值' , cookie的时间和路径);
+        $.cookie('cookie密码', 'cookie密码的值' , cookie的时间和路径);
+        实例：
+        $.cookie('userName', yejun001 , {expires:0.1 ,   path:'/'} ); //用时间用对象的格式{。。。},0.1代表天数
+        $.cookie('userPassword', 123456 , {expires:0.2 , path:'/'} ); //用时间用对象的格式{。。。},0.2代表天数
+
+    (2).读取cookie：
+        语法
+        $.cookie('cookie名字')
+        $.cookie('cookie密码')
+        实例：
+        $.cookie('userName')       //读取用户名
+        $.cookie('userPassword')   //读取密码
+
+    (3).删除cookie：
+        语法
+        $.cookie('userName', null);
+        $.cookie('userName', "");
+        $.cookie('userPassword', null);
+        $.cookie('userPassword', "");
+
+
+    (4).可选参数
+        语法
+        $.cookie('cookie名字','cookie名字对应的值',{
+                                                  expires:7,             //(Number)有效期，单位是天
+                                                  path:'/',              //(String)创建该Cookie的页面路径
+                                                  domain:'jquery.com',   //(String)创建该Cookie的页面域名；
+                                                  secure:true            //(Booblean)如果设为true，那么此Cookie的传输会
+                                                })　                                 要求一个安全协议，例如：HTTPS；
+                                               
+    ****对象的写法*******
+    存入的时候可以这样写，
+    $.cookie('person', JSON.stringify({‘name’: '张三', 'age': '45', 'sex': '男'})) ，
+    然后获取的时候再将其反序列化，通过
+    JSON.parse($.cookie('person')).name 就可以获取成功。
+
+
+
+
+ 64:Math()的用法：
+    ①：Math.ceil(x)         //对一个数进行向上取整。              //Math.floor(5.1)        //结果6
+    ②：Math.floor(x)        //对一个数进行向下取整。。             //Math.floor(5.1)        //结果5
+    ③：Math.max(x,y,z)      //得到较大的值的那个数               //Math.max(5,7)           //结果7
+    ④：Math.min(x,y,z)      //得到较小的值的那个数               //Math.max(5,7)           //结果5
+    ⑤：Math.abs(x)          //得到数的绝对值。                   //Math.abs(-7.25)         //结果7.25
+    ⑥：Math.random()        //随机出 0 ~ 1之间的小数。           //Math.random()无参数      //结果6       //[ˈrændəm] 随机的
+    ⑦：Math.round(x)        //对一个数进行四舍五入得到整数。       //Math.round(5.6)         //结果6       //[raʊnd]圆形的
+ 
+65.js登陆秘密加密方法：
+    ①：base64加密    //base64.js    加密： $.base64.encode(str);   //解密：$.base64.decode(str)
+    ②：md5加密       //jQuery.md5.js加密： $.md5("yejunlong123")   //解密：前端无法解密
+    ③：sha1加密      //据说这是最安全的加密
+    ④：DES加密       //前端加密，Java后端解密
+
+    *****注 意*******
+    MD5不可以被解密，但是可以使用这种方法实现比对~~
+    正确的姿势是，前台提交 username，与 md5加密后的password ，然后后台拿到数据后，要做的事情不是去解密md5后的密码，而是用username从数据库取出用户密码，然后对这个密码进行md5加密，之后对比前端传过来的md5密码，如果一致，就通过
+    
+    *****或者直接用base64加密*****
+    当生成base64密码之后再在前后两端随机加入字符或者数字存入cookie
+    当需要调取cookie的时候，就先把加密了的cookie头尾截掉，再进行解密，达到伪装的效果。
+
+
+
+
+
+66.git的使用及其原理： 
+   (1)原理：
+                      add               commit               
+   ①用户A ： 本地文件 -------> 本地缓存区 --------->   本地版本库 (分支1...分支10....主分支master默认的) 
+                                                    ⮝        |
+                                 从远程仓库拉代码pull  |        |
+                                                    |        |  push是把本地成品库里的主分支推送到远程仓库
+                                                    |        |
+                      add               commit      |        ⮟      
+   ②用户B ： 本地文件 -------> 本地缓存区 --------->   本地版本库 (分支1...分支20....主分支master默认的) 
+
+
+
+
+
+   (2)git的操作：
+      ①：安装：去官网下载，直接点下一步安装就行                    //git是分布式版本控制工具,类似于svn
+      ①：去官网注册一个账号。                                   //https://github.com/
+      ①：建立一个"免密钥"SSH登入。 
+         本地建一个SSH，服务器建一个SSH,用来作为本地和远程的通信。
+         先本地创建SSH：
+
+   
+
+
+
+67.less的使用方法：
+   (1)安装：npm install less -g /或者git安装：npm install less -g
+   (2)编译：在vsCode软件里面安装Easy Less插件，即可编译，然后在css的文件夹里面随便建一个，my.less的文件，他会自动生成对应的my.css文件
+   (3)引用：在vue组件怎么引用css呢？答案：就是在vue组件下面的style里面插入@import "../assets/css/my.css"即可调用成功
+   (4)写法：less写法和sass写法一样。
+
+
+68.element-ui的使用方法：
+
+
+
+
+69.vue插槽slot的用法：
+    什么是slot插槽呢？
+    答：在template组件上面挖洞做标记作用。
+       因为组件是封闭的，插槽就是在一个组件上面挖一个洞，标记这个洞的位置，然后再这个洞里放入你想放的文字图片或者代码。
+    (1)一个插槽：slot
+       步骤:首先在template模板中选个位置插入<slot>标签，挖个洞占个位置，然后在组件“之间”<hello>.....</hello> 写入你的文字或者图片或者代码。
+       例子：
+       <hello>    
+         <h1>“哈哈我是插槽”</h1> 
+      </hello>   
+      Vue.component('hello',{template:'<div>我是<slot></slot>一个组件</div>'}); //slot是告诉组件，把h1标签插到“我是”的后面。
+
+    (2)多个插槽：<slot name="three"></slot>
+       步骤：首先在template模板中挖3个洞，占个位置，然后在组件“之间”<hello>.....</hello> 写入你的文字或者图片或者代码。
+       例子：
+       <hello>    
+           <h1 slot='one'>“第一个插槽”</h1>
+           <h1 slot='two'>“第二个插槽”</h1>
+           <h1 slot='three'>“第三个插槽”</h1> 
+       </hello> 
+       Vue.component('hello',{
+           template:`<div>我是
+                            <slot name="three"></slot>
+                            <slot name="two"></slot>
+                            <slot name="one"></slot>
+                          一个组件
+                    </div>`,
+                 });
+
+
+
+70.Promise对象的研究
+   promise是什么意思？
+   答案就是：它是一个对象，它里面可以放很多“异步事件”
+            promise里面的异步操作包括settimeout，ajax等等，
+            它承诺，一定会执行放在promise里面的所有代码。
+            不会丢下任何里面任何一行代码不执行
+            最重要的是“会返回一个promise对象”
+   promise对象有两个自带的参数方法： ①：resolve()  //表示成功的时候调用该方法  //console.dir(Promise)打印出来看看
+                             ②： reject()  //表示失败的时候调用该方法
+   promise对象还有两个继承过来的原型对象方法：
+                             ①：.then()
+                             ②：.catch()
+   例如：
+   const p = new Promise(resolve,reject){
+      //这里面可以放很多的异步代码，比如settimeout,ajax等等异步代码
+      resolve("成功了250");   //成功的状态
+      reject("失败了404")     //失败的状态
+   };
+   p.then(function(data){
+      console.log(data);      //输出“成功了250”
+   }).catch(function(error){
+      console.log(error);     //若是调用失败就显示“失败了404”
+   })
+   ***上面代码用拼音来代替英文等价于下面的代码:
+   const chennuo = new Promise(chenggong,shibai){
+      chenggong("成功了250");   //成功的状态
+      shibai("失败了404")     //失败的状态
+   };
+   chennuo.then(function(data){
+      console.log(data);      //输出“成功了250”
+   }).catch(function(error){
+      console.log(error);     //若是调用失败就显示“失败了404”
+   });
+   ******//为了不让Promise立马执行，应该先把promise放入到一个函数，等执行函数的时候才会执行promise对象
+   例如：
+   var axios = function(){
+      var p = new Promise(function(resolve,reject){
+          resolve('100');
+          reject('出错啦');
+      });
+      return p;  //这个时候 axios也是一个promise对象啦
+   };
+   axios().then(function(data){
+      console.log(data)  //输出：100
+   }).catch(function(error){
+      console.log(error)  //若是调用失败就显示“出错啦”
+   });
+   总结:
+   Promise的作用
+   Promise的出现主要是解决地狱回调的问题，比如你需要结果需要请求很多个接口，这些接口的参数需要另外那个的接口返回的数据作为依赖，这样就需要我们一层嵌套一层，但是有了Promise 我们就无需嵌套
+   为什么要用promise？
+   答：因为promise可以返回一个promise对象，并且里面有resolve这个方法，可以把请求到的Ajax数据通过resolve方法传出来，给依赖的人使用。
+
+//以下代码都是具有依赖关系：
+//实例：
+function a(){
+   var p = new Promise(function(resolve,reject){
+        setTimeout(function(){
+           $.ajax({
+               type:'get',
+               url:'http://jsonplaceholder.typicode.com/photos',
+               success:function(data){ resolve(data) },  //成功的时候执行resolve方法，通过resolve把请求到的数据传出来，给要依赖的人使用
+               error:function(error){ alert("出错啦"); reject(error) },   //失败的时候执行reject方法，通过reject把错误传给catch
+           });
+        },2000)
+   });
+   return p;
+};
+
+function b(){
+   var p = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            $.ajax({
+               type:'get',
+               url:'http://jsonplaceholder.typicode.com/posts',
+               success:function(data){ resolve(data) },  //成功的时候执行resolve方法，通过resolve把请求到的数据传出来，给要依赖的人使用
+               error:function(error){  reject(error) },   //失败的时候执行reject方法，通过reject把错误传给catch
+             });
+        },2000)
+   });
+   return p;
+};
+
+function c(){
+   var p = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            $.ajax({
+               type:'get',
+               url:'333http://jsonplaceholder.typicode.com/comments',
+               success:function(data){ resolve(data) },  //成功的时候执行resolve方法，通过resolve把请求到的数据传出来，给要依赖的人使用
+               error:function(error){  reject(error) },   //失败的时候执行reject方法，通过reject把错误传给catch
+             });
+        },2000)
+   });
+   return p;
+};
+//开始调用
+a().then(function(data){
+     console.log(data);    //先执行了a()函数里面的代码
+     return b();
+}).then(function(data){
+     console.log(data)    //再执行了b()函数里面的代码
+     return c();
+}).then(function(data){
+     console.log(data);  //再执行了c()函数里面的代码,一直是依赖，等待的关系。
+}).catch(function(error){
+     console.log(error);
+});
+//end
+
+===================================================================================================================
+
+71.async/await的研究：(也是ES6的语法) //精髓：就是把异步事件写成同步事件。
+   分析：
+   async 是“异步”的简写，
+   async function 用于申明一个 function 是异步的； 
+   await，可以认为是async wait的简写，用于等待一个异步方法执行完成；也就是先等待await关键字后面的函数执行完成后才去执行其他的代码。
+   async/await是一个用同步思维解决异步问题的方案（等结果出来之后，代码才会继续往下执行）//****重要哦
+
+   async function函数返回的是一个promise对象：
+   例如：
+      async function yibu(){
+         console.log('2');
+      }
+      yibu();
+      console.log(yibu());  //Promise {<resolved>: undefined}
+   看到输出就恍然大悟了——输出的是一个 Promise 对象。
+   联想一下 Promise 的特点——无等待，所以在没有 await 的情况下执行 async 函数，它会立即执行，
+   然后返回一个 Promise 对象，并且，绝不会阻塞后面的语句。这和普通返回 Promise 对象的函数并无二致。
+
+   因为 async 函数返回一个 Promise 对象，所以 await 可以用于等待一个 async 函数的"返回值",可以用一个变量来保存这个返回值。
+   await 不仅仅用于等 Promise 对象，它可以等任意表达式的结果，所以，await 后面实际是可以接普通函数调用或者直接量的。
+   例如：
+   async function test() {
+      const v1 = await getSomething();  //v1可以是一个promise对象的resolve返回的值，也可以是一个普通的结果值
+      const v2 = await testAsync();     //v2可以是一个promise对象的resolve返回的值，也可以是一个普通的结果值
+      console.log(v1, v2);
+   }
+   
+  //例子：
+    function one(){
+       var p = new Promise(function(resolve){
+            setTimeout(function(){
+             $.get('http://jsonplaceholder.typicode.com/photos',function(data){
+                     //console.log(data);
+                     console.log(1);
+                     resolve(data)
+                 })
+             },3000)
+         });
+         return p;
+       }
+   
+   function two(){
+    var p = new Promise(function(resolve){
+       setTimeout(function(){
+           $.get('http://jsonplaceholder.typicode.com/posts',function(data){
+               //console.log(data);
+               console.log(2);
+               resolve(data)
+           })
+       },2000)
+      });
+    return p;
+   };
+
+  function three(){
+    var p = new Promise(function(resolve){
+       setTimeout(function(){
+           $.get('http://jsonplaceholder.typicode.com/comments',function(data){
+               //console.log(data);
+               console.log(3);
+               resolve(data)
+           })
+       },1000)
+     });
+    return p;
+   };
+
+  async function all(){
+     const  x  = await one();
+     const  y  = await two();
+     const  z  = await three();
+     console.log(x);  //首先拿到了x的值
+     console.log(y);  //其次拿到了y的值
+     console.log(z);  //最后拿到了z的值
+     //那么这里就是同步代码了，可以依赖上面x,y,z的值了。
+     {...........这里就是你的各种代码了.............}
+  };
+  all()  //运行函数
+
+
+//实例2：
+function foo1(){
+    var p = new Promise(function(resolve){setTimeout(function(){  resolve('foo11')},3000)});
+    return p;
+};
+ function foo2(){
+     var p = new Promise(function(resolve){setTimeout(function(){  resolve('foo22')},2000)});
+     return p;
+};
+ function foo3(){
+    var p = new Promise(function(resolve){setTimeout(function(){  resolve('foo33')},1000)});
+    return p;
+};
+
+async function foo(){
+     var a = await foo1();
+     var b = await foo2();
+     var c = await foo3();
+     console.log(a);
+     console.log(b);
+     console.log(c);
+  }
+foo(); //同时拿到了a，b，c的值
+
+总结：
+async/await是要和promise配合使用，特别要用到promise的resolve方法。其实就是promise的语法糖。采用try...catch...来捕获异常。
+这样就变成了同步代码的感觉了。后面的接口就可以依赖前面的接口啦。
+很棒啊。
+
+===================================================================================================================
+
+67.理解什么是原型链？prototype,__proto__以及constructor
+    (1).***只有函数才有 prototype对象 ,重要的事情说三遍! (prototype看不见摸不着，但是确实存在的对象{},用来继承作用)
+                                                    (prototype是一个对象{}，里面可以存对象，方法，函数，和原型本身，共用作用。)
+
+    (2).***所有的对象obj都具有__proto__的属性(null/undefined除外),
+                           __proto__：这个表示指针。是一个中间桥梁，表示两者之间的引用关系。指向父亲函数的原型
+                                      【而且指向创造obj对象的"函数对象"的prototype属性(也就是obj的父亲的prototype)】
+
+    
+    function a(){};
+    console.log(a.prototype.__proto__===Object.prototype); //true //翻译过来就是：函数.的对象.的指针 就是指向 父亲对象函数.的原型
+                                                                  //就是：函数原型"对象"的指针---指向---它的父亲"对象"的原型
+                                                                  //a.prototype:表示一个对象
+                                                                  //a.prototype.__proto__：表示对象的指针
+                                                                  //Object.prototype：表示最大对象的原型{}
+
+    console.log(a.__proto__===Function.prototype);         //true //翻译过来就是：函数.的指针 就是指向 父亲函数的原型
+                                                                  //就是："函数"的指针---指向---它的父亲"函数"的原型
+                                                                  //a.__proto__表示函数的指针
+                                                                  //Function.prototype表示最大函数的原型{}
+
+    系统内置的函数对象 Function,Object,Array,String,Number
+                    例如：
+                    function a(){} //a这个函数是由 new Function() 对象制造出来的，实例出来的，不是凭空出来的。
+
+
+
+
+
+
+
+
+   创建一个函数的时候，
+   每个函数会自动生成一个原型属性prototype
+   在函数中就只有这一个原型属性，
+   而这个属性是一个指针，指向一个对象，称为原型对象，
+
+    原型对象中含有一个constructor属性，通过这个属性又可指回函数
+
+    当我们向函数中添加属性时，实际上添加到了原型对象之中，
+    当我们用new操作符创建新实例时，这个新实例是可以共享原型对象中的属性的
+    当我们向新实例中添加属性时，属性被保存到了新实例中，
+    当向新实例中添加和原型中一模一样的属性时，这个属性会覆写原型中的属性
+
+   function Foo(){ }           //创建一个函数
+   Foo.prototype.x = 10        //Foo.prototype = {
+                                                         constructor:Foo,           //构造函数指针指向：Foo
+                                                         __proto__:Object.prototype    //实例的__proto__指向构造函数的
+                                                                                         prototype属性
+                                                       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+问题库：待解决：
+38.async away promiss
+
+39.jQuery 数组里面项的排列组合研究？
+
+40.canvas/svg的研究
+
+41.点击按钮复制文本，复制网址，全选内容  //参考网址：https://www.cnblogs.com/tylerdonet/p/4533782.html
+
+44.HTTP协议，熟悉基本原理
+
+44.研究npm yarn
+
+45.webpack Grunt  Gulp 
+
+46.MVC MVVC 对比，区别，一个操作dom，一个操作虚拟dom.
+
+47. join，splite
+
+48. vuex module mapGetters语法糖研究
+
+49. vuex 里面input怎么实现双向绑定？？？
+    <input v-model="test">
+    computed: {
+      test: {
+        get () {
+          return this.$store.state.test
+        },
+        set (val) {
+          this.$store.commit('setTest', val)
+        }
+      }
+    }
+ 50.axios、$http是怎么解决异步请求的。
+
+ 51.<pre>的使用，特别是可以用来显示计算机代码的格式化。
+
+52.数组排序
+
+
+
+
+
+
+
+
+57.vue和前端常见面试题
+   1、怎么定义vue-router的动态路由？怎么获取传过来的动态参数？ 
+   答：在router目录下的index.js文件中，对path属性加上/:id。  使用router对象的params.id
+
+   2、vue-router有哪几种导航钩子？    
+   答：三种，一种是全局导航钩子：router.beforeEach(to,from,next)，作用：跳转前进行判断拦截。第二种：组件内的钩子；第三种：单独路由独享组件
+   
+   3、导航钩子有哪些？它们有哪些参数？
+   答：导航钩子有：a/全局钩子和组件内独享的钩子。b/beforeRouteEnter、afterEnter、beforeRouterUpdate、beforeRouteLeave
+   参数：有to（去的那个路由）、from（离开的路由）、next（一定要用这个函数才能去到下一个路由，如果不用就拦截）最常用就这几种
+ 
+   4、Vue的双向数据绑定原理是什么？
+   答：vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。
+
+   5、请详细说下你对vue生命周期的理解？
+   答：总共分为8个阶段创建前/后，载入前/后，更新前/后，销毁前/后。
+
+   6、请说出vue.cli项目中src目录每个文件夹和文件的用法？
+   答：assets文件夹是放静态资源；components是放组件；router是定义路由相关的配置;view视图；app.vue是一个应用主组件；main.js是入口文件
+
+   7.js的基本类型有哪些
+   答： Undefined、Null、Boolean、Number和String  简称： bus nn 一个班车两扇门
+
+   8.call、apply的区别用法？
+
+   9.==,===的区别
+     console.log(null==undefined);    //true
+     console.log(null===undefined);   //false
+  
+  10.怎么判断数据类型，数组类型怎么判断？
+     采用typeof来判断
+     但是数组用：instanceof来判断，看看是否
+
+
+
+
+
+
+
+***日期控件在vue当中的使用*****
+<div id="app">
+    <h3>开始日期：当前日期之"后"置灰：<input type="text" id="time1" v-model='startTime'>{{startTime}}</h3>
+    <h3>结束日期：当前日期之"前"置灰：<input type="text" id="time2" v-model='endTime'>{{endTime}}</h3>
+</div> 
+<script>
+var app = new Vue({
+          el:'#app',
+          data:{
+             startTime:'',
+             endTime:''
+          },
+          created:function(){
+               var  year = new Date().getFullYear();
+               var month = new Date().getMonth()+1;
+               var   day = new Date().getDate();
+               var myTime = year + "-0" + month +"-"+ day;
+               this.startTime = myTime;
+               this.endTime   = myTime;
+               $(function(){
+                    $("#time1").datepicker({
+                      changeYear : true,
+                      changeMonth : true,
+                      showButtonPanel: true,
+                      maxDate:0,
+                      onSelect : function(val) {
+                             $("#time2").datepicker("option", "minDate", val);  
+                          }
+                     });
+                    $("#time2").datepicker({
+                        changeYear : true,
+                        changeMonth : true,
+                        showButtonPanel: true,
+                        onSelect : function(val) {
+                              $("#time1").datepicker("option", "maxDate", val);  
+                          }
+                    });
+               });     
+            },
+      }); //app end
+</script>
+
+
+
