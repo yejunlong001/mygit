@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>测试1</title>
+<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="js/vue.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+
+
+<script>
+   
+   function a(){
+   	  var p = new Promise(function(resolve,reject){
+   	  	  axios.get('http://jsonplaceho7777lder.typicode.com/photos').then(res=>{
+               resolve(res);
+          }).catch(error=>{
+               reject("第一个接口"+error);
+           });
+   	  });
+   	  return p;
+   };
+
+   function b(){
+        var p = new Promise(function(resolve,reject){
+           axios.get('http://jsonplaceholder.typicode.com/posts').then(res=>{
+                resolve(res);
+           }).catch(error=>{
+                reject("第二个接口"+error);
+           });
+        })
+        return p;
+   };
+
+   //start
+   a().then(res=>{
+       	  var result = res;
+          console.log(result);
+       	  console.log(result.data);
+       	  console.log(result.data[0].title);
+       	  return b();   //把b()作为下一个then的参数传出来
+   }).then(res=>{
+   	     var result = res;
+         console.log(result);
+         console.log(result.data);
+         console.log(result.data[0].title);
+   }).catch(error=>{
+         alert(error)
+   })
+
+  
+
+
+
+
+</script>
+</body>
+</html>
