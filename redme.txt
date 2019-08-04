@@ -123,6 +123,17 @@ hasClass():检查第一个 元素是否包含 "topBar" 类：$("#myId").hasClass
 
 9.New FormData()
 
+9.1. var，let , const的区别
+     (1).var是全局作用域声明，存在变量提升
+     (2).let是块级作用域声明，还可以重复声明,没有变量提升。
+     (3).const解释：
+         const这个关键词是由：**********const指针的值到底是什么？其实就是存放在指针中的地址，这个地址是一个对象的地址。
+                            js中指针也是对象
+                            cosnt指针必须初始化，要在内存中给他分配一个地址
+                            1.如果const定义的是一个常数，例如const num = 9; 那么这个num的值就不能再改变。
+                            2.如果const定义的是一个对象，例如const num = {name:'刘德华'}，那么这个对象的属性可以改变，但是对象类型不能变
+                              因为：const的指针对象的类型和指针地址不能改变，但是指针所指向的对象属性值是可以改变的。只要不修改指针地址就行
+                              总结：const的指针地址不能改变，但是指针对象的属性值可以改变。
 
 10.JS编程风格:参考以下网址：
    http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html
@@ -1816,16 +1827,230 @@ hasClass():检查第一个 元素是否包含 "topBar" 类：$("#myId").hasClass
 
 
 
+70.Promise对象的研究
+   promise是什么意思？
+   答案就是：它是一个对象，它里面可以放很多“异步事件”
+            promise里面的异步操作包括settimeout，ajax等等，
+            它承诺，一定会执行放在promise里面的所有代码。
+            不会丢下任何里面任何一行代码不执行
+            最重要的是“会返回一个promise对象”
+   promise对象有两个自带的参数方法： ①：resolve()  //表示成功的时候调用该方法  //console.dir(Promise)打印出来看看
+                             ②： reject()  //表示失败的时候调用该方法
+   promise对象还有两个继承过来的原型对象方法：
+                             ①：.then()
+                             ②：.catch()
+   例如：
+   const p = new Promise(resolve,reject){
+      //这里面可以放很多的异步代码，比如settimeout,ajax等等异步代码
+      resolve("成功了250");   //成功的状态
+      reject("失败了404")     //失败的状态
+   };
+   p.then(function(data){
+      console.log(data);      //输出“成功了250”
+   }).catch(function(error){
+      console.log(error);     //若是调用失败就显示“失败了404”
+   })
+   ***上面代码用拼音来代替英文等价于下面的代码:
+   const chennuo = new Promise(chenggong,shibai){
+      chenggong("成功了250");   //成功的状态
+      shibai("失败了404")     //失败的状态
+   };
+   chennuo.then(function(data){
+      console.log(data);      //输出“成功了250”
+   }).catch(function(error){
+      console.log(error);     //若是调用失败就显示“失败了404”
+   });
+   ******//为了不让Promise立马执行，应该先把promise放入到一个函数，等执行函数的时候才会执行promise对象
+   例如：
+   var axios = function(){
+      var p = new Promise(function(resolve,reject){
+          resolve('100');
+          reject('出错啦');
+      });
+      return p;  //这个时候 axios也是一个promise对象啦
+   };
+   axios().then(function(data){
+      console.log(data)  //输出：100
+   }).catch(function(error){
+      console.log(error)  //若是调用失败就显示“出错啦”
+   });
+   总结:
+   Promise的作用
+   Promise的出现主要是解决地狱回调的问题，比如你需要结果需要请求很多个接口，这些接口的参数需要另外那个的接口返回的数据作为依赖，这样就需要我们一层嵌套一层，但是有了Promise 我们就无需嵌套
+   为什么要用promise？
+   答：因为promise可以返回一个promise对象，并且里面有resolve这个方法，可以把请求到的Ajax数据通过resolve方法传出来，给依赖的人使用。
+
+//以下代码都是具有依赖关系：
+//实例：
+function a(){
+   var p = new Promise(function(resolve,reject){
+        setTimeout(function(){
+           $.ajax({
+               type:'get',
+               url:'http://jsonplaceholder.typicode.com/photos',
+               success:function(data){ resolve(data) },  //成功的时候执行resolve方法，通过resolve把请求到的数据传出来，给要依赖的人使用
+               error:function(error){ alert("出错啦"); reject(error) },   //失败的时候执行reject方法，通过reject把错误传给catch
+           });
+        },2000)
+   });
+   return p;
+};
+
+function b(){
+   var p = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            $.ajax({
+               type:'get',
+               url:'http://jsonplaceholder.typicode.com/posts',
+               success:function(data){ resolve(data) },  //成功的时候执行resolve方法，通过resolve把请求到的数据传出来，给要依赖的人使用
+               error:function(error){  reject(error) },   //失败的时候执行reject方法，通过reject把错误传给catch
+             });
+        },2000)
+   });
+   return p;
+};
+
+function c(){
+   var p = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            $.ajax({
+               type:'get',
+               url:'333http://jsonplaceholder.typicode.com/comments',
+               success:function(data){ resolve(data) },  //成功的时候执行resolve方法，通过resolve把请求到的数据传出来，给要依赖的人使用
+               error:function(error){  reject(error) },   //失败的时候执行reject方法，通过reject把错误传给catch
+             });
+        },2000)
+   });
+   return p;
+};
+//开始调用
+a().then(function(data){
+     console.log(data);    //先执行了a()函数里面的代码
+     return b();
+}).then(function(data){
+     console.log(data)    //再执行了b()函数里面的代码
+     return c();
+}).then(function(data){
+     console.log(data);  //再执行了c()函数里面的代码,一直是依赖，等待的关系。
+}).catch(function(error){
+     console.log(error);
+});
+//end
+
+===================================================================================================================
+
+71.async/await的研究：(也是ES6的语法) //精髓：就是把异步事件写成同步事件。
+   分析：
+   async 是“异步”的简写，
+   async function 用于申明一个 function 是异步的； 
+   await，可以认为是async wait的简写，用于等待一个异步方法执行完成；也就是先等待await关键字后面的函数执行完成后才去执行其他的代码。
+   async/await是一个用同步思维解决异步问题的方案（等结果出来之后，代码才会继续往下执行）//****重要哦
+
+   async function函数返回的是一个promise对象：
+   例如：
+      async function yibu(){
+         console.log('2');
+      }
+      yibu();
+      console.log(yibu());  //Promise {<resolved>: undefined}
+   看到输出就恍然大悟了——输出的是一个 Promise 对象。
+   联想一下 Promise 的特点——无等待，所以在没有 await 的情况下执行 async 函数，它会立即执行，
+   然后返回一个 Promise 对象，并且，绝不会阻塞后面的语句。这和普通返回 Promise 对象的函数并无二致。
+
+   因为 async 函数返回一个 Promise 对象，所以 await 可以用于等待一个 async 函数的"返回值",可以用一个变量来保存这个返回值。
+   await 不仅仅用于等 Promise 对象，它可以等任意表达式的结果，所以，await 后面实际是可以接普通函数调用或者直接量的。
+   例如：
+   async function test() {
+      const v1 = await getSomething();  //v1可以是一个promise对象的resolve返回的值，也可以是一个普通的结果值
+      const v2 = await testAsync();     //v2可以是一个promise对象的resolve返回的值，也可以是一个普通的结果值
+      console.log(v1, v2);
+   }
+   
+  //例子：
+    function one(){
+       var p = new Promise(function(resolve){
+            setTimeout(function(){
+             $.get('http://jsonplaceholder.typicode.com/photos',function(data){
+                     //console.log(data);
+                     console.log(1);
+                     resolve(data)
+                 })
+             },3000)
+         });
+         return p;
+       }
+   
+   function two(){
+    var p = new Promise(function(resolve){
+       setTimeout(function(){
+           $.get('http://jsonplaceholder.typicode.com/posts',function(data){
+               //console.log(data);
+               console.log(2);
+               resolve(data)
+           })
+       },2000)
+      });
+    return p;
+   };
+
+  function three(){
+    var p = new Promise(function(resolve){
+       setTimeout(function(){
+           $.get('http://jsonplaceholder.typicode.com/comments',function(data){
+               //console.log(data);
+               console.log(3);
+               resolve(data)
+           })
+       },1000)
+     });
+    return p;
+   };
+
+  async function all(){
+     const  x  = await one();
+     const  y  = await two();
+     const  z  = await three();
+     console.log(x);  //首先拿到了x的值
+     console.log(y);  //其次拿到了y的值
+     console.log(z);  //最后拿到了z的值
+     //那么这里就是同步代码了，可以依赖上面x,y,z的值了。
+     {...........这里就是你的各种代码了.............}
+  };
+  all()  //运行函数
 
 
+//实例2：
+function foo1(){
+    var p = new Promise(function(resolve){setTimeout(function(){  resolve('foo11')},3000)});
+    return p;
+};
+ function foo2(){
+     var p = new Promise(function(resolve){setTimeout(function(){  resolve('foo22')},2000)});
+     return p;
+};
+ function foo3(){
+    var p = new Promise(function(resolve){setTimeout(function(){  resolve('foo33')},1000)});
+    return p;
+};
 
+async function foo(){
+     var a = await foo1();
+     var b = await foo2();
+     var c = await foo3();
+     console.log(a);
+     console.log(b);
+     console.log(c);
+  }
+foo(); //同时拿到了a，b，c的值
 
+总结：
+async/await是要和promise配合使用，特别要用到promise的resolve方法。其实就是promise的语法糖。采用try...catch...来捕获异常。
+这样就变成了同步代码的感觉了。后面的接口就可以依赖前面的接口啦。
+很棒啊。
 
+===================================================================================================================
 
 67.理解什么是原型链？prototype,__proto__以及constructor
-    
-    
-
     (1).***只有函数才有 prototype对象 ,重要的事情说三遍! (prototype看不见摸不着，但是确实存在的对象{},用来继承作用)
                                                     (prototype是一个对象{}，里面可以存对象，方法，函数，和原型本身，共用作用。)
 
@@ -1906,6 +2131,7 @@ hasClass():检查第一个 元素是否包含 "topBar" 类：$("#myId").hasClass
 
 
 问题库：待解决：
+38.async away promiss
 
 39.jQuery 数组里面项的排列组合研究？
 
