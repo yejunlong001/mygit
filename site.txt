@@ -1,0 +1,142 @@
+
+
+首页推荐
+港台电影
+欧美电影
+韩国电影
+日本电影
+大陆电影
+最新电影
+好评电影/热搜电影/热门电影
+
+李丽珍
+钟丽缇
+杨幂
+汤唯
+翟凌
+张柏芝
+钟欣桐
+叶子楣
+龚玥菲
+李宗瑞
+
+
+
+
+
+www.xigua66.com
+www.yakuhd.com
+www.xigua110.com
+www.vodxc.com
+
+www.qiqipu.tv  流畅
+www.liaocao.com 流畅
+
+www.manmankan.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[
+{name:"高分电影网", Alexa:1,url:"http://www.gaofenfilm.com/"},  
+{name:"优酷", Alexa:2,url:"https://www.youku.com/"}, 
+{name:"爱奇艺", Alexa:3,url:"http://www.iqiyi.com/"}, 
+{name:"腾讯视频", Alexa:4,url:"https://v.qq.com/"}, 
+{name:"芒果TV", Alexa:5,url:"https://www.mgtv.com/"}, 
+{name:"土豆视频", Alexa:6,url:"http://www.tudou.com/"}, 
+{name:"搜狐视频", Alexa:7,url:"https://tv.sohu.com/"}, 
+{name:"乐视视频", Alexa:8,url:"http://www.le.com/"},  
+{name:"PPtv", Alexa:9,url:"http://www.pptv.com/"}, 
+{name:"看看视频", Alexa:10,url:"http://www.kankan.com/"}, 
+{name:"豆瓣电影", Alexa:11,url:"https://movie.douban.com/"}, 
+{name:"华数TV", Alexa:12,url:"https://www.wasu.cn/"}, 
+{name:"IMDB", Alexa:13,url:"https://www.imdb.com.cn/"}, 
+{name:"MEGA", Alexa:14,url:"http://www.megavideo.com/"},  
+{name:"HuLu", Alexa:15,url:"https://www.hulu.com"}, 
+{name:"Youtube", Alexa:16,url:"http://www.youtube.com"}, 
+{name:"雅酷高清",Alexa:38000,url:"http://www.yakuhd.com"},
+{name:"时空电影", Alexa:56000,url:"http://www.skmov.com/"},
+{name:"奇特电影", Alexa:53000,url:"https://www.666kao.com"},      
+{name:"雅酷高清", Alexa:36000,url:"https://www.xigua110.com"},  
+{name:"影视大全", Alexa:21000,url:"http://www.yingshidaquan.cc"},  
+{name:"星辰影院", Alexa:33000,url:"http://www.vodxc.com/"},  
+{name:"巴巴影院", Alexa:34000,url:"https://www.baba.cc/"},  
+{name:"西瓜影院", Alexa:44000,url:"http://www.xigua66.com/"},  
+{name:"神马影院", Alexa:33000,url:"https://www.2341.tv"},  
+{name:"七七铺", Alexa:29000,url:"http://www.qiqipu.com/"},  
+{name:"漫漫看", Alexa:17000,url:"http://www.manmankan.com"},  
+{name:"中国人影", Alexa:55000,url:"http://www.520885.com"},  
+{name:"品善网", Alexa:89000,url:"http://www.pinshan.com/"},  
+{name:"玄天影视", Alexa:82000,url:"http://www.4pcc.com/"},  
+{name:"悠久影院", Alexa:50000,url:"https://www.eqq9.com"},  
+{name:"CK影院", Alexa:26000,url:"http://www.ckck.tv"},  
+{name:"ID电影", Alexa:11000,url:"http://www.id97.com/"},  
+{name:"天天影院", Alexa:67000,url:"http://www.ttvdo.com/"},  
+{name:"影视大全", Alexa:38000,url:"http://www.meikanguo.com/"}, 
+{name:"草民电影", Alexa:96000,url:"http://www.cmdy5.com"}, 
+{name:"哒哒兔", Alexa:399000,url:"https://m.jlszyy.cc/"}, 
+{name:"影视大全", Alexa:38000,url:"http://www.km.com/"}, 
+{name:"刷剧吧", Alexa:38000,url:"http://www.shuajuba.com/"}, 
+{name:"雷光网", Alexa:340000,url:"https://www.leiguang.cc/"}, 
+{name:"五杀电影", Alexa:38000,url:"https://www.lol5s.com"},  
+{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
+{name:"五杀影院1", Alexa:37000,url:"https://s.lol5s.com/"}, 
+{name:"潦草网2", Alexa:150000,url:"http://m.liaocao.com"},
+{name:"青苹果3", Alexa:100000,url:"http://m.qpgyy.com/"}, 
+ {name:"影视大全4", Alexa:20000,url:"http://m.yingshidaquan.cc"}, 
+{name:"天狼影院5", Alexa:21000,url:"https://m.ttll.cc"}, 
+{name:"七七铺6", Alexa:28000,url:"http://m.qiqipu.com"},  
+{name:"电影123-7", Alexa:55000,url:"http://m.dy123.cc"}, 
+{name:"西瓜影院8", Alexa:38000,url:"https://m.xigua110.com"}, 
+{name:"部落影院9", Alexa:87000,url:"http://m.vbuluo.com"}, 
+{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
+{name:"电影首发站0", Alexa:19000,url:"http://www.tl95.com/"},
+{name:"战地电影0", Alexa:19000,url:"http://m.zhandi.cc"}, 
+{name:"潦草网0", Alexa:150000,url:"http://m.liaocao.com"},
+{name:"天狼影院0", Alexa:21000,url:"https://m.ttll.cc"}, 
+{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
+{name:"雷光网", Alexa:35000,url:"https://www.leiguang.cc/"}, 
+{name:"琪琪布", Alexa:190000,url:"https://www.qiqibu99.com"}, 
+{name:"6V电影", Alexa:5000,url:"http://www.hao6v.com/"}, 
+{name:"飘花电影", Alexa:3070,url:"https://www.piaohua.com/"},  
+{name:"电影盒子", Alexa:97000,url:"http://www.5iwanyouxi.com/"}, 
+{name:"电影港", Alexa:5200,url:"http://www.dygang.net/ys/"}, 
+{name:"电影天堂", Alexa:991,url:"http://www.dytt8.net/"}, 
+{name:"电影吧", Alexa:1904,url:"https://www.dy2018.com"}, 
+{name:"被窝", Alexa:26000,url:"http://www.beiwo.tv/"}, 
+{name:"电影天堂", Alexa:8900,url:"https://www.dygod.net/"},  
+{name:"看巴士", Alexa:13000,url:"http://www.kan84.net/"}, 
+{name:"K8经典网", Alexa:41000,url:"http://www.k8jdwang.com/"}, 
+{name:"牛宝宝", Alexa:21000,url:"http://niubaobao.cc/"}, 
+{name:"电影123", Alexa:53000,url:"http://www.dy123.cc"}, 
+{name:"星空电影", Alexa:55000,url:"https://www.xkdy.net/"}
+
+
+
+
+
+
+
+
+
+
+
+
+]
