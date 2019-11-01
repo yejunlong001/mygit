@@ -1,134 +1,367 @@
 
+0.格式<?php  ?>
+  什么事PHP？答：PHP是一种脚本语言，和javascript一样的脚本语言。
 
-��ҳ�Ƽ�
-��̨��Ӱ
-ŷ����Ӱ
-������Ӱ
-�ձ���Ӱ
-��½��Ӱ
-���µ�Ӱ
-������Ӱ/���ѵ�Ӱ/���ŵ�Ӱ
+1.PHP变量
+  (1).用“$”修饰符来定义变量。            //$x = 5;
+  (2).变量是用于存储数据的容器。         //$name = "刘德喜";
+  (2).php的每句代码结束都要加上分号“;”  //记得加分号结束，不然报错.*******
 
-������
-�����
-����
-��Ψ
-����
-�Ű�֥
-����ͩ
-Ҷ���
-���h��
-������
+2.PHP变量作用域
+  (1).global     //要在一个函数中访问一个全局变量(外部变量)，需要使用global关键字，并且可以修改初始值。 //global $name; $name = "郭富城";
+  (2).static     //当一个函数完成时，它所有变量通常都会被删除。而有时候您希望某个"局部"变量不要被删除。请在您第一次声明变量时使用 static $num = 2;
+ 
+3.PHP输出语句
+  (1).echo    //可以输出一个或多个字符串,也可以输出js、HTML代码哦
+  (2).print   //只允许输出一个字符串，返回值总为 1
+              //区别：echo输出的速度比print快，echo没有返回值，print有返回值1。
+  
+4.EOF使用说明
+  echo <<<EOF
+    <h1>我的第一个标题</h1>
+    <p>我的第一个段落。</p>
+  EOF;
 
+5.PHP数据类型
+  (1).String （字符串）  //你可以将任何文本放在单引号和双引号中 $y="张晓萌"  //strlen($string); 检测字符串长度
+  (2).Integer（整型）    //整数可以是正数或负数 + 整数是没有小数点的 $y=88 
+  (3).Float  （浮点型）  //$y=10.365
+  (4).Boolean（布尔型）  //$y=false
+  (5).NULL   （空值）    //可以通过设置变量值为NULL来清空变量数据 $y=null
+  (6).Array  （数组）    //$y=["88",2,3]                                 //count($arr);或者sizeof($arr) 检测数组长度
+  (7).Object （对象）    //在PHP中，对象必须声明。必须使用class关键字声明类对象。类是可以包含属性和方法的结构。 //class Car{变量集合，方法集合...}
+  
+6.PHP类型比较
+   0 == false:   bool(true)
+   0 == null:    bool(true)
+  "0" == false:  bool(true)
+  "0" == null:   bool(false) **
+  "" == false:   bool(true)
+  "" == null:    bool(true)
+  false == null: bool(true)
 
+7.PHP常量定义
+  (1).设置常量，使用define()函数   //例如：define("message", "欢迎访问你哦", true);  echo message;
+  (2).常量名不需要加 $ 修饰符
+  (3).常量是全局的
+  (4).常量值被定义后，其他任何地方都不能被改变。
 
+8.PHP三元表达式
+  $a = 35;
+  $b = $a2==44 ? $a2 : 1000 ;  //等价于if...else...语句
+  echo "$b"; //结果输出：1000 ;
 
+9.PHP连接符号-并置符号：“.”
+  echo "$a . $b . $c"
 
-www.xigua66.com
-www.yakuhd.com
-www.xigua110.com
-www.vodxc.com
+10.PHP创建普通数组
+  (1).创建数组的方法一：$cars = array("Volvo","BMW","Toyota") ; //$cars[0], $cars[1], $cars[2]
+  (2).创建数组的方法二：$cars =["Volvo","BMW","Toyota"] ;       //$cars[0], $cars[1], $cars[2]
 
-www.qiqipu.tv  ����
-www.liaocao.com ����
+11.PHP创建关联数组
+   什么事关联数组？答：关联数组是给数组的“值”指定对应得“键”的数组。采用“=>”修饰符命名。***有点像对象取值啊
+   例如：
+   $arr = ["tom"=>"33岁","jim"=>"22岁"];
+    echo $arr['tom']; //结果：33岁
+    echo $arr['jim']; //结果：22岁
 
-www.manmankan.com
+  
+12.PHP遍历普通数组..for..
+   $arr = array('a','b',"c"); 或者
+   $arr = ['a','b',"c"];
+   for($i=0; $i<count($arr); $i++){
+      echo $arr[$i] . "<br>";
+   };
 
+13.PHP遍历关联数组..forEach...as...
+   $arr = ["tom"=>"33岁","jim"=>"22岁"];
+   forEach($arr as $item => $item_value){
+     echo $item . $item_value . "<br>";
+   };
+   //结果输出：tom 33岁，jim 22岁
 
+14.PHP数组排序
+   (1).sort()   - 对数组进行升序排列
+   (2).rsort()  - 对数组进行降序排列
+   (3).asort()  - 根据关联数组的值，对数组进行升序排列
+   (4).ksort()  - 根据关联数组的键，对数组进行升序排列
+   (5).arsort() - 根据关联数组的值，对数组进行降序排列
+   (6).krsort() - 根据关联数组的键，对数组进行降序排列
 
+15.PHP超级全局变量
+   也就是说，任何地方都可以使用该变量。
+    (1).$GLOBALS   //是一个包含了全部变量的全局组合的“数组”。变量的名字就是数组的键。
+  	(2).$_SERVER
+  	(3).$_REQUEST
+  	(4).$_POST
+  	(5).$_GET
+  	(6).$_FILES
+  	(7).$_ENV
+  	(8).$_COOKIE
+  	(9).$_SESSION
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[
-{name:"�߷ֵ�Ӱ��", Alexa:1,url:"http://www.gaofenfilm.com/"},  
-{name:"�ſ�", Alexa:2,url:"https://www.youku.com/"}, 
-{name:"������", Alexa:3,url:"http://www.iqiyi.com/"}, 
-{name:"��Ѷ��Ƶ", Alexa:4,url:"https://v.qq.com/"}, 
-{name:"â��TV", Alexa:5,url:"https://www.mgtv.com/"}, 
-{name:"������Ƶ", Alexa:6,url:"http://www.tudou.com/"}, 
-{name:"�Ѻ���Ƶ", Alexa:7,url:"https://tv.sohu.com/"}, 
-{name:"������Ƶ", Alexa:8,url:"http://www.le.com/"},  
-{name:"PPtv", Alexa:9,url:"http://www.pptv.com/"}, 
-{name:"������Ƶ", Alexa:10,url:"http://www.kankan.com/"}, 
-{name:"�����Ӱ", Alexa:11,url:"https://movie.douban.com/"}, 
-{name:"����TV", Alexa:12,url:"https://www.wasu.cn/"}, 
-{name:"IMDB", Alexa:13,url:"https://www.imdb.com.cn/"}, 
-{name:"MEGA", Alexa:14,url:"http://www.megavideo.com/"},  
-{name:"HuLu", Alexa:15,url:"https://www.hulu.com"}, 
-{name:"Youtube", Alexa:16,url:"http://www.youtube.com"}, 
-{name:"�ſ����",Alexa:38000,url:"http://www.yakuhd.com"},
-{name:"ʱ�յ�Ӱ", Alexa:56000,url:"http://www.skmov.com/"},
-{name:"���ص�Ӱ", Alexa:53000,url:"https://www.666kao.com"},      
-{name:"�ſ����", Alexa:36000,url:"https://www.xigua110.com"},  
-{name:"Ӱ�Ӵ�ȫ", Alexa:21000,url:"http://www.yingshidaquan.cc"},  
-{name:"�ǳ�ӰԺ", Alexa:33000,url:"http://www.vodxc.com/"},  
-{name:"�Ͱ�ӰԺ", Alexa:34000,url:"https://www.baba.cc/"},  
-{name:"����ӰԺ", Alexa:44000,url:"http://www.xigua66.com/"},  
-{name:"����ӰԺ", Alexa:33000,url:"https://www.2341.tv"},  
-{name:"������", Alexa:29000,url:"http://www.qiqipu.com/"},  
-{name:"������", Alexa:17000,url:"http://www.manmankan.com"},  
-{name:"�й���Ӱ", Alexa:55000,url:"http://www.520885.com"},  
-{name:"Ʒ����", Alexa:89000,url:"http://www.pinshan.com/"},  
-{name:"����Ӱ��", Alexa:82000,url:"http://www.4pcc.com/"},  
-{name:"�ƾ�ӰԺ", Alexa:50000,url:"https://www.eqq9.com"},  
-{name:"CKӰԺ", Alexa:26000,url:"http://www.ckck.tv"},  
-{name:"ID��Ӱ", Alexa:11000,url:"http://www.id97.com/"},  
-{name:"����ӰԺ", Alexa:67000,url:"http://www.ttvdo.com/"},  
-{name:"Ӱ�Ӵ�ȫ", Alexa:38000,url:"http://www.meikanguo.com/"}, 
-{name:"�����Ӱ", Alexa:96000,url:"http://www.cmdy5.com"}, 
-{name:"������", Alexa:399000,url:"https://m.jlszyy.cc/"}, 
-{name:"Ӱ�Ӵ�ȫ", Alexa:38000,url:"http://www.km.com/"}, 
-{name:"ˢ���", Alexa:38000,url:"http://www.shuajuba.com/"}, 
-{name:"�׹���", Alexa:340000,url:"https://www.leiguang.cc/"}, 
-{name:"��ɱ��Ӱ", Alexa:38000,url:"https://www.lol5s.com"},  
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"��ɱӰԺ1", Alexa:37000,url:"https://s.lol5s.com/"}, 
-{name:"�ʲ���2", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"��ƻ��3", Alexa:100000,url:"http://m.qpgyy.com/"}, 
- {name:"Ӱ�Ӵ�ȫ4", Alexa:20000,url:"http://m.yingshidaquan.cc"}, 
-{name:"����ӰԺ5", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"������6", Alexa:28000,url:"http://m.qiqipu.com"},  
-{name:"��Ӱ123-7", Alexa:55000,url:"http://m.dy123.cc"}, 
-{name:"����ӰԺ8", Alexa:38000,url:"https://m.xigua110.com"}, 
-{name:"����ӰԺ9", Alexa:87000,url:"http://m.vbuluo.com"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"��Ӱ�׷�վ0", Alexa:19000,url:"http://www.tl95.com/"},
-{name:"ս�ص�Ӱ0", Alexa:19000,url:"http://m.zhandi.cc"}, 
-{name:"�ʲ���0", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"����ӰԺ0", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"�׹���", Alexa:35000,url:"https://www.leiguang.cc/"}, 
-{name:"������", Alexa:190000,url:"https://www.qiqibu99.com"}, 
-{name:"6V��Ӱ", Alexa:5000,url:"http://www.hao6v.com/"}, 
-{name:"Ʈ����Ӱ", Alexa:3070,url:"https://www.piaohua.com/"},  
-{name:"��Ӱ����", Alexa:97000,url:"http://www.5iwanyouxi.com/"}, 
-{name:"��Ӱ��", Alexa:5200,url:"http://www.dygang.net/ys/"}, 
-{name:"��Ӱ����", Alexa:991,url:"http://www.dytt8.net/"}, 
-{name:"��Ӱ��", Alexa:1904,url:"https://www.dy2018.com"}, 
-{name:"����", Alexa:26000,url:"http://www.beiwo.tv/"}, 
-{name:"��Ӱ����", Alexa:8900,url:"https://www.dygod.net/"},  
-{name:"����ʿ", Alexa:13000,url:"http://www.kan84.net/"}, 
-{name:"K8������", Alexa:41000,url:"http://www.k8jdwang.com/"}, 
-{name:"ţ����", Alexa:21000,url:"http://niubaobao.cc/"}, 
-{name:"��Ӱ123", Alexa:53000,url:"http://www.dy123.cc"}, 
-{name:"�ǿյ�Ӱ", Alexa:55000,url:"https://www.xkdy.net/"}
+16.PHP魔术常量
+   有八个魔术常量
+   (1).__LINE__      文件中的当前行号。
+   (2).__FILE__      文件的完整路径和文件名
+   (3).__DIR__       文件所在的目录
+   (4).__FUNCTION__  函数名称
+   (5).__CLASS__     类的名称
+   (6).__TRAIT__     Trait 的名字
+   (7).__METHOD__    类的方法名
+   (8).__NAMESPACE__ 当前命名空间的名称
 
 
+17.PHP命名空间(namespace)  ****
+   作用：防止命名重名。
+   在PHP中函数、类、常量是不允许同名的。为了解决这三者的同名问题，所以出现了命名空间. 
+   其实不仅仅是php，其他语言也有类似的使用。比如JavaScript中：var obj = {}; 然后：obj.name = "张学友"; obj.age = "22岁"
+
+
+18.PHP面向对象
+   (1).php类的定义就跟js对象的定义一样。  //class myObject {...}
+   (2).类使用 class 关键字后加上类名定义。
+   (3).类的变量使用 var 来声明, 变量也可以初始化值。
+   (4).类的函数只能通过该类及其new实例化的对象访问,并且类里面的函数结尾不能加分号“;” 不然报错。
+       实例：
+	   class myObject {
+	       var $title = "百度";
+	       var $url = "www.baidu.com";
+	       function doo(){
+	         echo $this->url;  //读取类里面的变量时候不需要加修饰符$
+	       }
+	       function aoo($params){
+	         echo $params;
+	       }
+	       function coo($params){
+	         $this -> url = $params;
+	         echo $params;
+	         echo $this->url;
+	         echo $this->title;
+	       }
+	       
+	    };
+	    $site = new myObject;
+	    $site -> doo();           // 调用成员函数，
+	    $site -> aoo("菜鸟教程"); // 调用成员函数，
+	    $site -> coo("qq.com");  // 调用成员函数，
+    
+19.PHP构造函数
+   构造函数是一种特殊的方法。主要用来在创建对象时初始化对象，即为对象成员变量赋初始值
+   实例：
+   class Site {
+	  /* 成员变量 */
+	  var $url;
+	  var $title;
+      /* 构造函数 */
+	  function __construct( $par1, $par2 ) {
+	    $this->url = $par1;
+	    $this->title = $par2;
+	  }
+	  /* 成员函数 */
+	  function getUrl(){
+	     echo $this->url . PHP_EOL;
+	  }
+	  function getTitle(){
+	     echo $this->title . PHP_EOL;
+	  }
+	};
+    $taobao = new Site('www.taobao.com', '淘宝'); //设置变量初始化
+    $taobao-> getTitle();  //调用成员方法
+    $taobao-> getUrl();    //调用成员方法
+
+20.PHP析构函数
+   析构函数(destructor)与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。
+   class MyDestructableClass {
+	   function __construct() {
+	       print "构造函数\n";
+	       $this->name = "MyDestructableClass";
+	   }
+
+	   function __destruct() {
+	       print "销毁 " . $this->name . "\n";
+	   }
+	}
+	$obj = new MyDestructableClass();
+	//结果：
+	   //构造函数
+       //销毁 MyDestructableClass
+
+
+ 21.PHP面向对象
+    //利用面向对象的编程，可以省去很多"重复""冗余"的代码。
+    //怎么定义对象呢？定义对象，应该先定义“类”。 -------对象 − 是类的实例。
+
+    类里面有两个东西叫成员：
+      (1).成员变量 ： 该变量的值对外是不可见的，
+                     但是可以通过成员函数访问，
+                     该变量即可称为对象的属性。
+                     //注意：在类里面定义变量需要用分号“;”结束
+
+
+      (2).成员函数 ：定义在类的内部，可用于访问对象的数据。
+                    //注意：在类里面定义函数不需要用分号“;”结束，不然会报错。
+
+                    //注意：去读取成员属性的时候，不需要“$”符号
+                    //例子：
+                      <?php
+                
+          //定义一个类
+          class website {
+                          var $title;
+                          var $url;
+                          
+                          function setTitle($params){
+                            $this -> title = $params;
+                          }
+                          function setUrl($params){
+                            $this -> url = $params;
+                          }
+                          function who($params){
+                            echo "<br>" . $params . "开" . $this -> title . $this -> url;
+                          }
+                        };
+
+                        //实例化一个tabao对象
+                        $taobao = new website();
+                        $taobao -> setTitle('淘宝网');
+                        $taobao -> setUrl('wwww.taobao.com');
+                        $taobao -> who('马云');
+                        
+                        //实例化一个jd对象
+                        $jd = new website();
+                        $jd -> setTitle('京东');
+                        $jd -> setUrl('www.jd.com');
+                        $jd -> who('刘强东');
+                     ?>
+
+
+       (3).PHP类的访问控制 
+                    1.属性的访问控制: 对属性或方法的访问控制，是通过在前面添加关键字来实现的。
+                                   // public（公有）：可以在任何地方被访问。  var等价于public。被视为公有
+                                   // private（私有）：只能在当前类"里面"被使用。
+                                   // protected（受保护）：可以被其自身以及其子类和父类访问。
+
+                    2.方法的访问控制: 
+                                     类中的方法如果没有设置这些关键字，则该方法默认为公有。
+                                   // public（公有）：可以在任何地方被访问。  
+                                   // private（私有）：只能在当前类"里面"被使用。
+                                   // protected（受保护）：可以被其自身以及其子类和父类访问。
+
+
+                   例子：
+                   <?php
+  
+                      class website {
+                        public $title;
+                        public $url = 'ciic.com';
+
+                        private $sale = '菜';
+                        private $price = '8000万';
+
+                        public function who($params){
+                          echo "<br>" . $params . $this -> sale;
+                          $this -> you(); //在当前类里面是可以调用私有方法的，但是在类外面就不能调用了
+                        }
+
+                        private function you(){
+                          echo "<br>" . "哈哈哈";
+                        }
+
+                      };
+
+                      //实例化一个对象zhongzhi
+                      $zhongzhi = new website();
+                      echo '<br>' . $zhongzhi -> url;
+                      $zhongzhi -> who('马哥');
+
+                    ?>
+
+
+       (4).常量 : 可以把在类中始终保持不变的值定义为常量 。 在定义和使用常量的时候不需要使用 $ 符号。 用：const来定义。
+                 //例如：class MyClass { const constant = '常量值'; }
+                 //注意：
+                 *********
+                  在外部通过 :: 这个符号来访问static定义的变量，而不能用 -> 这个符号
+                  在访问PHP类中的成员变量或方法时，如果被引用的变量或者方法被声明成const（定义常量）或者static（声明静态）,那么就必须使用操作符::,反之如果被引用的变量或者方法没有被声明成const或者static,那么就必须使用操作符->
+                  
+                  在内部通过 self 这个关键字来访问static定义的变量，而不能用this关键字
+                  另外，如果从类的内部访问const或者static变量或者方法,那么就必须使用自引用的self，反之如果从类的内部访问不为const或者static变量或者方法,那么就必须使用自引用的$this。
+
+                 例子：
+                 <?php
+                    class car {
+                      const numMe = '100';
+                    };
+
+                    //实例化一个对象obj
+                    $obj = new car();
+                    echo $obj::numMe;
+                 ?>
+
+
+       (5).Static关键字:  声明类属性static(静态)，就可以不实例化类而直接访问。
+                         声明类方法 static(静态)，就可以不实例化类而直接访问。当然也可以实例化后也能访问。
+
+                        //注意：
+                        *********
+                        在外部通过 :: 这个符号来访问static定义的变量，而不能用 -> 这个符号
+                        在访问PHP类中的成员变量或方法时，如果被引用的变量或者方法被声明成const（定义常量）或者static（声明静态）,那么就必须使用操作符::,反之如果被引用的变量或者方法没有被声明成const或者static,那么就必须使用操作符->
+                        
+                        在内部通过 self 这个关键字来访问static定义的变量，而不能用this关键字
+                        另外，如果从类的内部访问const或者static变量或者方法,那么就必须使用自引用的self，反之如果从类的内部访问不为const或者static变量或者方法,那么就必须使用自引用的$this。
+
+                        例子：
+                        <?php
+                              //声明一个静态变量
+                              public static $title = '刘德华';
+
+                              //声明一个静态方法
+                              public static function me(){
+                                 echo "范冰冰";
+                              }
+                            };
+
+                            echo car::$title;
+                            echo car::me();
+
+                         ?>
+
+                        在实际使用中我们需要注意几点
+                                  a. 静态方法可以调用静态属性，禁止调用非静态属性。
+                                  b. 静态方法内不允许出现$this，出现就停掉脚本。
+
+
+    //*****PHP中静态方法(static)与非静态方法的使用及区别*******
+
+    static方法是类中的一个成员方法,属于整个类,即使不用创建任何对象也可以直接调用!
+
+    静态方法效率上要比实例化高，静态方法的缺点是不自动进行销毁，而实例化的则可以做销毁。
+
+    静态方法和静态变量创建后始终使用同一块内存，而使用实例的方式会创建多个内存。
+
+    C++中，若类的方法前加了static关键字，则该方法称为静态方法，反之为实例方法。静态方法为类所有，可以通过对象来使用，也可以通过类来使用。但一般提倡通过类名来使用，因为静态方法只要定义了类，不必建立类的实例就可使用。静态方法只能用类的静态成员。
+
+
+
+
+            
+
+
+
+
+js中：
+this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
+var o = {
+    a:10,
+    b:{
+        a:12,
+        fn:function(){
+            console.log(this.a); //12
+        }
+    }
+}
+window.o.b.fn();  //此时的this指向了this的上一级"b"
 
 
 
@@ -139,4 +372,224 @@ www.manmankan.com
 
 
 
-]
+
+
+
+
+  ********************
+  PHP:自带封装好的方法：
+      (1).var_dump()  函数返回变量的数"据类型"和"值" //var_dump($age);
+      (2).strlen()    函数返回字符串的长度（字符数） //echo strlen("Hello world!"); //12
+      (3).strpos()    函数用于在字符串内查找一个字符或一段指定的文本下标 //echo strpos("Hello world!","world"); //6
+      (4).count()     函数用于返回数组的长度（元素的数量）：
+      (5).print_r()   函数打印输出整个数组内容及结构php打印数组
+
+
+  PHP:自带封装格式化代码：
+      (1).PHP_EOL // 换行符   //echo PHP_EOL; 
+
+  PHP:符号的意思
+      => :遍历数组或者给数组定义键值对                     //["name" => "刘德华" , "age" => "34岁"]
+      -> :读取类、对象的属性或者函数方法。相当于js的点dot的“.”  //obj.name //$obj -> name 注意被调用的属性name不需要加“$”修饰符。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mySql
+=============================================================
+
+1.PHP连接MySQL
+  语法: mysqli_connect(host,username,password)函数来连接数据库  //在成功链接到 MySQL 后返回连接标识，失败返回 FALSE 。
+       //例如
+         $connect = mysqli_connect("localhost","root","");
+				  if($connect==true){
+				    echo "数据库连接成功";
+				  }
+				  else{
+				    echo "连接失败";
+				  };
+        //注释
+		*$dbhost = 'localhost';       // mysql服务器主机地址
+		*$dbuser = 'root';            // mysql用户名
+		*$dbpass = '123456';          // mysql用户名密码
+		*$conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+
+
+2.PHP断开MySQL
+  语法: mysqli_close()函数来断开数据库。   
+
+
+
+3.PHP创建数据库
+  语法: mysqli_query($connect,$sql)函数来创建数据库   //在执行成功时返回TRUE，否则返回 FALSE。
+        //例如
+          $sql = "CREATE DATABASE YEJUNLONGBASE";
+		  $result = mysqli_query($connect,$sql);
+		  if($result == true){
+		    echo "<h3>恭喜，创建数据库YEJUNLONGBASE成功</h3>";
+		  }
+		  else{
+		    die("<h3>创建数据库失败</h3>".mysqli_error($connect));
+		  };
+
+
+4.PHP删除数据库
+  语法: mysqli_query($connect,$sql)函数来删除数据库
+      //例如
+      $sql = "DROP DATABASE YEJUNLONGBASE2";
+			  $result = mysqli_query($connect,$sql);
+			  if($result == true){
+			    echo "成功删除数据库YEJUNLONGBASE2";
+			  }
+			  else{
+			    echo "删除数据库YEJUNLONGBASE2失败了";
+			  };
+
+5.PHP选择数据库
+  语法: mysqli_select_db($connect, 'YEJUNLONGBASE');  //函数在执行成功后返回TRUE ，否则返回FALSE 。
+
+
+6.MySQL数据类型
+  (1).数值
+  (2).日期
+  (3).字符串(字符)。
+
+
+7.PHP创建数据表
+  语法: $sql = "CREATE TABLE CBA( 
+                              `name` VARCHAR(100) NOT NULL, 
+                              `age` INT(100) NOT NULL ,
+                              `id` INT(50) NOT NULL
+                            )";
+      //选择数据库
+	  mysqli_select_db($connect,"YEJUNLONGBASE");
+	  
+	  //开始创建数据表
+	  $result = mysqli_query($connect,$sql);
+	  if($result == true){
+	    echo "<h3>创建表格成功</h3>";
+	  }
+	  else{
+	    die("<h3>创建表格失败了</h3>" . mysqli_errno($connect));
+	  };
+  
+8.PHP删除数据表
+  语法: mysqli_query( $conn, "DROP TABLE YEJUNLONGBASE" );
+        例如
+          //选择数据库
+		   mysqli_select_db($connect,"YEJUNLONGBASE");
+
+		  //写删除的sql语句
+		  $sql = "DROP TABLE TUBB";
+
+		  //删除数据表
+		  $result = mysqli_query($connect,$sql);
+		  if($result==true){
+		    echo "<h3>删除表格成功</h3>";
+		  }
+		  else{
+		    die("<h3>删除表格失败了</h3>" . mysqli_errno($connect));
+		  }
+   
+
+9.PHP插入数据
+  语法: mysqli_query( $connect, "INSERT INTO 表名 (字段...) VALUES (字段值...)");
+  $myname = '张学友';
+  $myage  = "36";
+  $sql = "INSERT INTO cba (name,age) VALUES ('TOM','35')";
+          或者
+  $sql = "INSERT INTO cba (name,age) VALUES ('$myname','$myage')";
+
+
+  // 设置编码，防止中文乱码
+  $rr = $connect -> query("set names utf8"); //此行代码是解决插入数据库中文乱码的问题，并且要在创建表的时候把“整理Collation”这个选项改为uft8
+     
+     或者：
+
+  // 设置编码，防止中文乱码
+   mysqli_query($connect , "set names utf8");  //此行代码是解决插入数据库中文乱码的问题
+
+
+
+ 10.PHP查询数据
+    语法: mysqli_query( $connect, "SELECT 字段... FROM 表名);
+    语法: mysqli_query( $connect, "SELECT 字段... FROM 表名 WHERE 字段 = '范冰冰' ");
+    例如：
+    $sql = "SELECT name , age , address FROM UBA";
+	   //查询数据
+	   $result = mysqli_query($connect,$sql);
+	   if($result==true){
+	       echo "查询数据库成功";
+	   }
+	   else{
+	       echo "查询失败";
+	   };
+
+
+ 11.PHP获取查询到的数据
+    语法: $row = mysqli_fetch_array($result, MYSQLI_ASSOC))  //从结果集中取得一行作为关联数组
+    语法: $row = mysqli_fetch_array($result, MYSQLI_NUM))    //从结果集中取得一行作为数字数组
+    mysqli_fetch_array：是会一直去获取select出来的数据，虽然每次只能读取到一条，但是会通过while可以把所有结果给循环出来。
+    //例如
+    $sql="SELECT name , age , address FROM UBA";
+     或者
+    $sql="SELECT name , age , address FROM UBA WHERE name = '范冰冰'";
+
+    $result = mysqli_query($connect,$sql);
+    $row = mysqli_fetch_array($result, MYSQLI_NUM));
+
+    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+      echo "<h3>{$row['name']}</h3>";
+    };
+
+    //mysqli_fetch_array($result,MYSQLI_ASSOC)被访问，则指针移动到下一记录。最后无记录被找到，它就会返回。null，这就破坏了while条件。
+ 
+
+  12.PHP更新数据
+     语法: mysqli_query( $connect, "UPDATE 表名 SET 字段 = '张艺谋' WHERE ID = 3 " );
+     例子：
+       $sql = "UPDATE uba SET age = '88' WHERE name = '周杰伦' ";
+	   $res = mysqli_query($connect,$sql);
+	   if($res == true){
+	     echo '更新成功';
+	   }else{
+	     die('无法更新数据: ' . mysqli_error($connect));
+	   };
+
+
+
+  13.PHP删除数据记录
+	  语法: mysqli_query( $connect, "DELETE FROM 表名 WHERE name = '周杰伦' ");
+	  例子：
+	   $sql = "DELETE FROM  uba WHERE name = '周杰伦' ";
+	   $res = mysqli_query($connect,$sql);
+	   if($res == true){
+	     echo '删除成功';
+	   }else{
+	     die('删除失败: ' . mysqli_error($connect));
+	   };
+
+
+
+
+
+
