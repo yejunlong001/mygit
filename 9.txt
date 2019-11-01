@@ -1,142 +1,272 @@
+========================================================================================================
 
 
-��ҳ�Ƽ�
-��̨��Ӱ
-ŷ����Ӱ
-������Ӱ
-�ձ���Ӱ
-��½��Ӱ
-���µ�Ӱ
-������Ӱ/���ѵ�Ӱ/���ŵ�Ӱ
+中智上海经济技术合作有限公司
+项目名称：中智AFOne管理系统
+运用到的技术栈：vue，js，less, npm，element-UI ,css, html, json,  git
+项目流程：由业务提供需求，然后由产品经理画出原型图片，再生成文档交给前端开发。
 
-������
-�����
-����
-��Ψ
-����
-�Ű�֥
-����ͩ
-Ҷ���
-���h��
-������
+工作内容：通过文档和原型图片，用element-UI画出原型界面，即布局web界面，再通过后端给的api接口，利用ajax的异步请求axios向后台请求数据，
+          然后通过vue对数据进行双向绑定，在前端展示数据或者提交数据到.net后台。
+
+描述：本项目前后端完全分离状态，vue脚手架单页面开发，新的页面采用element-UI框架。
+      运用node.js的npm来安装vue脚手架，vue组件开发，运用vueRouter,vuex,aixos,ES6,js,等技术开发。
+      前后端数据交流主要通过API接口交互。项目的版本控制主要用git。样式用less。
 
 
 
 
 
-www.xigua66.com
-www.yakuhd.com
-www.xigua110.com
-www.vodxc.com
+中国平安科技部：
+项目名称：中国信托登记有限公司
+运用到的技术栈：vue，js，sass，css, html, json, svn
+项目流程：由客户提供需求，然后由产品经理画出原型，再生成文档交给前端开发。
+项目内容：中国信托登记公司，管理着全国数家信托机构，为了规范信托行业，就开发了信托登记平台。
+          需要办理信托的客户或者企业来到这个平台注册账户：
+          业务流程为：
+          开户申请--变更申请--提交资料---上传资料--修改资料
+          平台审核--通过或者退回--详情页面
+          客户注销等等一系列流程。
+          角色还分为：超级管理员，中信登申请岗，中信登审核岗，查询岗，代理机构申请岗，代理机构审核岗，代理机构查询岗等等
+工作内容：通过产品文档，用html+css+js画出原型界面，再通过后台返回的api接口数据，然后通过vue对数据进行双向绑定
+          在前端展示数据或者提交数据到Java后台。
 
-www.qiqipu.tv  ����
-www.liaocao.com ����
-
-www.manmankan.com
-
-
-
-
-
-
-
-
-
+描述：本项目前后端半分离状态，老的页面当中含有angularJs，新的页面采用vueJs来替代它。同时页面当中含有jsp代码。jQuery代码。
+      前后端数据交流还是通过API接口交互。项目的版本控制主要用SVN。样式用sass。
 
 
 
 
 
+学习资料
+===============================================================================
+
+1.async同步函数await实例，实现接口前后相互依赖
+
+   console.log('start');
+   //获取第一个res
+   axios.get(api.test1()).then(res=>{
+     console.log("=======1======");
+     console.log(res.data);
+     console.log("=======1======");
+   });
+   //获取第二个res
+   axios.get(api.test2()).then(res=>{
+     console.log("=======2======");
+     console.log(res.data);
+     console.log("=======2======");
+   });
+    console.log('end');
+    
+    //采用这种结构，就行
+    async function foo(){
+      let x = await axios.get(api.test1());  //这个变成了同步代码
+      let y = await axios.get(api.test2());  //这个变成了同步代码
+      console.log(y.data);  
+      console.log(x.data);
+      console.log('333');
+    };
+    foo();
 
 
 
 
-
-
-
-[
-{name:"�߷ֵ�Ӱ��", Alexa:1,url:"http://www.gaofenfilm.com/"},  
-{name:"�ſ�", Alexa:2,url:"https://www.youku.com/"}, 
-{name:"������", Alexa:3,url:"http://www.iqiyi.com/"}, 
-{name:"��Ѷ��Ƶ", Alexa:4,url:"https://v.qq.com/"}, 
-{name:"â��TV", Alexa:5,url:"https://www.mgtv.com/"}, 
-{name:"������Ƶ", Alexa:6,url:"http://www.tudou.com/"}, 
-{name:"�Ѻ���Ƶ", Alexa:7,url:"https://tv.sohu.com/"}, 
-{name:"������Ƶ", Alexa:8,url:"http://www.le.com/"},  
-{name:"PPtv", Alexa:9,url:"http://www.pptv.com/"}, 
-{name:"������Ƶ", Alexa:10,url:"http://www.kankan.com/"}, 
-{name:"�����Ӱ", Alexa:11,url:"https://movie.douban.com/"}, 
-{name:"����TV", Alexa:12,url:"https://www.wasu.cn/"}, 
-{name:"IMDB", Alexa:13,url:"https://www.imdb.com.cn/"}, 
-{name:"MEGA", Alexa:14,url:"http://www.megavideo.com/"},  
-{name:"HuLu", Alexa:15,url:"https://www.hulu.com"}, 
-{name:"Youtube", Alexa:16,url:"http://www.youtube.com"}, 
-{name:"�ſ����",Alexa:38000,url:"http://www.yakuhd.com"},
-{name:"ʱ�յ�Ӱ", Alexa:56000,url:"http://www.skmov.com/"},
-{name:"���ص�Ӱ", Alexa:53000,url:"https://www.666kao.com"},      
-{name:"�ſ����", Alexa:36000,url:"https://www.xigua110.com"},  
-{name:"Ӱ�Ӵ�ȫ", Alexa:21000,url:"http://www.yingshidaquan.cc"},  
-{name:"�ǳ�ӰԺ", Alexa:33000,url:"http://www.vodxc.com/"},  
-{name:"�Ͱ�ӰԺ", Alexa:34000,url:"https://www.baba.cc/"},  
-{name:"����ӰԺ", Alexa:44000,url:"http://www.xigua66.com/"},  
-{name:"����ӰԺ", Alexa:33000,url:"https://www.2341.tv"},  
-{name:"������", Alexa:29000,url:"http://www.qiqipu.com/"},  
-{name:"������", Alexa:17000,url:"http://www.manmankan.com"},  
-{name:"�й���Ӱ", Alexa:55000,url:"http://www.520885.com"},  
-{name:"Ʒ����", Alexa:89000,url:"http://www.pinshan.com/"},  
-{name:"����Ӱ��", Alexa:82000,url:"http://www.4pcc.com/"},  
-{name:"�ƾ�ӰԺ", Alexa:50000,url:"https://www.eqq9.com"},  
-{name:"CKӰԺ", Alexa:26000,url:"http://www.ckck.tv"},  
-{name:"ID��Ӱ", Alexa:11000,url:"http://www.id97.com/"},  
-{name:"����ӰԺ", Alexa:67000,url:"http://www.ttvdo.com/"},  
-{name:"Ӱ�Ӵ�ȫ", Alexa:38000,url:"http://www.meikanguo.com/"}, 
-{name:"�����Ӱ", Alexa:96000,url:"http://www.cmdy5.com"}, 
-{name:"������", Alexa:399000,url:"https://m.jlszyy.cc/"}, 
-{name:"Ӱ�Ӵ�ȫ", Alexa:38000,url:"http://www.km.com/"}, 
-{name:"ˢ���", Alexa:38000,url:"http://www.shuajuba.com/"}, 
-{name:"�׹���", Alexa:340000,url:"https://www.leiguang.cc/"}, 
-{name:"��ɱ��Ӱ", Alexa:38000,url:"https://www.lol5s.com"},  
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"��ɱӰԺ1", Alexa:37000,url:"https://s.lol5s.com/"}, 
-{name:"�ʲ���2", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"��ƻ��3", Alexa:100000,url:"http://m.qpgyy.com/"}, 
- {name:"Ӱ�Ӵ�ȫ4", Alexa:20000,url:"http://m.yingshidaquan.cc"}, 
-{name:"����ӰԺ5", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"������6", Alexa:28000,url:"http://m.qiqipu.com"},  
-{name:"��Ӱ123-7", Alexa:55000,url:"http://m.dy123.cc"}, 
-{name:"����ӰԺ8", Alexa:38000,url:"https://m.xigua110.com"}, 
-{name:"����ӰԺ9", Alexa:87000,url:"http://m.vbuluo.com"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"��Ӱ�׷�վ0", Alexa:19000,url:"http://www.tl95.com/"},
-{name:"ս�ص�Ӱ0", Alexa:19000,url:"http://m.zhandi.cc"}, 
-{name:"�ʲ���0", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"����ӰԺ0", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"�׹���", Alexa:35000,url:"https://www.leiguang.cc/"}, 
-{name:"������", Alexa:190000,url:"https://www.qiqibu99.com"}, 
-{name:"6V��Ӱ", Alexa:5000,url:"http://www.hao6v.com/"}, 
-{name:"Ʈ����Ӱ", Alexa:3070,url:"https://www.piaohua.com/"},  
-{name:"��Ӱ����", Alexa:97000,url:"http://www.5iwanyouxi.com/"}, 
-{name:"��Ӱ��", Alexa:5200,url:"http://www.dygang.net/ys/"}, 
-{name:"��Ӱ����", Alexa:991,url:"http://www.dytt8.net/"}, 
-{name:"��Ӱ��", Alexa:1904,url:"https://www.dy2018.com"}, 
-{name:"����", Alexa:26000,url:"http://www.beiwo.tv/"}, 
-{name:"��Ӱ����", Alexa:8900,url:"https://www.dygod.net/"},  
-{name:"����ʿ", Alexa:13000,url:"http://www.kan84.net/"}, 
-{name:"K8������", Alexa:41000,url:"http://www.k8jdwang.com/"}, 
-{name:"ţ����", Alexa:21000,url:"http://niubaobao.cc/"}, 
-{name:"��Ӱ123", Alexa:53000,url:"http://www.dy123.cc"}, 
-{name:"�ǿյ�Ӱ", Alexa:55000,url:"https://www.xkdy.net/"}
+2.采用promise实现接口前后依赖效果
+  new Promise(function(resolve,reject){
+      axios.get(api.test1()).then(res=>{
+        resolve(res.data);
+      });
+   }).then(myData=>{
+       axios.get(api.test2()).then(res=>{
+        console.log(myData); 
+        console.log(res.data);
+      });
+   });
 
 
 
 
 
 
+3.去除字符串空格方法
+  <div id="app">
+	<el-input v-model.trim="name" placeholder="请输入内容"></el-input>
+	{{name}}-----{{myName}}
+  </div>
+  <script type="text/javascript">
+	var app = new Vue({
+		el:'#app',
+		data:{
+			name:'11111',
+		},
+		methods:{
+
+		},
+		computed:{
+			myName(){
+				let str = this.name.replace(/\s*/g,"")
+				this.name = str;
+				return str;
+			},
+		},
+	});
+  </script>
 
 
 
 
 
 
-]
+4.组件传值：
+======================================================
+
+（1）、父组件可以使用 props 把数据传给子组件。
+（2）、子组件可以使用 $emit 触发父组件的自定义事件。
+
+vm.$emit( event, arg ) //触发当前实例上的事件
+
+vm.$on( event, fn );//监听event事件后运行 fn； 
+
+
+
+
+4.文件上传
+=====================================================
+uploadFile(file){
+      if(file.size>5*1024*1024){
+        this.openError('文件大小不得超过5M！');
+        return;
+      };
+      let fileData = new FormData();
+      fileData.append("attFile",file.raw);
+      api.CustomerQualificationGetInit().then(res=>{
+        const params = { 
+          bizId:res.result.form.customerQualificationId, //拿到上传附件的id
+          attBizCode:'QualificationBiz001',
+          attTypeCode:'QualificationType001', 
+          attFile:fileData
+        };
+        api.FileUpLoad(params).then(res=>{
+          if(res.result.length != 0){
+            this.openSuccess('证照上传成功');
+            this.ruleFormCompany.attId2 = res.result[0]; //需要一个变量来接收返回的id结果
+            file.attchmentId  = res.result[0]; //给file添加属性attchmentId
+            file.href = '/api/Attachment/Download/'+ res.result[0] + '?t='+ localStorage.access_token; //给file添加属性href
+          }
+          else{
+            this.openError('上传失败');
+          }
+        });
+      });
+    },
+
+// 销售中心 -> 新增项目 -> 上传附件-
+upLoadFileCreate: async (params) => {
+  const response = await Http.post(urls.baseUrl + '/Attachment/' + params.bizId + '?attBizCode=' + params.attBizCode + '&attTypeCode=' + params.attTypeCode , params.formdata,{
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  })
+  return await response.data
+ },
+// 销售中心 -> 新增项目 -> 删除附件
+upLoadFileDelete: async (params) => {
+  const response = await Http.post(urls.baseUrl + '/Attachment/Delete/' + params.attachmentId,)
+  return await response.data
+ },
+
+
+5.computed和watch的区别：
+===================================================================================================================================
+computed监听的变量是要重新命名的，不能用data里面的注册过的变量名。而且需要return值。相当于帅选好数据后就return给新的这个变量。
+watch监听的变量是直接监听data里面已经注册过的变量名称。无需重新取名字。当有变化的时候，会触动你想要调用的方法，并且可以得到新值和旧值。
+
+
+作用机制上
+1.watch和computed都是以Vue的依赖追踪机制为基础的，它们都试图处理这样一件事情：当某一个数据（称它为依赖数据）发生变化的时候，所有依赖这个数据的“相关”数据“自动”发生变化，也就是自动调用相关的函数去实现数据的变动。
+2.对methods:methods里面是用来定义函数的，很显然，它需要手动调用才能执行。而不像watch和computed那样，“自动执行”预先定义的函数
+ 【总结】：methods里面定义的函数，是需要主动调用的，而和watch和computed相关的函数，会自动调用,完成我们希望完成的作用
+
+1.watch擅长处理的场景：一个数据影响多个数据
+2.computed擅长处理的场景：一个数据受多个数据影响
+
+watch: {
+  firstName: function (val) { this.fullName = val + this.lastName }
+}
+
+computed:{
+  fullName: function () { return this.firstName + lastName }
+}
+
+
+
+6.js的this指向问题
+======================================================================
+this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
+
+例一：this指向他最近的上一级window
+function a(){
+    var user = "追梦子";
+    console.log(this.user); //undefined
+    console.log(this);　　//Window
+}
+window.a();
+
+
+例二：this指向他最近的上一级o
+var o = {
+    user:"追梦子",
+    fn:function(){
+        console.log(this.user);  //追梦子
+    }
+}
+o.fn();
+
+例三：this指向他最近的上一级o
+var o = {
+    user:"追梦子",
+    fn:function(){
+        console.log(this.user); //追梦子
+    }
+}
+window.o.fn();
+
+例四：this指向他最近的上一级b
+var o = {
+    a:10,
+    b:{
+        a:12,
+        fn:function(){
+            console.log(this.a); //12
+        }
+    }
+}
+o.b.fn();
+
+例五：this指向他最近的上一级b
+var o = {
+    a:10,
+    b:{
+        // a:12,
+        fn:function(){
+            console.log(this.a); //undefined
+        }
+    }
+}
+o.b.fn();
+
+例六：this指向他最近的上一级b
+var o = {
+    a:10,
+    b:{
+        a:12,
+        fn:function(){
+            console.log(this.a); //undefined
+            console.log(this); //window
+        }
+    }
+}
+var j = o.b.fn;
+j();
+这里this指向的是window，是不是有些蒙了？
+虽然函数fn是被对象b所引用，但是在将fn赋值给变量j的时候并没有执行所以最终指向的是window
