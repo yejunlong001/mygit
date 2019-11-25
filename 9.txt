@@ -331,3 +331,130 @@ Vue校验是否手机号码、电子邮件
       }; 
     },
 
+
+var a = '';
+var b = undefined;
+var c = null;
+var d = 0;
+var e = false;
+var f = true;
+=======================================================
+
+第一：var a = '',当a为空字符的时候
+                 等价于false
+                 等价于if(!a){alert('不存在')}
+                 等价于0
+
+
+第二：var b = undefined，当b为undefined的时候
+                         等价于null
+                         等价于if(!b){alert('不存在')};
+
+
+第二：var c = null, 当c为null的时候
+                    等价于if(!c){alert('不存在')};     
+
+
+
+
+数组
+=======================================================
+快速入门——数组
+
+Array.length; 获取长度 ?Array.length=X 可以直接改变长度
+
+
+indexOf 返回指定元素位置
+
+
+slice?slice(x,y) 返回x到y的一个数组，截取Array部分元素，返回新Array(不改变原数组) slice()复制整个数组
+
+
+push() 尾末添加元素?
+
+
+pop()?尾末删除元素
+
+
+unshift()?头部添加元素?
+
+
+shift()?头部删除元素
+
+
+sort() 对Array进行排序，修改当前Array位置（默认顺序排序）
+
+
+reverse() 把整个Array元素反转
+
+splice() 改变原数组，删除，插入，替换 (x,y,z) 索引 执行几个 替换元素
+
+
+concat() 合并两个数组，返回新数组(不改变原数组)
+
+
+join() 数组转换成字符串join("") 指定符号拼接join("-")
+
+
+
+
+
+只能输入数字-小数点后两位
+======================================================================
+<input type="text" v-model="telephone" @input="change(telephone,'telephone')">
+
+data:{
+     telephone: ""
+   },
+   methods: {
+
+      change(val,params) {
+        val = val.replace(/(^\s*)|(\s*$)/g, "")
+        if(!val) {
+          this[params] = "";
+          return
+        };
+        var reg = /[^\d.]/g
+        val = val.replace(reg, "")     // 只能是数字和小数点，不能是其他输入
+        val = val.replace(/^\./g, ""); // 保证第一位只能是数字，不能是点
+        val = val.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); // 小数点只能出现1次
+        val = val.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); // 小数点后面保留2位
+        this[params] = val;
+      },
+
+   },
+
+
+例子：=============
+<div id="app">
+   <br>
+   电话号码：<input type="text" v-model="telephone" @input="change(telephone,'telephone')">
+   <br>
+   金额：<input type="text" v-model="money" @input="change(money,'money')">
+</div>
+<script>
+var app = new Vue({
+   el:'#app',
+   data:{
+     telephone: "",
+     money:'',
+   },
+   methods: {
+      change(val,params) {
+        val = val.replace(/(^\s*)|(\s*$)/g, "")
+        if(!val) {
+          this[params] = "";
+          return
+        };
+        var reg = /[^\d.]/g
+        val = val.replace(reg, "")     // 只能是数字和小数点，不能是其他输入
+        val = val.replace(/^\./g, ""); // 保证第一位只能是数字，不能是点
+        val = val.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); // 小数点只能出现1次
+        val = val.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); // 小数点后面保留2位
+        this[params] = val;
+      },
+   },
+});
+</script>
+
+
