@@ -458,3 +458,48 @@ var app = new Vue({
 </script>
 
 
+vue校验数字-小数-负数:正则表达式
+===============================================================================================
+<div id="app">
+   <h1>电话号码：<input type="text" v-model="telephone" @input="onlyNumber('telephone')"></h1>
+   <h1>邮编号码：<el-input type="text" v-model="postnumber" @input="onlyNumber('postnumber')"></el-input></h1>
+   <h1>买入金额：<input type="text" v-model="buy" @input="onlyFloatNumber('buy')"></h1>
+   <h1>欠债金额：<el-input type="text" v-model="total" @input="onlyNegativeNumber('total')"></el-input></h1>
+   {{total}}
+</div>
+<script>
+var app = new Vue({
+   el:'#app',
+   data:{
+     telephone: "",
+     postnumber:'',
+     buy:'',
+     total:'',
+   },
+   methods: {
+     //只能输入正整数
+     onlyNumber(arg){
+       this[arg] = this[arg].replace(/[^\.\d]/g,''); //只能输入数字和点
+       this[arg] = this[arg].replace('.','');        //禁止输入小数点
+     },
+     //可以输入小数点并保留几位小数
+     onlyFloatNumber(arg){
+       this[arg] = this[arg].replace(/[^\.\d]/g,''); //只能输入数字和点
+       this[arg] = this[arg].replace(/^\./g, "");    //保证第一位只能是数字，不能是点
+       this[arg] = this[arg].replace(".","$#$").replace(/\./g,"").replace("$#$","."); //小数点只能出现1次
+       this[arg] = this[arg].replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //保留小数点后面2位,\d\d\d表示保留3位
+     },
+     //只能输入正负整数
+     onlyNegativeNumber(arg){
+       var value = this[arg].charAt(0); 
+       this[arg] = this[arg].replace(/[^\.\d]/g,''); //只能输入数字和点
+       this[arg] = this[arg].replace('.','');        //禁止输入小数点
+       if(value == '-'){
+         this[arg] = '-' + this[arg];
+       };
+     },
+   },
+});
+</script>
+
+
