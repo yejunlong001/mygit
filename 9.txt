@@ -620,3 +620,262 @@ export default new VueRouter({
 
 
 
+
+
+
+四、vue 数据变了，但是视图没有改变：可以用以下方法， https://segmentfault.com/q/1010000018899255/
+====================================================================
+
+方法一：
+this.$set(this.form, 'name', '')
+
+例如：
+list:[
+       {name:'中智',age:22},
+       {name:'港汇',age:33},
+       {name:'徐汇',age:22},
+     ],
+this.list.forEach(item=>{
+        
+        this.$set(item,'valueNum',4);  //item.valueNum  = 4; 等价于，就是采用set的方式给list数组添加一个valueNum字段。
+
+      });
+
+
+
+方法二：
+只能改变整个form才能避免这种情况 this.form=Object.assign({name:'张三'},this.form)
+
+
+
+
+五、map方法到底会不会改变原始数组？ https://blog.csdn.net/weixin_33826268/article/details/91444116
+=================================================================.
+
+ map不不能遍历对象，只能遍历数组
+
+“map()不会改变原始数组”这句话并不严谨。而应该是“当数组中元素是值类型，map不会改变原数组；当是引用类型，则可以改变原数组”。 
+
+
+  然而，map方法体现的是数据不可变的思想。该思想认为所有的数据都是不能改变的，只能通过生成新的数据来达到修改的目的，因此直接对数组元素或对象属性进行操作的行为都是不可取的。
+
+
+
+
+
+六。.Object.assign()基本用法：其实就是复制的意思，这种方法能触动视图的更新哦
+===============================================================
+
+
+
+
+
+七、Collapse 折叠面板 用来替代   <el-tabs> https://www.cnblogs.com/grt322/p/8577862.html
+================================================================
+<el-collapse v-model="activeNames" @change="handleChange">
+ 2   <el-collapse-item title="一致性 Consistency" name="
+
+
+
+
+八、怎么传有两层结构以上的参数对象呢？
+==================================================================
+
+   <h1>电话号码：<input type="text" v-model="telephone.tel" @input="onlyNumber('result.sum')"></h1>
+   <h1>电子邮件：<input type="text" v-model="telephone.tel" @input="onlyNumber('result.email.num')"></h1>
+   <h2>{{result.sum}}</h2>
+   <h2>{{result.email.num}}</h2>
+
+data:{
+     telephone:{ 
+        tel : '',
+     },
+     result:{
+       sum: 1,
+       email: {
+         num:'3'
+       }
+     },
+   },
+
+onlyNumber(arg){
+       let str = arg.split('.');
+       let res = this;
+       for(let i=0;i<str.length -1;i++){
+         res = res[str[i]];                          // 先拿到除了最后一级的结果 this['result']  
+       };
+       res[str[str.length -1]] = this.telephone.tel; //再拿到最后一层级 this['result']['sum']
+     
+       // eval(`this.${arg} = ${ this.telephone.tel }`);  //这种方式是最快的
+       // eval(`this.${arg} = ${ 1000 }`);                //这种方式是最快的
+
+     },
+
+
+
+九、new Map()的使用:  即创建一个Map对象实例，返回的结果是一个对象
+====================================================================================================
+主要作用是：它如同一个容器，用来装你需要的数据。然后提供了很多的方法来处理你的数据。
+
+1.new一个map对象 ，键值唯一。           
+
+例如：
+var m = new Map();       //新建一个空的键值对对象，键值自动只能保存唯一的键值对，相同则后面的覆盖前面的。   
+
+操作方法：
+m.set("name","刘德华")   //给集合设置键值对
+m.get("name")            //读取
+m.has("name")：          //判断是否存在该键。如果值在集合中存在，返回true,否则false
+m.delete(value)：          //从集合中移除一个值，并且会返回true或者false
+m.clear():                 //移除集合里所有的项
+
+遍历方法：
+m.keys()：    返回一个包含集合中所有键的对象集合
+m.values()：  返回一个包含集合中所有值的对象集合
+m.forEach()： 用于对集合成员执行变量循环，没有返回值 
+m.size：      返回一个包含集合中所有键值对的数量或者长度
+
+去重
+let links = [
+  {id:'001',name:'刘德华'},
+  {id:'002',name:'黎明'},
+  {id:'002',name:'郭富城'},
+  {id:'003',name:'周杰伦'},
+  {id:'003',name:'张学友'},
+];
+//new一个map对象实例{},map的对象不会出现重复值
+let res = new Map();
+//帅选数据
+links.forEach((item)=>{
+	if(!res.has(item.id)){
+		res.set(item.id,item); //利用map的has和set方法去重
+	};
+});
+console.log(res);
+let kong = [];
+//利用map的forEach方法遍历map对象res
+res.forEach(item=>{
+	kong.push(item);
+});
+
+console.log(kong);
+
+
+
+
+
+
+
+
+
+
+10，数组的 filter() 方法，返回的结果是一个新创建的数组， 只要不符合条件的数据，就不返回，那么新数组的长度就一定是小于或等于原数组的长度啦。
+====================================================================================================
+filter() 
+         方法创建一个新的数组，新数组中的元素 是 符合条件的所有元素。
+         帅选出来的数据或者返回回来的数据一定是“源数据”里面的数据，而且是“一模一样”的。*******比较重要，相当于是源数据的子集,不能改变返回的源数据，跟return没有关系了。
+         只要不符合条件的就不返回，
+         filter不会修改原数组，也不会修改新数组
+         那么返回的新数组的长度，一定是小于或者等于 原数组的长度了。
+         只需要“执行条件”，可以省去return， 当有表达式的时候，需要()括号包住
+         只需要“执行条件”
+         只需要“执行条件”即可，不需要别的。
+
+         let arr = [
+                     {id:1,name:'刘德华'},
+                     {id:2,name:'郭富城'},
+                     {id:3,name:'周杰伦'},
+                   ];
+
+         例子1：
+         let roo = arr.filter(item => item.id == 3 );           //[{id:3,name:'周杰伦'}]
+         等价于：
+         let roo = arr.filter(item => ( item.id == 3 ) );       //[{id:3,name:'周杰伦'}]
+         等价于：
+         let roo = arr.filter(item => { if(item.id == 3){ return item } } );  //[{id:3,name:'周杰伦'}]
+
+
+         例子2：
+         let doo = [3,4,6,8];
+         
+         let roo = foo.filter(item => item * 2);  //结果还是： [3,4,6,8] 
+
+         let roo = foo.filter(item => { return item * 3 }); //结果还是： [3,4,6,8] 
+ 
+         总结：filter仅仅是用来筛选数据的，不能用来修改数据。不能对源数据进行加减乘除类似的运算。
+
+
+         
+
+
+         
+
+
+11，数组的 map()方法，返回的结果是一个新创建的数组， 不管条件符不符合，都 一 一 返回，哪怕是undefined，那么新数组的长度一定是和原数组的长度相等哦
+=====================================================================================================
+map()   创建一个新的数组
+        帅选出来的数据可以是改变了的数据(例如可以被加减乘除等等)
+        不管条件符不符合，都一一返回，哪怕是返回undefined，一一映射哦
+        那么新数组的长度一定是和原数组的长度相等哦 
+
+      
+2         4
+3         5
+5   +2    7
+7         9
+9         11
+
+以上就表示映射，一一对应
+
+
+例如：
+
+let foo = [2,3,4,5,8];
+
+let roo = foo.map(item => { return item * 2 });    //结果： [4,6,7,10,16];
+
+等价于：
+
+let roo = foo.map(item => item * 2);  //结果： [4,6,7,10,16];
+
+等价于：
+
+let roo = foo.map(item => (item * 4));
+
+
+
+实例2：
+
+let roo = foo.map(item => { if(item > 3){ return item } });    // 结果：[undefined, undefined, 4, 5, 8]  
+
+总结：map方法，即使没有符合条件的项，他也会返回undefined，会一一映射，新数组的长度一定和原数组的长度是相等的，并且源数据可以被修改。进行加减乘除类似的运算。
+
+
+例子3：
+let arr = [
+  {id:1,name:'刘德华'},
+  {id:2,name:'郭富城'},
+  {id:3,name:'周杰伦'},
+];
+
+let roo = arr.map(item => { if(item.id > 1){ return item.flag = 10 } }  ); 
+
+
+console.log("roo",roo);
+//结果：
+0: {id: 1, name: "刘德华"}
+1: {id: 2, name: "郭富城", flag: 10}
+2: {id: 3, name: "周杰伦", flag: 10}
+
+console.log("arr",arr);
+//结果：
+0: {id: 1, name: "刘德华"}
+1: {id: 2, name: "郭富城", flag: 10}
+2: {id: 3, name: "周杰伦", flag: 10}
+
+
+总结：当源数据是引用类型的数据（对象型的数据）时候，源数据可以被修改。  当源数据是常量数字数组的时候，不会被修改。
+
+
+
+
