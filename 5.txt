@@ -1,156 +1,1342 @@
 
-<!DOCTYPE html>
-<html><!-- InstanceBegin template="/Templates/article.dwt" codeOutsideHTMLIsLocked="false" -->
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta name="format-detection" content="telephone=no">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="../../javascript/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="../../javascript/faxingdao.js"></script>
-<link rel="stylesheet" type="text/css" href="../../cssstyle/swiper.min.css">
-<link rel="stylesheet" type="text/css" href="../../cssstyle/faxingdao.css"/>
-<link rel="shortcut icon" href="http://www.faxingdao.com/favicon.ico" />
-<meta name="author" content="ye.junlong">
-<!-- InstanceBeginEditable name="doctitle" -->
-<title>平刘海+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</title>
-<meta name="description" content="DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD">
-<meta name="keywords" content="发型,发型设计,流行发型,男生发型,女生发型,短发发型,短发,空气刘海,空气烫,短发图片,脸型,公主头">
-<!-- InstanceEndEditable -->
-</head>
+git@172.16.4.127:AFOne/Portal.git
 
-<body>
-<div class="father">
-  <header>
-    <div class="siteAll">
-        <ul></ul>
-    </div>
-    <!--logo-->
-    <div class="logo">
-      <div class="logoBox">
-        <div class="zuo"><a href="http://www.faxingdao.com/"></a></div>
-        <div class="you">
-          <form  action="http://www.baidu.com/baidu" target="_blank">
-            <h5><input class="in1 in3" type="text" value="" id="q" name=word lang="zh-CN" autocomplete="off"></h5>
-            <h5><input class="in2"  type="submit" value="搜索"></h5>
-          </form>
-        </div>
-      </div>
-    </div>
-  </header>
-  
-  <!--mobile logo-->
-  <div class="mobileLogo">
-    <!-- InstanceBeginEditable name="mobileLogowenziLogo" -->
-    <h2><a href="../../zhuanti/pingliuhai.html" class="wenziLogo">平刘海</a><span class="list"></span><span class="close"></span></h2>
-    <!-- InstanceEndEditable -->
+页面元素权限添加
+
+第一：git查看某个文件的修改历史  :  git log --pretty=oneline 文件名
+
+第二：git show 356f6def9d3fb7f3b9032ff5aa4b9110d4cca87e
+
+
+
+D:\workspace\service\source\CIIC.AFOne.Services\Services\CIIC.AFOne.Services
+
+
+api/ComAdminUserRealtion @汤吾子 接口加好了
+
+
+
+api/ComAdminUserRealtion/list  ComAdminId
+api/ComAdminUserRealtion/create  ComAdminId  UserId
+api/ComAdminUserRealtion/delete/80BA2F6F-9504-4B2F-80DA-AC4D2375E33A  
+
+
+徐雯艳
+
+
+ManagementFeeMonthChange
+
+
+
+这句话是属于1300年前写好的预言，是预言一个国家的领袖，相当于猜字谜，字谜里面有当今领袖的名字或者偏旁部首等等。把羽字拆开就是两个习，意味着能当4届皇帝，同时习的大写字体是‘習’，是不是就是含有偏旁羽字呢？是不是很巧？另外四足，说明该人或者该物体站立的非常平稳，四平八稳，就有“平”的意思。所以联想起来，你们知道大概指的是谁了吧。
+
+百灵来朝，双羽四足，说的其实就是上面这个领袖要带我们走向辉煌的开始啦。
+
+
+http://localhost:8070/#/PersonCenter/contractApproval?applyType=CT001&applyId=7b48ec04-c814-4131-9079-2257d09c3400&taskId=128152
+http://localhost:8070/#/PersonCenter/contractApproval?applyType=CT001&applyId=7b48ec04-c814-4131-9079-2257d09c3400&taskId=128152
+
+
+
+
+SH0690  黄静  //提起审批，我是员工
+
+SH0535  周密  //法务审批人,我是领导
+
+SH0442  陈迪  
+
+
+
+projectUserListGet  //获取参与人
+
+
+handleSelect //选择参与人
+
+
+
+
+
+
+
+
+
+
+
+
+在项目新增的时候，邀标书需上传4个文件，
+
+只要其中一个上传了，都给保存。
+
+但是现在，后台报错，提示邀标书字段是必传啊
+
+projectInvitation.invitationFile:?"......."
+"
+Error converting value "" to type 'System.Guid'. Path 'projectInvitation.invitationFile'
+
+
+
+@海风 @豌豆娃的小池塘 http://172.16.4.37:8088/SubModule/UnitiveDocument/MyDesk.aspx
+账号：0770
+密码：123456
+
+
+
+
+共16个请求：
+/Customer/list
+/ProjectUserRelation/list
+
+
+
+=========================================
+
+http://localhost:8070/sockjs-node/info
+http://localhost:8070/api/workflow/tasks/count
+http://localhost:8070/api/UserProfile/getUserFields
+http://localhost:8070/api/Project/?projectId
+http://localhost:8070/api/Customer/list ***
+http://localhost:8070/api/ProjectUserRelation/list   ***
+http://localhost:8070/api/ProjectEvaluate?projectId
+http://localhost:8070/api/ProjectCommunication/list
+http://localhost:8070/api/Contract/listbyproject
+http://localhost:8070/api/Quotation/list
+http://localhost:8070/api/UserProfile/getUserSign
+http://localhost:8070/api/Permission/GetCenter
+http://localhost:8070/api/Permission/GetAllMenu
+http://localhost:8070/api/Customer/list
+
+http://localhost:8070/api/Attachment/d0aca427-7a61-418b-9a00-9d6d18172f33?
+http://localhost:8070/api/Attachment/76ac446b-40b9-452d-a03d-ae7e6826d880
+
+
+
+
+登录开机密码：Hao123456
+
+登录开机密码：Hao654321
+
+
+{ "invitationFile": "86bb3feb-22b1-4fec-b36b-a95ce81b90b7", "feedbackFile": "579ba1f6-39be-4e5b-836a-7f420670270b", "otherFile1": "a3598a23-f1ab-4146-bc4a-351aadb0c9b4", "otherFile2": "79c3b886-f6d8-4413-a9d4-cd39c84900db" }
+
+
+        //setTimeout(()=>{this.dataObj.quotationType = response.result.form.contractCategoryId;},1);
+
+
+@瘋癲牛小邪 
+减免业务
+api/Fw_JMYW/list
+服务项目 ， 项目负责人 ，这两个字段的中文名称有空能返给我吗..
+====================================
+url: Fw_JMYW/{Id}??????? (获取单个)
+这个接口的：公司名称 ， 参与人 ，客服人员， 这3个字段的中文名称能返给我吗.....
+=====================================
+另外：ApplyId 审批单号 我提交了，但是每次返回都是null
+
+
+
+
+1.前道客户咨询  ==
+2.前道客服咨询  ==
+3.劳动争议      ==
+
+5.全国社保审核  ==
+
+6.财务合同 FinanceContract
+7.催款     AskMoney
+8.减免业务 ReduceAndExempt
+9.代收代付 CollectionAndPaymentMoney
+
+4.营业执照审核  ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+d盘是最新的，2019-10-8写,放假前
+
+
+
+nba35.com
+nba27
+nba46
+nba49.com
+nba74
+nba120
+
+
+cnpm?install?--save-dev?less-loader
+
+汤吾子:
+那你接下去可以看供应商这一块了
+
+
+汤吾子:
+先话页面
+
+
+
+
+a2ec5775-842b-4d19-afc3-08d72467d091
+
+projectCommCompanies
+
+
+http://localhost:8070/api/ProjectCommunication?projectCommunicationId=90c0785d-dab8-4ce1-bf1c-e6aa660b33
+
+
+POST/api/Project/list 这个加了个参数{
+  "comadmincode": "string",
+  "comadminname": "string",
+  "customername": "string",
+  "customercode": "string",
+  "projectname": "string",
+  "projectcode": "string",
+  "projectstatus": 0,
+  "pageIndex": 0,
+  "pageSize": 0
+}
+
+
+
+6222031001017228607 2019-08-10  
+
+
+74
+余额:122.3  16:56
+     125.3  18:02
+     127.6  19:01
+     129.3  20:01
+
+
+GET/api/ProjectEvaluate
+POST/api/ProjectEvaluate/create
+POST/api/ProjectEvaluate/update
+POST/api/ProjectEvaluate/delete/{ProjectEvaluateId}
+
+git@172.16.4.127:AFOne/Portal.git
+
+
+
+wb.zouyl
+wb.yejl
+
+
+@豌豆娃的小池塘 @请叫我邹小多 前端日期格式，用that.$dateFormat
+格式化
+
+
+const params = {
+AfCompanyNo: "AF25617,AF32185,AF41995"
+};
+
+
+
+http://localhost:8070/api/Dict/List  这个列表展示页接口传入第二页，但是始终返回的是第一页的结果吗 
+PageAndWhereBase:?{pageIndex: 2, pageSize: 10, where: ""}
+
+
+
+
+是返回的结果，不是我想要的结果呀
+是不是点击“查询按钮”应该这样：
+const PageAndWhereBase = {
+pageIndex:1,
+pageSize:10,
+dictId:'c7ea8fdb-4fd4-4281-9cc7-01c4cd853905',
+name: "公积金",
+};
+
+
+
+
+//sort
+      sortClick(property){
+         if(this.sortStatus==true){ 
+            this.sortStatus = false;
+            var arr = [];
+            for(let i=0;i<this.dictItemList.length;i++){
+              arr.push(this.dictItemList[i].sort);
+            }
+            function sortNumber(a,b){
+                return a - b
+            };
+            arr.sort(sortNumber);
+            console.log(arr);
+         }
+         else{
+            this.sortStatus = true;
+            var arr = [];
+            for(let i=0;i<this.dictItemList.length;i++){
+              arr.push(this.dictItemList[i].sort);
+            }
+            function sortNumber(a,b){
+                return b - a
+            };
+            arr.sort(sortNumber);
+            console.log(arr);
+         }
+      },
+
+
+
+
+
+
+
+VS code 修改主题设置代码对其齐线
+renderIntentGuides
+找到 文件-->首选项——>设置→搜索renderIntentGuides→将此选项改为true(默认为false)，就可以了。
+
+
+VSCode关闭代码参考线和当前选中行高亮
+1.关闭代码参考线
+在设置中搜索：render Intent Guides 取消勾选
+
+
+2.设置当前选中行 行号高亮
+在设置中 默认是选的 line（整行高亮），我们换成 gutter（行号高亮）
+在设置中搜索：render line Highlight
+选择：gutter
+
+
+kai ji mi ma
+AAAaaa1234
+\\172.16.4.33\部门共享\张军\Microsoft Visual Studio
+
+
+gif地址：
+操作：在所在文件夹 右键git bash
+浏览器打开网址：http://172.16.4.127:8089/groups/AFOne
+请选择：SSH： 地址： git@172.16.4.127:AFOne/Prototype.git
+然后在gif中输入：$ gif clone git@172.16.4.127:AFOne/Prototype.git 
+用户名：wb.yejl@ciicsh.com
+mimi: Hao417788569
+
+
+
+
+git@172.16.4.127:AFOne/Portal.git
+
+
+
+DictionaryManage.vue DictionaryQuery.vue FeeManage.vue dictionaryManage.less dictionaryQuery.less feeManage.less
+
+
+
+
+
+
+===========================================================================
+dianying44.com
+dianying00.com
+dianying003.com
+dianyingban.com
+dianyingxian.com
+dianyingmin.com
+dy8y.com
+dy8t.com.
+dy8b.com
+dy4008.com
+
+电影天堂 154746
+电影 53304
+电影天堂网 39306
+九州电影网 19729
+三级电影 19536
+秋霞电影网 17585
+快播电影 11171
+第一次性接触 10153
+最新电影 10351
+在线电影 6299
+免费电影 5536
+6080yy电影在线看 134674
+
+韩国电影 56719
+李丽珍 21140
+日本电影经典 11141
+
+今日新鲜事 1775930
+
+
+
+
+https://www.liaoxuefeng.com/wiki/896043488029600/900375748016320
+
+=============================================================================
+git add指定文件----例如：git add feeManage.css feeGood.css
+
+
+
+要查看远程库的信息，用git remote：
+$ git remote
+origin
+
+
+或者，用git remote -v显示更详细的信息：
+$ git remote -v
+origin  git@github.com:michaelliao/learngit.git (fetch)
+origin  git@github.com:michaelliao/learngit.git (push)
+
+===============================================================================
+因此，多人协作的工作模式通常是这样
+1.首先，可以试图用git push origin <branch-name>推送自己的修改；   //记得加上origin 关键字
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+2.如果合并有冲突，则解决冲突，并在本地提交；
+
+3.没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+
+4.如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+5.这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+
+
+小结
+查看远程库信息，使用git remote -v；
+
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+
+在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+
+
+
+
+=====================================================================
+https://www.liaoxuefeng.com/wiki/896043488029600/900003767775424
+
+
+Git鼓励大量使用分支：
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+
+
+========================================================================================================
+
+
+中智上海经济技术合作有限公司
+项目名称：中智AFOne管理系统
+运用到的技术栈：vue，js，less, npm，element-UI ,css, html, json,  git
+项目流程：由业务提供需求，然后由产品经理画出原型图片，再生成文档交给前端开发。
+
+工作内容：通过文档和原型图片，用element-UI画出原型界面，即布局web界面，再通过后端给的api接口，利用ajax的异步请求axios向后台请求数据，
+          然后通过vue对数据进行双向绑定，在前端展示数据或者提交数据到.net后台。
+
+描述：本项目前后端完全分离状态，vue脚手架单页面开发，新的页面采用element-UI框架。
+      运用node.js的npm来安装vue脚手架，vue组件开发，运用vueRouter,vuex,aixos,ES6,js,等技术开发。
+      前后端数据交流主要通过API接口交互。项目的版本控制主要用git。样式用less。
+
+
+
+
+
+中国平安科技部：
+项目名称：中国信托登记有限公司
+运用到的技术栈：vue，js，sass，css, html, json, svn
+项目流程：由客户提供需求，然后由产品经理画出原型，再生成文档交给前端开发。
+项目内容：中国信托登记公司，管理着全国数家信托机构，为了规范信托行业，就开发了信托登记平台。
+          需要办理信托的客户或者企业来到这个平台注册账户：
+          业务流程为：
+          开户申请--变更申请--提交资料---上传资料--修改资料
+          平台审核--通过或者退回--详情页面
+          客户注销等等一系列流程。
+          角色还分为：超级管理员，中信登申请岗，中信登审核岗，查询岗，代理机构申请岗，代理机构审核岗，代理机构查询岗等等
+工作内容：通过产品文档，用html+css+js画出原型界面，再通过后台返回的api接口数据，然后通过vue对数据进行双向绑定
+          在前端展示数据或者提交数据到Java后台。
+
+描述：本项目前后端半分离状态，老的页面当中含有angularJs，新的页面采用vueJs来替代它。同时页面当中含有jsp代码。jQuery代码。
+      前后端数据交流还是通过API接口交互。项目的版本控制主要用SVN。样式用sass。
+
+
+
+
+
+学习资料
+===============================================================================
+
+1.async同步函数await实例，实现接口前后相互依赖
+
+   console.log('start');
+   //获取第一个res
+   axios.get(api.test1()).then(res=>{
+     console.log("=======1======");
+     console.log(res.data);
+     console.log("=======1======");
+   });
+   //获取第二个res
+   axios.get(api.test2()).then(res=>{
+     console.log("=======2======");
+     console.log(res.data);
+     console.log("=======2======");
+   });
+    console.log('end');
+    
+    //采用这种结构，就行
+    async function foo(){
+      let x = await axios.get(api.test1());  //这个变成了同步代码
+      let y = await axios.get(api.test2());  //这个变成了同步代码
+      console.log(y.data);  
+      console.log(x.data);
+      console.log('333');
+    };
+    foo();
+
+
+
+
+2.采用promise实现接口前后依赖效果
+  new Promise(function(resolve,reject){
+      axios.get(api.test1()).then(res=>{
+        resolve(res.data);
+      });
+   }).then(myData=>{
+       axios.get(api.test2()).then(res=>{
+        console.log(myData); 
+        console.log(res.data);
+      });
+   });
+
+
+
+
+
+
+3.去除字符串空格方法
+  <div id="app">
+	<el-input v-model.trim="name" placeholder="请输入内容"></el-input>
+	{{name}}-----{{myName}}
   </div>
-  
-  <!--nav-->
-  <nav>
-    <div class="nav pindaoNav">
-      <ul>
-        <li><a id="i1" href="http://www.faxingdao.com/">今日首页</a></li>
-        <li><a id="i2" href="../../nvshi.html">女士发型</a></li>
-        <li><a id="i3" href="../../nanshi.html">男士发型</a></li>
-        <li><a id="i4" href="../../oumei.html">欧美发型</a></li>
-        <li><a id="i7" href="../../rihan.html">日韩发型</a></li>
-        <li><a id="i6" href="../../mingxing.html">明星发型</a></li>
-        <li><a id="i8" href="../../chuanyidapei.html">穿衣搭配</a></li>
-        <li class="last"><a id="i5" href="../../ketang.html">发型图库</a></li>
-      </ul>
-    </div>
-    <div class="smallNav">
-      <ul id="pindaoUl"></ul>
-    </div>
-  </nav>
-  
-  <!--article-->
-  <article>
-    <div class="main">
-      <div id="script1"></div>
-      <div class="article">
-        <div class="zuo">
-          <!-- InstanceBeginEditable name="neirong" -->
-          <div class="neirong">
-            <h1>平刘海+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT<b id="b1">(1)</b><b>(2)</b><b>(3)</b><b>(4)</b><b>(5)</b><b>(6)</b></h1>
-            <h2><a href="http://www.faxingdao.com/">首页</a><em>&gt;</em><a href="http://www.faxingdao.com/">发型岛</a><em>&gt;</em><a href="../../nvshi.html">女士发型</a><em>&gt;</em><a href="../../zhuanti/pingliuhai.html">平刘海</a><em>&gt;</em><u>正文</u></h2>
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p>
-            <div class="photo" id="p1"><img src="../../imagesBag/lady/a/yejunlong.1.jpg">
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p></div>
-            <div class="photo"><img src="../../imagesBag/lady/a/yejunlong.2.jpg">
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p></div>
-            <div class="photo"><img src="../../imagesBag/lady/a/yejunlong.3.jpg">
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p></div>
-            <div class="photo"><img src="../../imagesBag/lady/a/yejunlong.4.jpg">
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p></div>
-            <div class="photo"><img src="../../imagesBag/lady/a/yejunlong.5.jpg">
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p></div>
-            <div class="photo"><img src="../../imagesBag/lady/a/yejunlong.6.jpg">
-            <p> DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD </p></div>
-            <!--page ad-->
-            <div id="script2"></div>
-            <div class="pageNo"><a class="self">1</a><a>2</a><a>3</a><a>4</a><a>5</a><a>6</a></div>
-          </div>
-          <!-- InstanceEndEditable -->
-        </div>
-        <div class="you" id="youNews">
-           <!-- InstanceBeginEditable name="you-News" -->
-             <div id="you-nvsheng"></div>
-           <!-- InstanceEndEditable -->
-        </div>
-      </div>
-      
-      <!--站长推荐-->
-      <div class="pindao">
-        <div class="titleNav ArticletitleNav"><span><a href="http://www.faxingdao.com/">网站推荐</a></span></div>
-        <div id="script4"></div>
-        <div class="hezi">
-          <!-- InstanceBeginEditable name="hezi" -->
-          <ul id="foot-nvsheng"></ul>
-          <!-- InstanceEndEditable -->
-        </div>
-        <div id="script5"></div>
-      </div>
-    </div>
-  </article>
-  
-  <!--all nav list-->
-  <section>
-    <div class="listBox">
-      <div class="listBoxNav">
-        <ul></ul>
-      </div>
-    </div>
-  </section>
-  
-  <!--杂项-->
-  <section>
-  <div class="kong"></div>
-  <!--fid ad-->
-  <div class="fixJavascript" id="script6"></div>
-  <div class="piaofuJavascript" id="script7"></div>
-  </section>
-  
-  <!--foot-->
-  <footer>
-    <div class="foot"> <span class="us"><a rel="nofollow" href="http://www.faxingdao.com/html/company/about.html" target="_blank">关于我们</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/mianze.html" target="_blank">免责声明</a> | <a href="http://www.faxingdao.com/html/company/guanggao.html" rel="nofollow" target="_blank">广告服务</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/contact.html" target="_blank">联系我们</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/law.html" target="_blank">网站律师</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/yijian.html" target="_blank">意见反馈</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/zhaopin.html" target="_blank"> 发型岛招聘</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/link.html" target="_blank">友情链接</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/tiaokuan.html" target="_blank" title="网站条款">网站条款</a> | <a rel="nofollow" href="http://www.faxingdao.com/html/company/tougao.html" target="_blank" title="网站投稿">网站投稿</a> </span> <span class="tel">不良信息举报电话：86+52344589888 举报邮箱 faxingdao@163.com 互联网违法和不良信息举报热线 </span> <span class="Copyright"><strong>Copyright 2008-2020  . </strong>All Rights Reserved  www.faxingdao.com</span> <span>手机扫一扫访问~发型岛~版权所有</span> <span><b></b></span> <span class="acount"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1276298823'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D1276298823%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></span> </div> 
-  </footer>
-  <div class="backTopBtn"></div>
+  <script type="text/javascript">
+	var app = new Vue({
+		el:'#app',
+		data:{
+			name:'11111',
+		},
+		methods:{
+
+		},
+		computed:{
+			myName(){
+				let str = this.name.replace(/\s*/g,"")
+				this.name = str;
+				return str;
+			},
+		},
+	});
+  </script>
+
+
+
+
+
+
+4.组件传值：
+======================================================
+
+（1）、父组件可以使用 props 把数据传给子组件。
+（2）、子组件可以使用 $emit 触发父组件的自定义事件。
+
+vm.$emit( event, arg ) //触发当前实例上的事件
+
+vm.$on( event, fn );//监听event事件后运行 fn； 
+
+
+
+
+4.文件上传
+=====================================================
+uploadFile(file){
+      if(file.size>5*1024*1024){
+        this.openError('文件大小不得超过5M！');
+        return;
+      };
+      let fileData = new FormData();
+      fileData.append("attFile",file.raw);
+      api.CustomerQualificationGetInit().then(res=>{
+        const params = { 
+          bizId:res.result.form.customerQualificationId, //拿到上传附件的id
+          attBizCode:'QualificationBiz001',
+          attTypeCode:'QualificationType001', 
+          attFile:fileData
+        };
+        api.FileUpLoad(params).then(res=>{
+          if(res.result.length != 0){
+            this.openSuccess('证照上传成功');
+            this.ruleFormCompany.attId2 = res.result[0]; //需要一个变量来接收返回的id结果
+            file.attchmentId  = res.result[0]; //给file添加属性attchmentId
+            file.href = '/api/Attachment/Download/'+ res.result[0] + '?t='+ localStorage.access_token; //给file添加属性href
+          }
+          else{
+            this.openError('上传失败');
+          }
+        });
+      });
+    },
+
+// 销售中心 -> 新增项目 -> 上传附件-
+upLoadFileCreate: async (params) => {
+  const response = await Http.post(urls.baseUrl + '/Attachment/' + params.bizId + '?attBizCode=' + params.attBizCode + '&attTypeCode=' + params.attTypeCode , params.formdata,{
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  })
+  return await response.data
+ },
+// 销售中心 -> 新增项目 -> 删除附件
+upLoadFileDelete: async (params) => {
+  const response = await Http.post(urls.baseUrl + '/Attachment/Delete/' + params.attachmentId,)
+  return await response.data
+ },
+
+
+5.computed和watch的区别：
+===================================================================================================================================
+computed监听的变量是要重新命名的，不能用data里面的注册过的变量名。而且需要return值。相当于帅选好数据后就return给新的这个变量。
+watch监听的变量是直接监听data里面已经注册过的变量名称。无需重新取名字。当有变化的时候，会触动你想要调用的方法，并且可以得到新值和旧值。
+
+
+作用机制上
+1.watch和computed都是以Vue的依赖追踪机制为基础的，它们都试图处理这样一件事情：当某一个数据（称它为依赖数据）发生变化的时候，所有依赖这个数据的“相关”数据“自动”发生变化，也就是自动调用相关的函数去实现数据的变动。
+2.对methods:methods里面是用来定义函数的，很显然，它需要手动调用才能执行。而不像watch和computed那样，“自动执行”预先定义的函数
+ 【总结】：methods里面定义的函数，是需要主动调用的，而和watch和computed相关的函数，会自动调用,完成我们希望完成的作用
+
+1.watch擅长处理的场景：一个数据影响多个数据
+2.computed擅长处理的场景：一个数据受多个数据影响
+
+watch: {
+  firstName: function (val) { this.fullName = val + this.lastName }
+}
+
+computed:{
+  fullName: function () { return this.firstName + lastName }
+}
+
+
+
+6.js的this指向问题
+======================================================================
+this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
+
+例一：this指向他最近的上一级window
+function a(){
+    var user = "追梦子";
+    console.log(this.user); //undefined
+    console.log(this);　　//Window
+}
+window.a();
+
+
+例二：this指向他最近的上一级o
+var o = {
+    user:"追梦子",
+    fn:function(){
+        console.log(this.user);  //追梦子
+    }
+}
+o.fn();
+
+例三：this指向他最近的上一级o
+var o = {
+    user:"追梦子",
+    fn:function(){
+        console.log(this.user); //追梦子
+    }
+}
+window.o.fn();
+
+例四：this指向他最近的上一级b
+var o = {
+    a:10,
+    b:{
+        a:12,
+        fn:function(){
+            console.log(this.a); //12
+        }
+    }
+}
+o.b.fn();
+
+例五：this指向他最近的上一级b
+var o = {
+    a:10,
+    b:{
+        // a:12,
+        fn:function(){
+            console.log(this.a); //undefined
+        }
+    }
+}
+o.b.fn();
+
+例六：this指向他最近的上一级b
+var o = {
+    a:10,
+    b:{
+        a:12,
+        fn:function(){
+            console.log(this.a); //undefined
+            console.log(this); //window
+        }
+    }
+}
+var j = o.b.fn;
+j();
+这里this指向的是window，是不是有些蒙了？
+虽然函数fn是被对象b所引用，但是在将fn赋值给变量j的时候并没有执行所以最终指向的是window
+
+
+
+
+Vue校验是否数字
+===================================================================
+<el-input v-model="ruleForm.assets" type="number" @keydown.native="checkInputNumber($event)" :placeholder="placeholder" oninput="if(value.length > 30) value = value.slice(0,30)"></el-input>
+解释：
+type="number" : 表示只能输入数字
+oninput="if(value.length > 30) value = value.slice(0,30)" ：表示限制输入字符的长度
+@keydown.native="checkInputNumber($event)"：表示每次键入触发的事件
+ //只能输入数字
+ checkInputNumber(e){
+    let arr= ["-", "e", "+", "E"];
+    if(arr.includes(e.key)){
+      e.preventDefault(); //阻止默认输入字符
+    };
+    e.target.value = (e.target.value.match(/^\d*(\.?\d{0,1})/g)[0]) || null;   //保留小数点后两位
+  },
+
+
+
+Vue校验是否手机号码、电子邮件
+===================================================================
+<el-input @blur="telNoEvent"  v-model="ruleForm2.Mobile" maxlength="11" placeholder="请输入手机号码" show-word-limit size="small" style="width:280px;"></el-input>
+<el-input @blur="postNoEvent"  v-model="ruleForm2.Email" maxlength="50" placeholder="请输入电子邮箱"  show-word-limit size="small" style="width:280px;"></el-input>
+
+
+//手机号码输入框事件
+    telNoEvent(){
+      if(this.ruleForm2.Mobile.length > 0){
+        if(!this.isPoneAvailable(this.ruleForm2.Mobile)){
+          this.$message({message:'手机号码格式错误',type:'error' });
+          return;
+        };
+      }
+    },
+    //电子邮件输入框事件
+    postNoEvent(){
+      if(this.ruleForm2.Email.length > 0){
+        if(!this.isEmail(this.ruleForm2.Email)){
+          this.$message({message:'邮箱格式错误',type:'error'});
+          return;
+        };
+      }
+    },
+    //检测是否为手机号格式
+    isPoneAvailable(poneInput) {
+      var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+      if (!myreg.test(poneInput)) {
+          return false;
+      } else {
+          return true;
+      }
+    },
+    //检测是否为邮箱格式
+    isEmail(mail) {
+      var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (filter.test(mail)) {
+          return true; 
+      } else {
+          return false;
+      }; 
+    },
+
+
+
+
+var a = '';
+var b = undefined;
+var c = null;
+var d = 0;
+var e = false;
+var f = true;
+=======================================================
+
+第一：var a = '',当a为空字符的时候
+                 等价于false
+                 等价于if(!a){alert('不存在')}
+                 等价于0
+
+
+第二：var b = undefined，当b为undefined的时候
+                         等价于null
+                         等价于if(!b){alert('不存在')};
+
+
+第二：var c = null, 当c为null的时候
+                    等价于if(!c){alert('不存在')};     
+
+
+
+
+数组
+=======================================================
+快速入门——数组
+
+Array.length; 获取长度 ?Array.length=X 可以直接改变长度
+
+
+indexOf 返回指定元素位置
+
+
+slice?slice(x,y) 返回x到y的一个数组，截取Array部分元素，返回新Array(不改变原数组) slice()复制整个数组
+
+
+push() 尾末添加元素?
+
+
+pop()?尾末删除元素
+
+
+unshift()?头部添加元素?
+
+
+shift()?头部删除元素
+
+
+sort() 对Array进行排序，修改当前Array位置（默认顺序排序）
+
+
+reverse() 把整个Array元素反转
+
+splice() 改变原数组，删除，插入，替换 (x,y,z) 索引 执行几个 替换元素
+
+
+concat() 合并两个数组，返回新数组(不改变原数组)
+
+
+join() 数组转换成字符串join("") 指定符号拼接join("-")
+
+
+
+
+
+只能输入数字-小数点后两位
+======================================================================
+<input type="text" v-model="telephone" @input="change(telephone,'telephone')">
+
+data:{
+     telephone: ""
+   },
+   methods: {
+
+      change(val,params) {
+        val = val.replace(/(^\s*)|(\s*$)/g, "")
+        if(!val) {
+          this[params] = "";
+          return
+        };
+        var reg = /[^\d.]/g
+        val = val.replace(reg, "")     // 只能是数字和小数点，不能是其他输入
+        val = val.replace(/^\./g, ""); // 保证第一位只能是数字，不能是点
+        val = val.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); // 小数点只能出现1次
+        val = val.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); // 小数点后面保留2位
+        this[params] = val;
+      },
+
+   },
+
+
+例子：=============
+<div id="app">
+   <br>
+   电话号码：<input type="text" v-model="telephone" @input="change(telephone,'telephone')">
+   <br>
+   金额：<input type="text" v-model="money" @input="change(money,'money')">
 </div>
-<!--[if !IE]><!-->  
-       <script src="http://www.faxingdao.com/javascript/jquery.watermark.min.js" type="text/javascript" id="watermarkJs"></script>
-       <script>
-           $('.zuo img').watermark({text: '发型岛:faxingdao.com',textWidth: 145,textColor: 'white'});
-           $('.zuo img').watermark({path: 'imgBg/logo.png'});
-       </script>
-       <!--<![endif]-->
-       <!--[if IE 9]> 
-       <script src="http://www.faxingdao.com/javascript/jquery.watermark.min.js" type="text/javascript" id="watermarkJs"></script>
-       <script>
-         $('.zuo img').watermark({text: 'Faxingdao.com',textWidth: 100,textColor: 'white'});
-         $('.zuo img').watermark({path: 'imgBg/logo.png'});
-       </script>
-<![endif]-->
-<script type="text/javascript" src="http://www.faxingdao.com/javascript/ad.js"></script>
-</body>
-<!-- InstanceEnd --></html>
+<script>
+var app = new Vue({
+   el:'#app',
+   data:{
+     telephone: "",
+     money:'',
+   },
+   methods: {
+      change(val,params) {
+        val = val.replace(/(^\s*)|(\s*$)/g, "")
+        if(!val) {
+          this[params] = "";
+          return
+        };
+        var reg = /[^\d.]/g
+        val = val.replace(reg, "")     // 只能是数字和小数点，不能是其他输入
+        val = val.replace(/^\./g, ""); // 保证第一位只能是数字，不能是点
+        val = val.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); // 小数点只能出现1次
+        val = val.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); // 小数点后面保留2位
+        this[params] = val;
+      },
+   },
+});
+</script>
+
+
+vue校验数字-小数-负数:正则表达式
+===============================================================================================
+<div id="app">
+   <h1>电话号码：<input type="text" v-model="telephone" @input="onlyNumber('telephone')"></h1>
+   <h1>邮编号码：<el-input type="text" v-model="postnumber" @input="onlyNumber('postnumber')"></el-input></h1>
+   <h1>买入金额：<input type="text" v-model="buy" @input="onlyFloatNumber('buy')"></h1>
+   <h1>欠债金额：<el-input type="text" v-model="total" @input="onlyNegativeNumber('total')"></el-input></h1>
+   {{total}}
+</div>
+<script>
+var app = new Vue({
+   el:'#app',
+   data:{
+     telephone: "",
+     postnumber:'',
+     buy:'',
+     total:'',
+   },
+   methods: {
+     //只能输入正整数
+     onlyNumber(arg){
+       this[arg] = this[arg].replace(/[^\.\d]/g,''); //只能输入数字和点
+       this[arg] = this[arg].replace('.','');        //禁止输入小数点
+     },
+     //可以输入小数点并保留几位小数
+     onlyFloatNumber(arg){
+       this[arg] = this[arg].replace(/[^\.\d]/g,''); //只能输入数字和点
+       this[arg] = this[arg].replace(/^\./g, "");    //保证第一位只能是数字，不能是点
+       this[arg] = this[arg].replace(".","$#$").replace(/\./g,"").replace("$#$","."); //小数点只能出现1次
+       this[arg] = this[arg].replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //保留小数点后面2位,\d\d\d表示保留3位
+     },
+     //只能输入正负整数
+     onlyNegativeNumber(arg){
+       var value = this[arg].charAt(0); 
+       this[arg] = this[arg].replace(/[^\.\d]/g,''); //只能输入数字和点
+       this[arg] = this[arg].replace('.','');        //禁止输入小数点
+       if(value == '-'){
+         this[arg] = '-' + this[arg];
+       };
+     },
+
+
+
+
+   },
+});
+</script>
+
+//最新的数字输入判断
+==================================================================
+
+<el-input @input.native="onlyFloatNumber($event)" maxlength="30" v-model="ruleForm.total" placeholder="请输入"></el-input>
+<el-input @input.native="onlyFloatNumber($event)" maxlength="20" v-model="ruleForm.badMoney" placeholder="请输入"></el-input>
+         
+//金额正则
+    onlyFloatNumber(e){
+      e.target.value = e.target.value.replace(/[^\.\d]/g,''); 
+      e.target.value = e.target.value.replace(/^\./g, "");   
+      e.target.value = e.target.value.replace(".","$#$").replace(/\./g,"").replace("$#$","."); 
+      e.target.value = e.target.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); 
+    },
+
+
+
+  //只能输入正整数,同时不能输入小数点
+    onlyNumber(e){
+      e.target.value = e.target.value.replace(/[^\.\d]/g,''); 
+      e.target.value = e.target.value.replace(/^\./g, "");   
+      e.target.value = e.target.value.replace(".","$#$").replace(/\./g,"").replace("$#$",""); 
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+路由守卫 ：参考：https://www.cnblogs.com/zjh-study/p/10647220.html
+======================================================================================
+一、全局路由守卫
+所谓全局路由守卫，就是小区大门，整个小区就这一个大门，你想要进入其中任何一个房子，都需要经过这个大门的检查
+全局路由守卫有个两个：一个是全局前置守卫，一个是全局后置守卫
+
+router.beforeEach((to, from, next) => {
+    console.log(to) => // 到哪个页面去？
+    console.log(from) => // 从哪个页面来？
+    next() => // 一个回调函数
+}
+router.afterEach（to，from） = {}
+next()：回调函数参数配置
+
+next(false): 中断当前的导航。如果浏览器的 URL 改变了 (可能是用户手动或者浏览器后退按钮)，那么 URL 地址会重置到 from 路由对应的地址
+next('/') 或者 next({ path: '/' }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: true、name: 'home' 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项
+
+
+
+
+二、组件路由守卫
+// 跟methods: {}等同级别书写，组件路由守卫是写在每个单独的vue文件里面的路由守卫
+beforeRouteEnter (to, from, next) {
+    // 注意，在路由进入之前，组件实例还未渲染，所以无法获取this实例，只能通过vm来访问组件实例
+    next(vm => {})
+}
+beforeRouteUpdate (to, from, next) {
+    // 同一页面，刷新不同数据时调用，
+}
+beforeRouteLeave (to, from, next) {
+    // 离开当前路由页面时调用
+}
+实例：
+<script>
+    export default {
+        data(){
+            return{
+                num : 10
+            }
+        },
+        beforeRouteEnter:(to,from,next)=>{
+            next(vm=>{
+                alert(vm.num)
+            })
+        },
+?
+    }
+</script>
+
+
+
+
+
+
+三、路由独享守卫
+路由独享守卫是在路由配置页面单独给路由配置的一个守卫
+
+export default new VueRouter({
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: 'Home',
+            beforeEnter: (to, from, next) => {
+               // ...
+            }
+        }
+    ]
+})
+
+
+
+
+
+
+四、vue 数据变了，但是视图没有改变：可以用以下方法， https://segmentfault.com/q/1010000018899255/
+====================================================================
+
+方法一：
+this.$set(this.form, 'name', '')
+
+例如：
+list:[
+       {name:'中智',age:22},
+       {name:'港汇',age:33},
+       {name:'徐汇',age:22},
+     ],
+this.list.forEach(item=>{
+        
+        this.$set(item,'valueNum',4);  //item.valueNum  = 4; 等价于，就是采用set的方式给list数组添加一个valueNum字段。
+
+      });
+
+
+
+方法二：
+只能改变整个form才能避免这种情况 this.form=Object.assign({name:'张三'},this.form)
+
+
+
+
+五、map方法到底会不会改变原始数组？ https://blog.csdn.net/weixin_33826268/article/details/91444116
+=================================================================.
+
+ map不不能遍历对象，只能遍历数组
+
+“map()不会改变原始数组”这句话并不严谨。而应该是“当数组中元素是值类型，map不会改变原数组；当是引用类型，则可以改变原数组”。 
+
+
+  然而，map方法体现的是数据不可变的思想。该思想认为所有的数据都是不能改变的，只能通过生成新的数据来达到修改的目的，因此直接对数组元素或对象属性进行操作的行为都是不可取的。
+
+
+
+
+
+六。.Object.assign()基本用法：其实就是复制的意思，这种方法能触动视图的更新哦
+===============================================================
+
+
+
+
+
+七、Collapse 折叠面板 用来替代   <el-tabs> https://www.cnblogs.com/grt322/p/8577862.html
+================================================================
+<el-collapse v-model="activeNames" @change="handleChange">
+ 2   <el-collapse-item title="一致性 Consistency" name="
+
+
+
+
+八、怎么传有两层结构以上的参数对象呢？
+==================================================================
+
+   <h1>电话号码：<input type="text" v-model="telephone.tel" @input="onlyNumber('result.sum')"></h1>
+   <h1>电子邮件：<input type="text" v-model="telephone.tel" @input="onlyNumber('result.email.num')"></h1>
+   <h2>{{result.sum}}</h2>
+   <h2>{{result.email.num}}</h2>
+
+data:{
+     telephone:{ 
+        tel : '',
+     },
+     result:{
+       sum: 1,
+       email: {
+         num:'3'
+       }
+     },
+   },
+
+onlyNumber(arg){
+       let str = arg.split('.');
+       let res = this;
+       for(let i=0;i<str.length -1;i++){
+         res = res[str[i]];                          // 先拿到除了最后一级的结果 this['result']  
+       };
+       res[str[str.length -1]] = this.telephone.tel; //再拿到最后一层级 this['result']['sum']
+     
+       // eval(`this.${arg} = ${ this.telephone.tel }`);  //这种方式是最快的
+       // eval(`this.${arg} = ${ 1000 }`);                //这种方式是最快的
+
+     },
+
+
+
+九、new Map()的使用:  即创建一个Map对象实例，返回的结果是一个对象
+====================================================================================================
+主要作用是：它如同一个容器，用来装你需要的数据。然后提供了很多的方法来处理你的数据。
+
+1.new一个map对象 ，键值唯一。           
+
+例如：
+var m = new Map();       //新建一个空的键值对对象，键值自动只能保存唯一的键值对，相同则后面的覆盖前面的。   
+
+操作方法：
+m.set("name","刘德华")   //给集合设置键值对
+m.get("name")            //读取
+m.has("name")：          //判断是否存在该键。如果值在集合中存在，返回true,否则false
+m.delete(value)：          //从集合中移除一个值，并且会返回true或者false
+m.clear():                 //移除集合里所有的项
+
+遍历方法：
+m.keys()：    返回一个包含集合中所有键的对象集合
+m.values()：  返回一个包含集合中所有值的对象集合
+m.forEach()： 用于对集合成员执行变量循环，没有返回值 
+m.size：      返回一个包含集合中所有键值对的数量或者长度
+
+去重
+let links = [
+  {id:'001',name:'刘德华'},
+  {id:'002',name:'黎明'},
+  {id:'002',name:'郭富城'},
+  {id:'003',name:'周杰伦'},
+  {id:'003',name:'张学友'},
+];
+//new一个map对象实例{},map的对象不会出现重复值
+let res = new Map();
+//帅选数据
+links.forEach((item)=>{
+	if(!res.has(item.id)){
+		res.set(item.id,item); //利用map的has和set方法去重
+	};
+});
+console.log(res);
+let kong = [];
+//利用map的forEach方法遍历map对象res
+res.forEach(item=>{
+	kong.push(item);
+});
+
+console.log(kong);
+
+
+
+
+
+
+
+
+
+
+10，数组的 filter() 方法，返回的结果是一个新创建的数组， 只要不符合条件的数据，就不返回，那么新数组的长度就一定是小于或等于原数组的长度啦。
+====================================================================================================
+filter() 
+         方法创建一个新的数组，新数组中的元素 是 符合条件的所有元素。
+         帅选出来的数据或者返回回来的数据一定是“源数据”里面的数据，而且是“一模一样”的。*******比较重要，相当于是源数据的子集,不能改变返回的源数据，跟return没有关系了。
+         只要不符合条件的就不返回，
+         filter不会修改原数组，也不会修改新数组
+         那么返回的新数组的长度，一定是小于或者等于 原数组的长度了。
+         只需要“执行条件”，可以省去return， 当有表达式的时候，需要()括号包住
+         只需要“执行条件”
+         只需要“执行条件”即可，不需要别的。
+
+         let arr = [
+                     {id:1,name:'刘德华'},
+                     {id:2,name:'郭富城'},
+                     {id:3,name:'周杰伦'},
+                   ];
+
+         例子1：
+         let roo = arr.filter(item => item.id == 3 );           //[{id:3,name:'周杰伦'}]
+         等价于：
+         let roo = arr.filter(item => ( item.id == 3 ) );       //[{id:3,name:'周杰伦'}]
+         等价于：
+         let roo = arr.filter(item => { if(item.id == 3){ return item } } );  //[{id:3,name:'周杰伦'}]
+
+
+         例子2：
+         let doo = [3,4,6,8];
+         
+         let roo = foo.filter(item => item * 2);  //结果还是： [3,4,6,8] 
+
+         let roo = foo.filter(item => { return item * 3 }); //结果还是： [3,4,6,8] 
+ 
+         总结：filter仅仅是用来筛选数据的，不能用来修改数据。不能对源数据进行加减乘除类似的运算。
+
+
+         
+
+
+         
+
+
+11，数组的 map()方法，返回的结果是一个新创建的数组， 不管条件符不符合，都 一 一 返回，哪怕是undefined，那么新数组的长度一定是和原数组的长度相等哦
+=====================================================================================================
+map()   创建一个新的数组
+        帅选出来的数据可以是改变了的数据(例如可以被加减乘除等等)
+        不管条件符不符合，都一一返回，哪怕是返回undefined，一一映射哦
+        那么新数组的长度一定是和原数组的长度相等哦 
+
+      
+2         4
+3         5
+5   +2    7
+7         9
+9         11
+
+以上就表示映射，一一对应
+
+
+例如：
+
+let foo = [2,3,4,5,8];
+
+let roo = foo.map(item => { return item * 2 });    //结果： [4,6,7,10,16];
+
+等价于：
+
+let roo = foo.map(item => item * 2);  //结果： [4,6,7,10,16];
+
+等价于：
+
+let roo = foo.map(item => (item * 4));
+
+
+
+实例2：
+
+let roo = foo.map(item => { if(item > 3){ return item } });    // 结果：[undefined, undefined, 4, 5, 8]  
+
+总结：map方法，即使没有符合条件的项，他也会返回undefined，会一一映射，新数组的长度一定和原数组的长度是相等的，并且源数据可以被修改。进行加减乘除类似的运算。
+
+
+例子3：
+let arr = [
+  {id:1,name:'刘德华'},
+  {id:2,name:'郭富城'},
+  {id:3,name:'周杰伦'},
+];
+
+let roo = arr.map(item => { if(item.id > 1){ return item.flag = 10 } }  ); 
+
+
+console.log("roo",roo);
+//结果：
+0: {id: 1, name: "刘德华"}
+1: {id: 2, name: "郭富城", flag: 10}
+2: {id: 3, name: "周杰伦", flag: 10}
+
+console.log("arr",arr);
+//结果：
+0: {id: 1, name: "刘德华"}
+1: {id: 2, name: "郭富城", flag: 10}
+2: {id: 3, name: "周杰伦", flag: 10}
+
+
+总结：当源数据是引用类型的数据（对象型的数据）时候，源数据可以被修改。  当源数据是常量数字数组的时候，不会被修改。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
