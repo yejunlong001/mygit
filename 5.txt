@@ -9,6 +9,44 @@ git@172.16.4.127:AFOne/Portal.git
 
 
 
+
+SH1969     周舟
+SH0237     贺晓东
+SH1970     熊霓君
+SH0465     侯君
+SH0442     陈迪
+
+
+SH0293     张理婷
+SH0102     徐雯艳
+SH0125      李明慧
+
+
+特殊事项审批
+
+其他垫付
+
+工资垫付
+
+付款申请
+
+
+
+财务数据提供
+
+外地生育津贴
+
+弹性福利定制
+
+建汇食堂饭票
+
+
+
+
+api/CustomerAuditApplication?_cid=03bc47a1730d4847ae921f7038db2b89&
+
+
+
 D:\workspace\service\source\CIIC.AFOne.Services\Services\CIIC.AFOne.Services
 
 
@@ -284,6 +322,61 @@ name: "公积金",
             console.log(arr);
          }
       },
+
+
+
+
+
+
+
+
+public enum WorkflowApprovalStatus
+       
+ {
+  [EnumDescription("All", "请选择", "请选择")]
+                All = -1,
+
+           
+    [EnumDescription("Draft", "草稿", "草稿")]
+                  Draft = 0,
+
+          
+    [EnumDescription("Submitted", "已提交", "已提交")]
+            Submitted = 1,
+
+        
+    [EnumDescription("Processing", "审批中", "审批中")]
+            InProcess = 2,
+
+          
+    [EnumDescription("Approved", "已通过", "已通过")]
+            Approved = 3,
+
+           
+    [EnumDescription("Rejected", "已拒绝", "已拒绝")]
+            Rejected = 4,
+
+         
+    [EnumDescription("Canceled", "已取消", "已取消")]
+            Canceled = 5,
+
+          
+    [EnumDescription("Returned", "已退回", "已退回")]
+            Returned = 6,
+
+         
+    [EnumDescription("PROCESSING", "处理中", "处理中")]
+            PROCESSING = 99
+        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1321,19 +1414,257 @@ console.log("arr",arr);
 
 
 
+闭包：排列组合，用法一
+================================================================
+<script type="text/javascript">
+
+//思路：
+var index  = 0;
+var source = ["a","b","c","d"];
+var result = []; //最终的组合数据
+function BiBao(){
+
+  //第一步
+  var kong = [];                  //每次先清空
+      kong.push(source[index]);   //每次只会有一个项添加进去
+
+  //第二步：开始拼接组合
+  for(var c=0;c<result.length;c++){
+     kong.push( result[c] + source[index] );
+  };
+  
+  //第三步：合并两个数组，每次把kong数组里面的值有序添加到group数组中去
+  for(var d=0; d<kong.length; d++){
+  	result.push(kong[d]);
+  };
+
+  //每次累加
+    index++;
+
+  //第四部：判断是否终止闭包
+  if(index < source.length){
+  	BiBao(); //在这里无限循环，只要这里没有执行完，就不会执行下面的return
+  };
+  //当条件不满足之后，才来执行return，只会执行一次。
+  return result;
+};
+
+var u = BiBao();
+console.log("u",u);
+
+</script>
+
+
+
+闭包：排列组合，用法二：封装成函数
+================================================================
+
+<script type="text/javascript">
+
+var source = ["a","b","c","d"];
+
+function BiBao(source , index=0 ,result = []){
+  //第一步
+  var kong = [];                  //每次先清空
+      kong.push(source[index]);   //每次只会有一个项添加进去
+  //第二步：开始拼接组合
+  for(var c=0;c<result.length;c++){
+     kong.push( result[c] + source[index] );
+  };
+  //第三步：合并两个数组，每次把kong数组里面的值有序添加到group数组中去
+  for(var d=0; d<kong.length; d++){
+  	result.push(kong[d]);
+  };
+  //每次累加
+    index++;
+  //第四部：判断是否终止闭包
+  if(index < source.length){
+  	BiBao(source , index, result);  //在这里无限循环，只要这里没有执行完，就不会执行下面的return
+  };
+  //当条件不满足之后，最后才来执行return，跳出函数，只会执行一次。
+  return result;
+};
+
+var res = BiBao(source);
+
+console.log("res",res);
+
+</script>
 
 
 
 
+逻辑或与非
+=====================================================================
+
+1、JS中的||符号：
+
+   只要“||”前面为false,不管“||”后面是true还是false，都返回“||”后面的值。
+   只要“||”前面为true, 不管“||”后面是true还是false，都返回“||”前面的值。
+
+   === 总结：真前假后 ===
+
+<script type="text/javascript">
+var a = [1,2,3];
+var b = "hello"; 
+var obj = new Object(); 
+var d;console.log(true || 10);//第一个操作数是true，结果是第一个操作，也就是true
+console.log(false || b);//第一个操作数是false，结果是第二个操作数b
+console.log(100 || false);//第一个操作数是100，结果100
+console.log(undefined || 9);//第一个操作数是undefined转false，结果9
+console.log(NaN || false);//第一个操作数是NaN转false，结果第二个操作数
+console.log(null || a);//第一个操作数是null转false，结果a
+console.log('' || false);//第一个操作数是空串转false，结果第二操作数
+console.log(0 || 100);//结果是100
+console.log(5 || 100);//5
+console.log(a || b);//a
+console.log(obj || 200);//obj
+</script>
+
+
+2、JS中的&&符号：
+
+只要“&&”前面是false，无论“&&”后面是true还是false，结果都将返“&&”前面的值;
+只要“&&”前面是true，无论“&&”后面是true还是false，结果都将返“&&”后面的值;
+
+<script type="text/javascript">
+var a = [1,2,3]; var b = "hello"; 
+var obj = new Object(); 
+var d;console.log(true && 10);//第一个操作数是true，结果是第二个操作，也就是10
+console.log(false && b);//第一个操作数是false，结果flase
+console.log(100 && false);//第一个操作数是100，结果flase
+console.log(undefined && false);//第一个操作数是undefined，结果undefined
+console.log(NaN && false);//第一个操作数是NaN，结果NaN
+console.log(null && false);//第一个操作数是null，结果null
+console.log('' && false);//第一个操作数是空串，结果空串
+console.log(0 && 100);//结果是0
+console.log(5 && 100);//100
+console.log(a && b);//hello
+console.log(obj && 200);//200
+</script>
 
 
 
+  搜索功能
+=======================================================================================================
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>搜索功能</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
 
+<input type="text"  class="searchInput">
+<ul class="searchResult"><span></span></ul>
 
+<script type="text/javascript">
 
+//搜索开始
+var flagSearch = true;  // 初始flag为true，用于非中文字符的输入
+$('.searchInput').on('compositionstart', function (){ // 绑定compositionstart事件
+    flagSearch = false;
+});
+$('.searchInput').on('compositionend', function (){  // 绑定compositionend事件
+    flagSearch = true;
+});
+$('.searchInput').on('input', function (e){ // 绑定指定事件
+    setTimeout(function(){ // 这里为了防止事件 的先后顺序出错，给一个延时
+        if(flagSearch){
+           search(e); //调用搜索
+        };
+    },0);
+});
+//开始搜索
+function search(e){
+	var options = [
+	  {name:'北京',href:'www.a.com'},
+	  {name:'中智',href:'www.a.com'},
+	  {name:'中国',href:'www.a.com'},
+	  {name:'中方',href:'www.a.com'},
+	  {name:'中方几百',href:'www.a.com'},
+	  {name:'上海',href:'www.a.com'},
+	  {name:'百中汇',href:'www.a.com'},
+	  {name:'乌鲁木齐',href:'www.a.com'},
+	  {name:'乌干达',href:'www.a.com'},
+	  {name:'乌小红',href:'www.a.com'},
+	];
+    var str = e.target.value; //输入值
+    console.log(str);
+    var arr = []; //提炼出中文
+    for(var i=0;i<options.length;i++){
+      arr.push(options[i].name);
+    };
+    var brr = []; //拆分中文
+    for(var j=0;j<arr.length;j++){
+      var letters = arr[j].split('');
+      brr.push(letters);
+    };
+    console.log("brr",brr);
+    var crr = []; //对拆分后的中文进行排列组合
+    for(var a=0;a<brr.length;a++){
+       crr.push(paiLieZuHe(brr[a], index=0, result=[]));
+    };
+    //排列组合 [a,b,c,d]
+    function paiLieZuHe(source, index=0, result=[]){
+      var kong = [];
+          kong.push(source[index]); //kong里面永远只会仅有一个元素，长度为1
+      for(var n=0;n<result.length;n++){
+      	kong.push( result[n] + source[index] ); //每次只拿出一个和result组合拼接
+      };
+      for(var s=0;s<kong.length;s++){
+      	result.push(kong[s]);   //组合完之后就push到result
+      };
+      index++;
+      if(index < source.length){
+      	paiLieZuHe(source , index , result);
+      };
+      return result;
+    };
+    console.log("crr",crr);
+    //搜索中文-匹配中文
+    var drr = [];
+    for(var k=0;k<crr.length;k++){
+      var flag = crr[k].indexOf(str);
+      if(flag != -1){
+      	drr.push(crr[k]);
+      };
+    };
+    console.log("drr",drr);
+    //提取最后一个中文词组
+    var err = [];
+    for(var q=0;q<drr.length;q++){
+    	var len = drr[q].length;
+        var obj = drr[q][len-1];
+        err.push(obj);
+    };
+    console.log("err",err);
+    //开始匹配原数组,去匹配链接
+    var frr = []; 
+    for(var f=0;f<err.length;f++){
+      for(var m=0;m<options.length;m++){
+        if(err[f] == options[m].name){
+		  frr.push(options[m]);
+		};
+      };
+    };
+    console.log("frr",frr);
+    //生成html
+    var html = '';
+    for(var p=0;p<frr.length;p++){
+       html = html + '<li><a href="'+frr[p].href+'">'+frr[p].name+'</a></li>' + '\n';
+    };
+    $('.searchResult').empty(); //先清除被选元素的所有子节点
+    $('.searchResult').append(html);  //再插入到html
+};
 
-
+		
+	
+</script>
+</body>
+</html>
 
 
 
