@@ -1,142 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>æœç´¢åŠŸèƒ½</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
 
+<input type="text"  class="searchInput">
+<ul class="searchResult"><span></span></ul>
 
-Ê×Ò³ÍÆ¼ö
-¸ÛÌ¨µçÓ°
-Å·ÃÀµçÓ°
-º«¹úµçÓ°
-ÈÕ±¾µçÓ°
-´óÂ½µçÓ°
-×îĞÂµçÓ°
-ºÃÆÀµçÓ°/ÈÈËÑµçÓ°/ÈÈÃÅµçÓ°
+<script type="text/javascript">
 
-ÀîÀöÕä
-ÖÓÀöç¾
-ÑîÃİ
-ÌÀÎ¨
-µÔÁè
-ÕÅ°ØÖ¥
-ÖÓĞÀÍ©
-Ò¶×Óé¹
-¹¨«h·Æ
-Àî×ÚÈğ
+//æœç´¢å¼€å§‹
+var flagSearch = true;  // åˆå§‹flagä¸ºtrueï¼Œç”¨äºéä¸­æ–‡å­—ç¬¦çš„è¾“å…¥
+$('.searchInput').on('compositionstart', function (){ // ç»‘å®šcompositionstartäº‹ä»¶
+    flagSearch = false;
+});
+$('.searchInput').on('compositionend', function (){  // ç»‘å®šcompositionendäº‹ä»¶
+    flagSearch = true;
+});
+$('.searchInput').on('input', function (e){ // ç»‘å®šæŒ‡å®šäº‹ä»¶
+    setTimeout(function(){ // è¿™é‡Œä¸ºäº†é˜²æ­¢äº‹ä»¶ çš„å…ˆåé¡ºåºå‡ºé”™ï¼Œç»™ä¸€ä¸ªå»¶æ—¶
+        if(flagSearch){
+           search(e); //è°ƒç”¨æœç´¢
+        };
+    },0);
+});
+//å¼€å§‹æœç´¢
+function search(e){
+	var options = [
+	  {name:'åŒ—äº¬',href:'www.a.com'},
+	  {name:'ä¸­æ™º',href:'www.a.com'},
+	  {name:'ä¸­å›½',href:'www.a.com'},
+	  {name:'ä¸­æ–¹',href:'www.a.com'},
+	  {name:'ä¸­æ–¹å‡ ç™¾',href:'www.a.com'},
+	  {name:'ä¸Šæµ·',href:'www.a.com'},
+	  {name:'ç™¾ä¸­æ±‡',href:'www.a.com'},
+	  {name:'ä¹Œé²æœ¨é½',href:'www.a.com'},
+	  {name:'ä¹Œå¹²è¾¾',href:'www.a.com'},
+	  {name:'ä¹Œå°çº¢',href:'www.a.com'},
+	];
+    var str = e.target.value; //è¾“å…¥å€¼
+    console.log(str);
+    var arr = []; //æç‚¼å‡ºä¸­æ–‡
+    for(var i=0;i<options.length;i++){
+      arr.push(options[i].name);
+    };
+    var brr = []; //æ‹†åˆ†ä¸­æ–‡
+    for(var j=0;j<arr.length;j++){
+      var letters = arr[j].split('');
+      brr.push(letters);
+    };
+    console.log("brr",brr);
+    var crr = []; //å¯¹æ‹†åˆ†åçš„ä¸­æ–‡è¿›è¡Œæ’åˆ—ç»„åˆ
+    for(var a=0;a<brr.length;a++){
+       crr.push(paiLieZuHe(brr[a], index=0, result=[]));
+    };
+    //æ’åˆ—ç»„åˆ [a,b,c,d]
+    function paiLieZuHe(source, index=0, result=[]){
+      var kong = [];
+          kong.push(source[index]); //kongé‡Œé¢æ°¸è¿œåªä¼šä»…æœ‰ä¸€ä¸ªå…ƒç´ ï¼Œé•¿åº¦ä¸º1
+      for(var n=0;n<result.length;n++){
+      	kong.push( result[n] + source[index] ); //æ¯æ¬¡åªæ‹¿å‡ºä¸€ä¸ªå’Œresultç»„åˆæ‹¼æ¥
+      };
+      for(var s=0;s<kong.length;s++){
+      	result.push(kong[s]);   //ç»„åˆå®Œä¹‹åå°±pushåˆ°result
+      };
+      index++;
+      if(index < source.length){
+      	paiLieZuHe(source , index , result);
+      };
+      return result;
+    };
+    console.log("crr",crr);
+    //æœç´¢ä¸­æ–‡-åŒ¹é…ä¸­æ–‡
+    var drr = [];
+    for(var k=0;k<crr.length;k++){
+      var flag = crr[k].indexOf(str);
+      if(flag != -1){
+      	drr.push(crr[k]);
+      };
+    };
+    console.log("drr",drr);
+    //æå–æœ€åä¸€ä¸ªä¸­æ–‡è¯ç»„
+    var err = [];
+    for(var q=0;q<drr.length;q++){
+    	var len = drr[q].length;
+        var obj = drr[q][len-1];
+        err.push(obj);
+    };
+    console.log("err",err);
+    //å¼€å§‹åŒ¹é…åŸæ•°ç»„,å»åŒ¹é…é“¾æ¥
+    var frr = []; 
+    for(var f=0;f<err.length;f++){
+      for(var m=0;m<options.length;m++){
+        if(err[f] == options[m].name){
+		  frr.push(options[m]);
+		};
+      };
+    };
+    console.log("frr",frr);
+    //ç”Ÿæˆhtml
+    var html = '';
+    for(var p=0;p<frr.length;p++){
+       html = html + '<li><a href="'+frr[p].href+'">'+frr[p].name+'</a></li>' + '\n';
+    };
+    $('.searchResult').empty(); //å…ˆæ¸…é™¤è¢«é€‰å…ƒç´ çš„æ‰€æœ‰å­èŠ‚ç‚¹
+    $('.searchResult').append(html);  //å†æ’å…¥åˆ°html
+};
 
-
-
-
-
-www.xigua66.com
-www.yakuhd.com
-www.xigua110.com
-www.vodxc.com
-
-www.qiqipu.tv  Á÷³©
-www.liaocao.com Á÷³©
-
-www.manmankan.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[
-{name:"¸ß·ÖµçÓ°Íø", Alexa:1,url:"http://www.gaofenfilm.com/"},  
-{name:"ÓÅ¿á", Alexa:2,url:"https://www.youku.com/"}, 
-{name:"°®ÆæÒÕ", Alexa:3,url:"http://www.iqiyi.com/"}, 
-{name:"ÌÚÑ¶ÊÓÆµ", Alexa:4,url:"https://v.qq.com/"}, 
-{name:"Ã¢¹ûTV", Alexa:5,url:"https://www.mgtv.com/"}, 
-{name:"ÍÁ¶¹ÊÓÆµ", Alexa:6,url:"http://www.tudou.com/"}, 
-{name:"ËÑºüÊÓÆµ", Alexa:7,url:"https://tv.sohu.com/"}, 
-{name:"ÀÖÊÓÊÓÆµ", Alexa:8,url:"http://www.le.com/"},  
-{name:"PPtv", Alexa:9,url:"http://www.pptv.com/"}, 
-{name:"¿´¿´ÊÓÆµ", Alexa:10,url:"http://www.kankan.com/"}, 
-{name:"¶¹°êµçÓ°", Alexa:11,url:"https://movie.douban.com/"}, 
-{name:"»ªÊıTV", Alexa:12,url:"https://www.wasu.cn/"}, 
-{name:"IMDB", Alexa:13,url:"https://www.imdb.com.cn/"}, 
-{name:"MEGA", Alexa:14,url:"http://www.megavideo.com/"},  
-{name:"HuLu", Alexa:15,url:"https://www.hulu.com"}, 
-{name:"Youtube", Alexa:16,url:"http://www.youtube.com"}, 
-{name:"ÑÅ¿á¸ßÇå",Alexa:38000,url:"http://www.yakuhd.com"},
-{name:"Ê±¿ÕµçÓ°", Alexa:56000,url:"http://www.skmov.com/"},
-{name:"ÆæÌØµçÓ°", Alexa:53000,url:"https://www.666kao.com"},      
-{name:"ÑÅ¿á¸ßÇå", Alexa:36000,url:"https://www.xigua110.com"},  
-{name:"Ó°ÊÓ´óÈ«", Alexa:21000,url:"http://www.yingshidaquan.cc"},  
-{name:"ĞÇ³½Ó°Ôº", Alexa:33000,url:"http://www.vodxc.com/"},  
-{name:"°Í°ÍÓ°Ôº", Alexa:34000,url:"https://www.baba.cc/"},  
-{name:"Î÷¹ÏÓ°Ôº", Alexa:44000,url:"http://www.xigua66.com/"},  
-{name:"ÉñÂíÓ°Ôº", Alexa:33000,url:"https://www.2341.tv"},  
-{name:"ÆßÆßÆÌ", Alexa:29000,url:"http://www.qiqipu.com/"},  
-{name:"ÂşÂş¿´", Alexa:17000,url:"http://www.manmankan.com"},  
-{name:"ÖĞ¹úÈËÓ°", Alexa:55000,url:"http://www.520885.com"},  
-{name:"Æ·ÉÆÍø", Alexa:89000,url:"http://www.pinshan.com/"},  
-{name:"ĞşÌìÓ°ÊÓ", Alexa:82000,url:"http://www.4pcc.com/"},  
-{name:"ÓÆ¾ÃÓ°Ôº", Alexa:50000,url:"https://www.eqq9.com"},  
-{name:"CKÓ°Ôº", Alexa:26000,url:"http://www.ckck.tv"},  
-{name:"IDµçÓ°", Alexa:11000,url:"http://www.id97.com/"},  
-{name:"ÌìÌìÓ°Ôº", Alexa:67000,url:"http://www.ttvdo.com/"},  
-{name:"Ó°ÊÓ´óÈ«", Alexa:38000,url:"http://www.meikanguo.com/"}, 
-{name:"²İÃñµçÓ°", Alexa:96000,url:"http://www.cmdy5.com"}, 
-{name:"ßÕßÕÍÃ", Alexa:399000,url:"https://m.jlszyy.cc/"}, 
-{name:"Ó°ÊÓ´óÈ«", Alexa:38000,url:"http://www.km.com/"}, 
-{name:"Ë¢¾ç°É", Alexa:38000,url:"http://www.shuajuba.com/"}, 
-{name:"À×¹âÍø", Alexa:340000,url:"https://www.leiguang.cc/"}, 
-{name:"ÎåÉ±µçÓ°", Alexa:38000,url:"https://www.lol5s.com"},  
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"ÎåÉ±Ó°Ôº1", Alexa:37000,url:"https://s.lol5s.com/"}, 
-{name:"ÁÊ²İÍø2", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"ÇàÆ»¹û3", Alexa:100000,url:"http://m.qpgyy.com/"}, 
- {name:"Ó°ÊÓ´óÈ«4", Alexa:20000,url:"http://m.yingshidaquan.cc"}, 
-{name:"ÌìÀÇÓ°Ôº5", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"ÆßÆßÆÌ6", Alexa:28000,url:"http://m.qiqipu.com"},  
-{name:"µçÓ°123-7", Alexa:55000,url:"http://m.dy123.cc"}, 
-{name:"Î÷¹ÏÓ°Ôº8", Alexa:38000,url:"https://m.xigua110.com"}, 
-{name:"²¿ÂäÓ°Ôº9", Alexa:87000,url:"http://m.vbuluo.com"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"µçÓ°Ê×·¢Õ¾0", Alexa:19000,url:"http://www.tl95.com/"},
-{name:"Õ½µØµçÓ°0", Alexa:19000,url:"http://m.zhandi.cc"}, 
-{name:"ÁÊ²İÍø0", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"ÌìÀÇÓ°Ôº0", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"À×¹âÍø", Alexa:35000,url:"https://www.leiguang.cc/"}, 
-{name:"ç÷ç÷²¼", Alexa:190000,url:"https://www.qiqibu99.com"}, 
-{name:"6VµçÓ°", Alexa:5000,url:"http://www.hao6v.com/"}, 
-{name:"Æ®»¨µçÓ°", Alexa:3070,url:"https://www.piaohua.com/"},  
-{name:"µçÓ°ºĞ×Ó", Alexa:97000,url:"http://www.5iwanyouxi.com/"}, 
-{name:"µçÓ°¸Û", Alexa:5200,url:"http://www.dygang.net/ys/"}, 
-{name:"µçÓ°ÌìÌÃ", Alexa:991,url:"http://www.dytt8.net/"}, 
-{name:"µçÓ°°É", Alexa:1904,url:"https://www.dy2018.com"}, 
-{name:"±»ÎÑ", Alexa:26000,url:"http://www.beiwo.tv/"}, 
-{name:"µçÓ°ÌìÌÃ", Alexa:8900,url:"https://www.dygod.net/"},  
-{name:"¿´°ÍÊ¿", Alexa:13000,url:"http://www.kan84.net/"}, 
-{name:"K8¾­µäÍø", Alexa:41000,url:"http://www.k8jdwang.com/"}, 
-{name:"Å£±¦±¦", Alexa:21000,url:"http://niubaobao.cc/"}, 
-{name:"µçÓ°123", Alexa:53000,url:"http://www.dy123.cc"}, 
-{name:"ĞÇ¿ÕµçÓ°", Alexa:55000,url:"https://www.xkdy.net/"}
-
-
-
-
-
-
-
-
-
-
-
-
-]
+		
+	
+</script>
+</body>
+</html>
