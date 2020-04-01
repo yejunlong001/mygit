@@ -15,6 +15,20 @@ git@172.16.4.127:AFOne/Portal.git
 登录开机密码：Hao456789
 
 
+
+* 销售中心 ->合同模板管理 -> 上传文件
+*/
+FileUpLoad: async (params) => {
+  const response = await Http.post(urls.baseUrl + '/Attachment/'+ `${params.bizId }`+'?attBizCode='+ `${params.attBizCode }`+'&attTypeCode='+`${params.attTypeCode }`,params.attFile,{
+    headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+  return await response.data
+  },
+  /**
+
+
 nba27
 nba46
 nba49.com
