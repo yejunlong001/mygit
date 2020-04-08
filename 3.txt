@@ -1,142 +1,40 @@
+<?php
+    
+    // 1ã€èŒƒä¾‹ä»£ç ï¼š
+    ignore_user_abort(true);  // è®¾ç½®ä¸Žå®¢æˆ·æœºæ–­å¼€æ˜¯å¦ä¼šç»ˆæ­¢è„šæœ¬çš„æ‰§è¡Œã€‚
+    set_time_limit(0);        // è®¾ç½®è„šæœ¬è¶…æ—¶æ—¶é—´ï¼Œä¸º0æ—¶ä¸å—æ—¶é—´é™åˆ¶
+    ob_end_clean();           // æ¸…ç©ºç¼“å­˜
+    ob_start();               // å¼€å§‹ç¼“å†²æ•°æ®
+    while(1){
 
+        echo str_repeat(" ",1024);  // å†™æ»¡IEæœ‰é»˜è®¤çš„1k buffer
+        ob_flush();                 // å°†ç¼“å­˜ä¸­çš„æ•°æ®åŽ‹å…¥é˜Ÿåˆ—
+        flush();                    // è¾“å‡ºç¼“å­˜é˜Ÿåˆ—ä¸­çš„æ•°æ®
+        echo "now time is ".date('h:i:s');  // æ‰“å°æ•°æ®ï¼Œå…¶å®žæ˜¯å…ˆå°†æ•°æ®å­˜å…¥äº†ç¼“å­˜ä¸­
 
-Ê×Ò³ÍÆ¼ö
-¸ÛÌ¨µçÓ°
-Å·ÃÀµçÓ°
-º«¹úµçÓ°
-ÈÕ±¾µçÓ°
-´óÂ½µçÓ°
-×îÐÂµçÓ°
-ºÃÆÀµçÓ°/ÈÈËÑµçÓ°/ÈÈÃÅµçÓ°
+        file_put_contents("log.log","yejunlong",FILE_APPEND);//è®°å½•æ—¥å¿—
 
-ÀîÀöÕä
-ÖÓÀöç¾
-ÑîÃÝ
-ÌÀÎ¨
-µÔÁè
-ÕÅ°ØÖ¥
-ÖÓÐÀÍ©
-Ò¶×Óé¹
-¹¨«h·Æ
-Àî×ÚÈð
-
+        usleep(10000000);            //å»¶è¿Ÿä¸€ç§’ï¼ˆæš‚åœä¸€ç§’ï¼‰
+    }
+    // è¯¥æ®µç¨‹åºå®žçŽ°çš„åŠŸèƒ½æ˜¯æ¯éš”ä¸€ç§’é’Ÿè¾“å‡ºä¸€æ¬¡åŒ…å«å½“å‰æ—¶é—´çš„å­—ç¬¦ä¸²ã€‚
 
 
 
+    // 2ã€è¯´æ˜Žï¼š
+    // ç»è¿‡æµ‹è¯•ï¼ŒèŒƒä¾‹ç»“æžœä¸­ä¼šå‡ºçŽ°ä¸è¿žç»­è¾“å‡ºï¼Œå¦‚æžœè¦æ±‚å®žçŽ°è¿žç»­ã€å‡åŒ€çš„è¾“å‡ºæ•ˆæžœï¼ˆå¦‚è¾“å‡ºæ—¶é—´ï¼‰ï¼Œ
+    // åˆ™åº”è®¾ç½®ç¼“å­˜ï¼›ä¸ºæ–¹ä¾¿ç†è§£ï¼Œæä¾›ç›¸å…³å‡½æ•°ä½œç”¨è¯´æ˜Žå¦‚ä¸‹ï¼š
+    /*
+    â‘ ignore_user_abort(bool):è®¾ç½®ä¸Žå®¢æˆ·æœºæ–­å¼€æ˜¯å¦ä¼šç»ˆæ­¢è„šæœ¬çš„æ‰§è¡Œã€‚
+    â‘¡set_time_limit(int seconds)è®¾ç½®å…è®¸è„šæœ¬è¿è¡Œçš„æ—¶é—´ï¼Œå•ä½ä¸ºç§’ã€‚å‚æ•°å€¼ä¸º0æ—¶ä¸å—é™åˆ¶ã€‚
+    â‘¢ob_end_clean()ï¼šæ¸…é™¤æœåŠ¡ç«¯ç¼“å­˜çš„æ•°æ®
+    â‘£ob_start()ï¼šå¼€å¯ä¸€ä¸ªç¼“å­˜ï¼ˆå¯åµŒå¥—ï¼‰
+    â‘¤ob_flush()ï¼šå°†ç¼“å­˜ä¸­çš„æ•°æ®åŽ‹å…¥é˜Ÿåˆ—
+    â‘¥flush()ï¼šè¾“å‡ºç¼“å­˜é˜Ÿåˆ—ä¸­çš„æ•°æ®
+    â‘¦usleep(int m-seconds)ï¼šä»¥æŒ‡å®šçš„å¾®ç§’æ•°å»¶ç¼“ç¨‹åºçš„æ‰§è¡Œã€‚
+    */
+    // æ³¨ï¼š
+    // flush()å’Œob_flush()çš„æ­£ç¡®é¡ºåºåº”æ˜¯ï¼Œå…ˆob_flush()å†flush()ï¼Œä¸å¯å¼„æ··ã€‚
+    // usleep()å‡½æ•°å¯æ›¿æ¢æˆsleep()å‡½æ•°ï¼Œä¸åŒä¹‹å¤„åœ¨äºŽsleep()çš„å‚æ•°æ˜¯ç§’ã€‚
 
-www.xigua66.com
-www.yakuhd.com
-www.xigua110.com
-www.vodxc.com
-
-www.qiqipu.tv  Á÷³©
-www.liaocao.com Á÷³©
-
-www.manmankan.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[
-{name:"¸ß·ÖµçÓ°Íø", Alexa:1,url:"http://www.gaofenfilm.com/"},  
-{name:"ÓÅ¿á", Alexa:2,url:"https://www.youku.com/"}, 
-{name:"°®ÆæÒÕ", Alexa:3,url:"http://www.iqiyi.com/"}, 
-{name:"ÌÚÑ¶ÊÓÆµ", Alexa:4,url:"https://v.qq.com/"}, 
-{name:"Ã¢¹ûTV", Alexa:5,url:"https://www.mgtv.com/"}, 
-{name:"ÍÁ¶¹ÊÓÆµ", Alexa:6,url:"http://www.tudou.com/"}, 
-{name:"ËÑºüÊÓÆµ", Alexa:7,url:"https://tv.sohu.com/"}, 
-{name:"ÀÖÊÓÊÓÆµ", Alexa:8,url:"http://www.le.com/"},  
-{name:"PPtv", Alexa:9,url:"http://www.pptv.com/"}, 
-{name:"¿´¿´ÊÓÆµ", Alexa:10,url:"http://www.kankan.com/"}, 
-{name:"¶¹°êµçÓ°", Alexa:11,url:"https://movie.douban.com/"}, 
-{name:"»ªÊýTV", Alexa:12,url:"https://www.wasu.cn/"}, 
-{name:"IMDB", Alexa:13,url:"https://www.imdb.com.cn/"}, 
-{name:"MEGA", Alexa:14,url:"http://www.megavideo.com/"},  
-{name:"HuLu", Alexa:15,url:"https://www.hulu.com"}, 
-{name:"Youtube", Alexa:16,url:"http://www.youtube.com"}, 
-{name:"ÑÅ¿á¸ßÇå",Alexa:38000,url:"http://www.yakuhd.com"},
-{name:"Ê±¿ÕµçÓ°", Alexa:56000,url:"http://www.skmov.com/"},
-{name:"ÆæÌØµçÓ°", Alexa:53000,url:"https://www.666kao.com"},      
-{name:"ÑÅ¿á¸ßÇå", Alexa:36000,url:"https://www.xigua110.com"},  
-{name:"Ó°ÊÓ´óÈ«", Alexa:21000,url:"http://www.yingshidaquan.cc"},  
-{name:"ÐÇ³½Ó°Ôº", Alexa:33000,url:"http://www.vodxc.com/"},  
-{name:"°Í°ÍÓ°Ôº", Alexa:34000,url:"https://www.baba.cc/"},  
-{name:"Î÷¹ÏÓ°Ôº", Alexa:44000,url:"http://www.xigua66.com/"},  
-{name:"ÉñÂíÓ°Ôº", Alexa:33000,url:"https://www.2341.tv"},  
-{name:"ÆßÆßÆÌ", Alexa:29000,url:"http://www.qiqipu.com/"},  
-{name:"ÂþÂþ¿´", Alexa:17000,url:"http://www.manmankan.com"},  
-{name:"ÖÐ¹úÈËÓ°", Alexa:55000,url:"http://www.520885.com"},  
-{name:"Æ·ÉÆÍø", Alexa:89000,url:"http://www.pinshan.com/"},  
-{name:"ÐþÌìÓ°ÊÓ", Alexa:82000,url:"http://www.4pcc.com/"},  
-{name:"ÓÆ¾ÃÓ°Ôº", Alexa:50000,url:"https://www.eqq9.com"},  
-{name:"CKÓ°Ôº", Alexa:26000,url:"http://www.ckck.tv"},  
-{name:"IDµçÓ°", Alexa:11000,url:"http://www.id97.com/"},  
-{name:"ÌìÌìÓ°Ôº", Alexa:67000,url:"http://www.ttvdo.com/"},  
-{name:"Ó°ÊÓ´óÈ«", Alexa:38000,url:"http://www.meikanguo.com/"}, 
-{name:"²ÝÃñµçÓ°", Alexa:96000,url:"http://www.cmdy5.com"}, 
-{name:"ßÕßÕÍÃ", Alexa:399000,url:"https://m.jlszyy.cc/"}, 
-{name:"Ó°ÊÓ´óÈ«", Alexa:38000,url:"http://www.km.com/"}, 
-{name:"Ë¢¾ç°É", Alexa:38000,url:"http://www.shuajuba.com/"}, 
-{name:"À×¹âÍø", Alexa:340000,url:"https://www.leiguang.cc/"}, 
-{name:"ÎåÉ±µçÓ°", Alexa:38000,url:"https://www.lol5s.com"},  
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"ÎåÉ±Ó°Ôº1", Alexa:37000,url:"https://s.lol5s.com/"}, 
-{name:"ÁÊ²ÝÍø2", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"ÇàÆ»¹û3", Alexa:100000,url:"http://m.qpgyy.com/"}, 
- {name:"Ó°ÊÓ´óÈ«4", Alexa:20000,url:"http://m.yingshidaquan.cc"}, 
-{name:"ÌìÀÇÓ°Ôº5", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"ÆßÆßÆÌ6", Alexa:28000,url:"http://m.qiqipu.com"},  
-{name:"µçÓ°123-7", Alexa:55000,url:"http://m.dy123.cc"}, 
-{name:"Î÷¹ÏÓ°Ôº8", Alexa:38000,url:"https://m.xigua110.com"}, 
-{name:"²¿ÂäÓ°Ôº9", Alexa:87000,url:"http://m.vbuluo.com"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"µçÓ°Ê×·¢Õ¾0", Alexa:19000,url:"http://www.tl95.com/"},
-{name:"Õ½µØµçÓ°0", Alexa:19000,url:"http://m.zhandi.cc"}, 
-{name:"ÁÊ²ÝÍø0", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"ÌìÀÇÓ°Ôº0", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"À×¹âÍø", Alexa:35000,url:"https://www.leiguang.cc/"}, 
-{name:"ç÷ç÷²¼", Alexa:190000,url:"https://www.qiqibu99.com"}, 
-{name:"6VµçÓ°", Alexa:5000,url:"http://www.hao6v.com/"}, 
-{name:"Æ®»¨µçÓ°", Alexa:3070,url:"https://www.piaohua.com/"},  
-{name:"µçÓ°ºÐ×Ó", Alexa:97000,url:"http://www.5iwanyouxi.com/"}, 
-{name:"µçÓ°¸Û", Alexa:5200,url:"http://www.dygang.net/ys/"}, 
-{name:"µçÓ°ÌìÌÃ", Alexa:991,url:"http://www.dytt8.net/"}, 
-{name:"µçÓ°°É", Alexa:1904,url:"https://www.dy2018.com"}, 
-{name:"±»ÎÑ", Alexa:26000,url:"http://www.beiwo.tv/"}, 
-{name:"µçÓ°ÌìÌÃ", Alexa:8900,url:"https://www.dygod.net/"},  
-{name:"¿´°ÍÊ¿", Alexa:13000,url:"http://www.kan84.net/"}, 
-{name:"K8¾­µäÍø", Alexa:41000,url:"http://www.k8jdwang.com/"}, 
-{name:"Å£±¦±¦", Alexa:21000,url:"http://niubaobao.cc/"}, 
-{name:"µçÓ°123", Alexa:53000,url:"http://www.dy123.cc"}, 
-{name:"ÐÇ¿ÕµçÓ°", Alexa:55000,url:"https://www.xkdy.net/"}
-
-
-
-
-
-
-
-
-
-
-
-
-]
+    
+?>
