@@ -1,4 +1,8 @@
 
+
+销售中心搜索输入框添加回车事件及优化-2
+
+
 git@172.16.4.127:AFOne/Portal.git
 
 页面元素权限添加
@@ -7,33 +11,470 @@ git@172.16.4.127:AFOne/Portal.git
 
 第二：git show 356f6def9d3fb7f3b9032ff5aa4b9110d4cca87e
 
+http://172.16.4.127:8089/AFOne/Portal/commits/health_2.0
+
+git@172.16.4.127:AFTransfer/AFTransfer.git          //这个是后端的swagger
+
+后端server包下载：  http://172.16.4.127:8089/AFOne/service
+前端包下载：            http://172.16.4.127:8089/AFOne/Portal
+
+
+
+@孟妍 @赵阳 @李瑞 @叶俊龙 http://172.16.4.127:8089/AFTransfer/AFTransfer
+git@172.16.4.127:8089:AFTransfer/AFTransfer.git
+
+
+
+
+投保操作   http://localhost:8070/#/MedicalCenter/insureHandle   
+退保操作   http://localhost:8070/#/MedicalCenter/outInsureHandle
+医疗查询   http://localhost:8070/#/MedicalCenter/medicaQuery
+错误列表   http://localhost:8070/#/MedicalCenter/errorList
+任务单      http://localhost:8070/#/MedicalCenter/medicalTaskList
+
+
+商旅保障任务单
+体检任务单
+用退工任务单
+
+
+
+
+
+
+
+
+
+
+
+AFOne2.0
+customer-service-center
+dev
+
+<el-input-number
+                class="pcmaa-input"
+                size="small"
+                :maxlength="20"
+                :min="0"
+                :precision="2"
+                :controls="false"
+                v-model="DialogFrom.HF_Base"
+                style="width:100%;"
+              />
+
+
+
+postMan
+yejl001/hao456789/417788569@qq.com
+
+
+
+
+2020-5月份工作清单
+雇员列表-任务单管理-公积金模块制作
+雇员管理-预录用-入职体检修改
+事务申请-外地生育津贴打印页面调整
+雇员列表-任务单管理-材料任务单制作
+任务单管理-社保任务单列表页制作
+任务单管理-公积金任务单列表页制作
+
+
+
+
+
+
+@keyup.enter.native="querySearch"
+
+
+
+SH1969     周舟
+SH0237     贺晓东
+SH1970     熊霓君
+SH0465     侯君
+SH0442     陈迪
+
+
+SH0293     张理婷
+SH0102     徐雯艳
+SH0125      李明慧
+
+
+发防守打法是     
+额外24           KH2012028,KH1906984
+派生100860947    KH201911001013
+
+
+
+特殊事项审批  -- 打印ok  ----公司名称+申请单号右移 -ok  -- 已好
+
+其他垫付  --- 打印ok  ----公司名称+申请单号右移 -ok  -好了  -- 已好
+
+工资垫付  --  打印ok ----公司名称+申请单号右移 -ok   -好了  -- 已好
+ 
+付款申请   --  打印ok  ---公司名称长度+申请单号右移 -ok  -好了 -- 已好
+
+
+
+财务数据提供  --  打印ok  ----公司名称+申请单号右移 -ok   -好了   -- 已好
+
+外地生育津贴  --  打印ok  ----公司名称+申请单号右移  -ok  -好了    -- 已好
+ 
+弹性福利定制  --  打印ok  ----公司名称+申请单号右移   -ok   -好了  -- 已好
+
+建汇食堂饭票  --  打印ok - 公司名称长度+申请单号右移 -ok   -好了  -- 已好
+
+
+
+git 创建分支相当于复制当前的分支，
+git 切换分支相当于隐藏了其他的分支的文件，而只显示当前所切换的所有分支，切换后在git pull最新的
+git 合并分支相当于把当前文件夹里面所有的可看见的文件和所有的隐藏文件进行合并，git merge dev ，这里的dev放在后面，就表示要被合并的分支，是要把dev合并到某个分支去。
+    当两个分支合并后，会有大段提示，只要输入  :wp  就可以继续输入git命令，然后在 add , commit , push
+
+
+
+
+
+
+api/CustomerAuditApplication?_cid=03bc47a1730d4847ae921f7038db2b89&
+
+
+
+D:\workspace\service\source\CIIC.AFOne.Services\Services\CIIC.AFOne.Services
+
+
+
+
+
+api/ComAdminUserRealtion/list  ComAdminId
+api/ComAdminUserRealtion/create  ComAdminId  UserId
+api/ComAdminUserRealtion/delete/80BA2F6F-9504-4B2F-80DA-AC4D2375E33A  
+
+
+徐雯艳
+
+
+ManagementFeeMonthChange
+
+
+
+这句话是属于1300年前写好的预言，是预言一个国家的领袖，相当于猜字谜，字谜里面有当今领袖的名字或者偏旁部首等等。把羽字拆开就是两个习，意味着能当4届皇帝，同时习的大写字体是‘習’，是不是就是含有偏旁羽字呢？是不是很巧？另外四足，说明该人或者该物体站立的非常平稳，四平八稳，就有“平”的意思。所以联想起来，你们知道大概指的是谁了吧。
+
+百灵来朝，双羽四足，说的其实就是上面这个领袖要带我们走向辉煌的开始啦。
+
+
+http://localhost:8070/#/PersonCenter/contractApproval?applyType=CT001&applyId=7b48ec04-c814-4131-9079-2257d09c3400&taskId=128152
+http://localhost:8070/#/PersonCenter/contractApproval?applyType=CT001&applyId=7b48ec04-c814-4131-9079-2257d09c3400&taskId=128152
+
+
+
+
+SH0690  黄静  //提起审批，我是员工
+
+SH0535  周密  //法务审批人,我是领导
+
+SH0442  陈迪  
+
+
+
+projectUserListGet  //获取参与人
+
+
+handleSelect //选择参与人
+
+
+
+
+mingxingri.com
+mingxingda.com
+mingxingsi.com
+kanjuma.com
+juqingchi.com   池子
+juqingzi.com
+
+
+
+
+
+在项目新增的时候，邀标书需上传4个文件，
+
+只要其中一个上传了，都给保存。
+
+但是现在，后台报错，提示邀标书字段是必传啊
+
+projectInvitation.invitationFile:?"......."
+"
+Error converting value "" to type 'System.Guid'. Path 'projectInvitation.invitationFile'
+
+
+
+@海风 @豌豆娃的小池塘 http://172.16.4.37:8088/SubModule/UnitiveDocument/MyDesk.aspx
+账号：0770
+密码：123456
+
+
+
+
+共16个请求：
+/Customer/list
+/ProjectUserRelation/list
+
+
+
+=========================================
+
+http://localhost:8070/sockjs-node/info
+http://localhost:8070/api/workflow/tasks/count
+http://localhost:8070/api/UserProfile/getUserFields
+http://localhost:8070/api/Project/?projectId
+http://localhost:8070/api/Customer/list ***
+http://localhost:8070/api/ProjectUserRelation/list   ***
+http://localhost:8070/api/ProjectEvaluate?projectId
+http://localhost:8070/api/ProjectCommunication/list
+http://localhost:8070/api/Contract/listbyproject
+http://localhost:8070/api/Quotation/list
+http://localhost:8070/api/UserProfile/getUserSign
+http://localhost:8070/api/Permission/GetCenter
+http://localhost:8070/api/Permission/GetAllMenu
+http://localhost:8070/api/Customer/list
+
+http://localhost:8070/api/Attachment/d0aca427-7a61-418b-9a00-9d6d18172f33?
+http://localhost:8070/api/Attachment/76ac446b-40b9-452d-a03d-ae7e6826d880
+
+
+
 
 登录开机密码：Hao123456
 
 登录开机密码：Hao654321
 
-登录开机密码：Hao456789
+
+{ "invitationFile": "86bb3feb-22b1-4fec-b36b-a95ce81b90b7", "feedbackFile": "579ba1f6-39be-4e5b-836a-7f420670270b", "otherFile1": "a3598a23-f1ab-4146-bc4a-351aadb0c9b4", "otherFile2": "79c3b886-f6d8-4413-a9d4-cd39c84900db" }
+
+
+        //setTimeout(()=>{this.dataObj.quotationType = response.result.form.contractCategoryId;},1);
+
+
+@瘋癲牛小邪 
+减免业务
+api/Fw_JMYW/list
+服务项目 ， 项目负责人 ，这两个字段的中文名称有空能返给我吗..
+====================================
+url: Fw_JMYW/{Id}??????? (获取单个)
+这个接口的：公司名称 ， 参与人 ，客服人员， 这3个字段的中文名称能返给我吗.....
+=====================================
+另外：ApplyId 审批单号 我提交了，但是每次返回都是null
 
 
 
-* 销售中心 ->合同模板管理 -> 上传文件
-*/
-FileUpLoad: async (params) => {
-  const response = await Http.post(urls.baseUrl + '/Attachment/'+ `${params.bizId }`+'?attBizCode='+ `${params.attBizCode }`+'&attTypeCode='+`${params.attTypeCode }`,params.attFile,{
-    headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  })
-  return await response.data
-  },
-  /**
+
+1.前道客户咨询  ==
+2.前道客服咨询  ==
+3.劳动争议      ==
+
+5.全国社保审核  ==
+
+6.财务合同 FinanceContract
+7.催款     AskMoney
+8.减免业务 ReduceAndExempt
+9.代收代付 CollectionAndPaymentMoney
+
+4.营业执照审核  ==
 
 
+
+
+
+
+
+
+
+
+
+
+
+d盘是最新的，2019-10-8写,放假前
+
+
+
+nba35.com
 nba27
 nba46
 nba49.com
 nba74
 nba120
+
+
+cnpm?install?--save-dev?less-loader
+
+汤吾子:
+那你接下去可以看供应商这一块了
+
+
+汤吾子:
+先话页面
+
+
+
+
+a2ec5775-842b-4d19-afc3-08d72467d091
+
+projectCommCompanies
+
+
+http://localhost:8070/api/ProjectCommunication?projectCommunicationId=90c0785d-dab8-4ce1-bf1c-e6aa660b33
+
+
+POST/api/Project/list 这个加了个参数{
+  "comadmincode": "string",
+  "comadminname": "string",
+  "customername": "string",
+  "customercode": "string",
+  "projectname": "string",
+  "projectcode": "string",
+  "projectstatus": 0,
+  "pageIndex": 0,
+  "pageSize": 0
+}
+
+
+
+6222031001017228607 2019-08-10  
+
+
+74
+余额:122.3  16:56
+     125.3  18:02
+     127.6  19:01
+     129.3  20:01
+
+
+GET/api/ProjectEvaluate
+POST/api/ProjectEvaluate/create
+POST/api/ProjectEvaluate/update
+POST/api/ProjectEvaluate/delete/{ProjectEvaluateId}
+
+git@172.16.4.127:AFOne/Portal.git
+
+
+
+wb.zouyl
+wb.yejl
+
+
+@豌豆娃的小池塘 @请叫我邹小多 前端日期格式，用that.$dateFormat
+格式化
+
+
+const params = {
+AfCompanyNo: "AF25617,AF32185,AF41995"
+};
+
+
+
+http://localhost:8070/api/Dict/List  这个列表展示页接口传入第二页，但是始终返回的是第一页的结果吗 
+PageAndWhereBase:?{pageIndex: 2, pageSize: 10, where: ""}
+
+
+
+
+是返回的结果，不是我想要的结果呀
+是不是点击“查询按钮”应该这样：
+const PageAndWhereBase = {
+pageIndex:1,
+pageSize:10,
+dictId:'c7ea8fdb-4fd4-4281-9cc7-01c4cd853905',
+name: "公积金",
+};
+
+
+
+
+//sort
+      sortClick(property){
+         if(this.sortStatus==true){ 
+            this.sortStatus = false;
+            var arr = [];
+            for(let i=0;i<this.dictItemList.length;i++){
+              arr.push(this.dictItemList[i].sort);
+            }
+            function sortNumber(a,b){
+                return a - b
+            };
+            arr.sort(sortNumber);
+            console.log(arr);
+         }
+         else{
+            this.sortStatus = true;
+            var arr = [];
+            for(let i=0;i<this.dictItemList.length;i++){
+              arr.push(this.dictItemList[i].sort);
+            }
+            function sortNumber(a,b){
+                return b - a
+            };
+            arr.sort(sortNumber);
+            console.log(arr);
+         }
+      },
+
+
+
+
+
+
+
+
+public enum WorkflowApprovalStatus
+       
+ {
+  [EnumDescription("All", "请选择", "请选择")]
+                All = -1,
+
+           
+    [EnumDescription("Draft", "草稿", "草稿")]
+                  Draft = 0,
+
+          
+    [EnumDescription("Submitted", "已提交", "已提交")]
+            Submitted = 1,
+
+        
+    [EnumDescription("Processing", "审批中", "审批中")]
+            InProcess = 2,
+
+          
+    [EnumDescription("Approved", "已通过", "已通过")]
+            Approved = 3,
+
+           
+    [EnumDescription("Rejected", "已拒绝", "已拒绝")]
+            Rejected = 4,
+
+         
+    [EnumDescription("Canceled", "已取消", "已取消")]
+            Canceled = 5,
+
+          
+    [EnumDescription("Returned", "已退回", "已退回")]
+            Returned = 6,
+
+         
+    [EnumDescription("PROCESSING", "处理中", "处理中")]
+            PROCESSING = 99
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -68,6 +509,18 @@ mimi: Hao417788569
 
 
 
+
+git@172.16.4.127:AFOne/Portal.git
+
+
+
+DictionaryManage.vue DictionaryQuery.vue FeeManage.vue dictionaryManage.less dictionaryQuery.less feeManage.less
+
+
+
+
+
+
 ===========================================================================
 dianying44.com
 dianying00.com
@@ -80,24 +533,6 @@ dy8t.com.
 dy8b.com
 dy4008.com
 
-电影天堂 154746
-电影 53304
-电影天堂网 39306
-九州电影网 19729
-三级电影 19536
-秋霞电影网 17585
-快播电影 11171
-第一次性接触 10153
-最新电影 10351
-在线电影 6299
-免费电影 5536
-6080yy电影在线看 134674
-
-韩国电影 56719
-李丽珍 21140
-日本电影经典 11141
-
-今日新鲜事 1775930
 
 
 
@@ -175,7 +610,7 @@ Git鼓励大量使用分支：
 
 
 中智上海经济技术合作有限公司
-项目名称：中智AFOne管理系统
+项目名称：人力资源管理系统
 运用到的技术栈：vue，js，less, npm，element-UI ,css, html, json,  git
 项目流程：由业务提供需求，然后由产品经理画出原型图片，再生成文档交给前端开发。
 
@@ -187,7 +622,16 @@ Git鼓励大量使用分支：
       前后端数据交流主要通过API接口交互。项目的版本控制主要用git。样式用less。
 
 
+具体负责的事务：
+ 1.销售中心有添加项目:创建项目名称，上传文件，新增联系人，联系人认领，新增合同，项目列表，提交各个字段等等。
+ 2.新增管理方：创建管理方，更改管理方名字，新增客户，文件上传。
+ 3.外企内控中心：字典项新增，字典项管理，光荣榜新增和维护，操作手册说明的新增和下载，客户权限的管理，
+ 4.供应商采购中心：采购供应商管理，新增，编辑，列表，准入，供应商产品添加，供应商证件上传，供应商添加参与人和联系人，供应商采购目录清单管理，供应商合同管理
+ 5.事务申请：工资垫付申请 ，付款申请 ，财务数据提供申请 ，特殊事项申请，外地生育津贴申请，弹性福利定制申请，食堂饭票申请，有上传文件，创建账单，创建审批流，拒绝申请，撤回申请，同意申请，以及打印申请
+ 6.法务中心：前道客户咨询 ，前道客服咨询 ，劳动争议，全国社保审核 ，财务合同 ，催款 ，减免业务，代收代付，营业执照审核 ，这几个的新增，编辑，查询，删除等等。
 
+
+工作认真负责态度好，能高质量的完成任务，能及时完成上级交待的工作任务。
 
 
 中国平安科技部：
@@ -840,8 +1284,60 @@ this.list.forEach(item=>{
 
 
 
-六。.Object.assign()基本用法：其实就是复制的意思，这种方法能触动视图的更新哦
+六。.Object.assign()基本用法： 把两个对象，或者一个对象一个数组进行合并，最终得到一个新的对象，     这种方法能触动视图的更新哦
 ===============================================================
+
+assign其实就是深拷贝对象或者数组的意思，(只能一级属性的深拷贝，不能多层级的深拷贝)
+
+assign的作用是：
+
+公式：
+Object.assign('最终得到的对象','对象A','对象B....')
+
+
+第一：深拷贝，也就是复制对象/或者复制数组
+
+let a = {name:'中智集团'};
+let b = {age:'45岁'};
+let c = {name:'北京长城',address:'香港铜锣湾'};
+let d =  Object.assign({},a);
+
+console.log(d);     //{name:'中智集团'}
+
+
+第二：合并对象，(但是不能合并数组)
+let f = Object.assign({},a,b);
+console.log(f);                //输出{name:'中智集团',age:'45岁'}
+
+
+第三：后面的属性会覆盖前面的属性，在合并的时候
+let g = Object.assign({},a,b,c);
+console.log(g);                //输出{name: "北京长城", age: "45岁", address: "香港铜锣湾"}
+
+
+第四：实例，把一个对象和一个数组合并成一个对象，
+
+     let arr = [{p:'小花',t:'小兔'},{r:'小羽',s:'小田'}];
+     let obj = {c:'小猫',d:'小狗'};
+     let x = Object.assign({}, arr , obj );            
+     console.log(x);                          输出//{0: {p:'小花',t:'小兔'}, 1: {r:'小羽',s:'小田'}, c: "小猫", d: "小狗"}
+
+第五：把对象或者数组合并到this里面去，//************这一点非常重要***********************************************************
+     let arr = [1,2,5,7];
+     let obj = {name:'中智', age:'33岁'}
+     Object.assign(this, { arr , obj });
+     console.log(this);
+    公式：就是把记得要用大括号{ }把他们括起来，才能复制到this里面去哦。
+
+
+总结：assign就是深拷贝的作用，可以深拷贝对象或者数组，但是不能拷贝常数或者字符串，不能拷贝二维数组
+
+
+
+
+
+
+
 
 
 
@@ -1052,6 +1548,22 @@ console.log("arr",arr);
 
 
 总结：当源数据是引用类型的数据（对象型的数据）时候，源数据可以被修改。  当源数据是常量数字数组的时候，不会被修改。
+          ******即：数组成员项是基本类型的时候，就不能修改原数组。 当数组成员项是引用类型的时候，就可以修改原数组了。
+
+例如：
+
+let arr = [2,3,4,5];
+let brr = arr.map( item => { item = item * 2 ; return item; } );
+console.log('arr',arr) ;
+console.log('arr',brr) ;
+
+let arr = [{num:2},{num:3},{num:4},{num:5}];
+let brr = arr.map( item => { item.num = item.num * 2 ; return item } );
+console.log('arr',arr) ;
+console.log('brr',brr) ;
+
+
+
 
 
 
@@ -1135,7 +1647,7 @@ console.log("res",res);
 
 
 
-逻辑或与非
+           逻辑或与非 ：作用，是用来取值的，是用来取值的，是用来取值的，要么取前面的，要么取后面的
 =====================================================================
 
 1、JS中的||符号：
@@ -1165,8 +1677,8 @@ console.log(obj || 200);//obj
 
 2、JS中的&&符号：
 
-只要“&&”前面是false，无论“&&”后面是true还是false，结果都将返“&&”前面的值;
-只要“&&”前面是true，无论“&&”后面是true还是false，结果都将返“&&”后面的值;
+只要“&&”前面是false，不管“&&”后面是true还是false，结果都将返“&&”前面的值;
+只要“&&”前面是true， 不管“&&”后面是true还是false，结果都将返“&&”后面的值;
 
 <script type="text/javascript">
 var a = [1,2,3]; var b = "hello"; 
@@ -1183,6 +1695,51 @@ console.log(5 && 100);//100
 console.log(a && b);//hello
 console.log(obj && 200);//200
 </script>
+
+
+
+
+
+
+       三元表达式书写风格，三元作用：既能执行运算，也能取值。
+=======================================================================================================
+
+1.赋值变量：取值。 取值的意思就是它一定会取其中某一个值。
+let a = 100;
+let b = 103;
+let s;
+let c = a > b ? (
+      s = a - b,
+      s*100
+	) : (
+      s = b -a,
+      s*200
+	);   为什么会返回值呢？
+console.log(c);    //输出结果：600
+
+
+2.封装函数：执行运算
+可以根据需要来调用自己想要的function来处理更多的事情。
+代码如下:
+function a(){
+   do something
+}
+function b(){
+    do something
+}
+flag ? a() : b();
+
+3.三元表达式，既能执行运算，也能取值。
+  例如：
+let x = 10;
+let y = 20;
+let z = x == 100 ? ( x*111 ) : ( y*111 );
+console.log(z);  //输出2220
+
+
+
+
+
 
 
 
@@ -1306,6 +1863,494 @@ function search(e){
 </script>
 </body>
 </html>
+
+
+
+  flex布局            //参考：https://www.jianshu.com/p/4290522e1560
+=======================================================================================================
+
+第一：任何一个容器都可以指定为Flex布局。
+
+      .box{display:flex;}   
+
+       行内元素也可以使用Flex布局。
+
+      .box{display:inline-flex;}       //注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
+      
+      让子元素垂直居中对齐,子元素均分父容器的空间
+      .foo{
+	display: inline-flex; align-items:center;
+      }
+
+
+二、基本概念
+
+    采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。
+    它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。
+    容器默认存在两根轴：水平的主轴（main axis）x , 和垂直的交叉轴（cross axis）y。
+
+
+第三：容器(父元素)的4个属性     //其实有6个属性
+
+      flex-direction
+
+        子元素排列方向                      //.box{flex-direction: row|row-reverse|column|column-reverse;}  //行排，列排，及对应得翻转
+      flex-wrap             子元素换行                          //.box{flex-wrap:nowrap|wrap|wrap-reverse;}
+      justify-content       子元素在(x轴水平方向)的对齐方式    // .box{justify-content:flex-start|flex-end|center|space-between|space-around;}
+
+      align-items
+
+           子元素在(y轴垂直方向)的对齐方式    // .box{align-items:flex-start|flex-end|center|baseline|stretch;} 
+      
+      
+
+
+第四：项目(子元素)的属性
+       
+      order         ：标记子元素的排列顺序。数值越小，排列越靠前，默认为0。
+
+      flex-grow     ：定义宽度，按比例放大宽度，即扩展的意思
+
+      flex-shrink   : 缩放宽度，按比例缩小宽度
+
+      flex-basis    ：flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）
+
+      flex          ：flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+
+      align-self    ：align-self属性允许单个项目有与其他项目不一样的对齐方式
+
+
+      
+实例：
+：让子元素垂直居中对齐,子元素均分父容器的空间
+
+.foo{
+	display: inline-flex; align-items:center; flex-direction:row;
+}
+.foo div{
+  background: #eee;  border:#9ee 1px solid; 
+}
+.foo div.a{
+	order:1;
+    flex-grow: 1;
+}
+.foo div.b{
+	order:2;
+    flex-grow: 2;
+}
+.foo div.c{
+	order:3;
+    flex-grow:4;
+}
+
+总结用法：首先定义父元素容器flex，其次定义子元素，flex
+
+
+
+
+  CSS content 属性用法 //字体图标       字体图标请参照：https://fontawesome.dashgame.com/      参考：https://www.cnblogs.com/lflj/p/6439837.html    
+=======================================================================================================
+
+  1.什么是伪元素（Pseudo element）？
+
+  答：伪元素不是真正的元素，不存在dom文档之中，所以js无法操作他。
+      不存在文档树当中，
+      那为什么叫他“元素”？因为我们可以对其进行跟元素几乎无差别的css样式操作。
+
+
+  2.伪元素有哪些？
+
+    before,after,first-letter,first-line,link,hover,active,visited 等等
+
+  3.怎样表示伪元素?
+   
+    可以使用双冒号，也可以使用单冒号  // a:after{},  a:hover , a::before ,a::visited . 建议使用双冒号。
+ 
+  4.before与after的用法总结:
+
+    before定位的基准是其主元素的开始处，
+    after定位的基准是主元素的结尾处。
+    
+    这两者是行样式，
+
+    这两者必须配合content使用，内容为空的时候用‘’表示。
+    content是伪元素必需的属性
+
+    当主元素没有内容时before与after仍会正常工作，属性为inline元素，
+    若需要设置高宽度等属性需要display：block;。
+
+
+  5.实例
+
+    <div id="app">
+      <a href="http://www.runoob.com">中智上海</a>
+    </div>
+    
+    #app a{ color: #ff9900 }
+    #app a:hover{ color:#000; }
+    #app a::before{ content: "我加在了当前元素的前面怎么样啊>>"; border:1px #000 solid; display: inline-block; width: 140px; vertical-align: middle;   }
+    #app a::after { content: "<<我加在了当前元素的后面";  }
+
+
+   6.before与after的主要用途
+     
+     答：是对元素默认样式的的美化，也可以很好地解决垂直居中对齐的问题
+
+      垂直居中
+
+      #app a::before{ content: "我加在了当前元素的前面怎么样啊>>"; border:1px #000 solid; display: inline-block; width: 140px; vertical-align: middle; line-height: 25px; }
+      #app a::after { content: "<<我加在了当前元素的后面";  border:1px green solid;display: inline-block;vertical-align: middle;  }
+
+
+
+
+      如何用 es6+ 写出优雅的 js 代码                     参考地址：https://www.jianshu.com/p/255c08ecd533
+============================================================================================================
+
+  查看了js的手册后发现，在js中return 这个单词，只能放在function中，如果不是在一个function中弹出如上错误。 “SyntaxError: Illegal return statement”
+  解决方法只要把这个if语句放到一个函数中即可。
+
+  1.中断循环总结：
+    for ：         可以用return，即中断了遍历，也终止了当前函数，跳出了当前的函数。不在执行之后的所有代码。 但是break，只会中断遍历，但是不会跳出函数体。
+    forEach：  可以用return，只会中断一次遍历，即return之后的代码不会被执行，但是不会跳出当前函数，而函数里面的其他的代码会继续执行。另不能用break
+    map：       可以用return，只会中断一次遍历，即return之后的代码不会被执行，但是不会跳出当前函数，而函数里面的其他的代码会继续执行。另不能用break
+    filter：       可以用return，只会中断一次遍历，即return之后的代码不会被执行，但是不会跳出当前函数，而函数里面的其他的代码会继续执行。另不能用break
+
+
+
+
+
+    
+ 2.解构赋值 批量声明变量
+   // 传统的声明变量
+       let age = 22
+       let name = 'guodada'
+       let sex = 1
+   // 批量声明变量1，都放在数组里面
+      ES6:
+      let [age, name, sex] = [22, 'guodada', 1]
+      console.log(age, name, sex) // 22, guodada, 1
+
+   //批量声明2，都放在数组里面
+     let [ name ,brr , obj ] = ['tom' , [2,5] , {a:'松江',b:'青浦'}];
+     console.log(name,brr,obj);   
+
+  //在对象中使用:
+     const obj = {
+                firstName: 'guo',
+                lastName: 'dada'
+        }
+     let { firstName, lastName } = obj
+
+  //使用在函数中:
+   function f(x, y) {
+       return {x: x, y: y};
+    }
+   f(1, 2)   // Object {x: 1, y: 2}
+
+
+ 3.
+    let arr = [1, 2, 3, 4]   //
+    Array.isArray(arr)     // true 判断是否为数组
+    arr.includes(2)         // true 判断数组中是否包含某项
+    arr.findIndex(d => d === 3)  // 2 找出第一个符合条件的数组成员并返回数组下标, 找不到返回 -1
+    arr.find(d => d === 3)           // 3 找出第一个符合条件的数组成员并返回, 找不到返回 undefined
+
+
+
+           javascript的堆栈原理
+===========================================================================================
+   
+   1.（栈数据）基本类型数据： (值类型) ：不可改变的原始值：Number、String、Boolean、undefined、null
+   2.（堆数据）引用类型数据： (引用值)  :  array、object、function
+
+   什么是基本类型数据？
+   答：简单的数据段。存放在栈内，占据固定大小的空间。例如：Number、String、Boolean、undefined、null
+
+   什么是引用类型数据？
+   答：指那些可能由多个值构成的对象，存放在堆内。例如：array、object、function
+
+    啥是堆？啥是栈？
+    答：堆是堆、栈是栈，没有单独的“堆栈”这种结构的数据。        
+           1.所有申明的'变量名'都存放在栈（包括 基本类型、引用类型、函数），
+           2.栈只存放基本类型数据的'值'，   
+           3.栈还存放引用类型数据的'地址'，而不存放引用类型的真实值，引用类型的真实值被存放在堆内存，而栈里的地址指向堆的真实值。
+
+
+   第一：详解栈数据结构
+                       特点：1、5种基本类型数据的'值'都存放在栈内存，                                   //Number、String、Boolean、undefined、null
+                                 2、栈数据是遵循次序。同名取值时，会被覆盖，是后进先出。        //增加和删除变量，要遵循次序。即若是变量名有相同，后进来的会覆盖前面的数据，类似羽毛球桶
+                                 3、栈数据由编译器自动分配释放内存空间，                                    //程序执行完之后会自动释放。 存取速度很快。         
+                                 4、栈数据的复制等价于深拷贝。(重点) 即直接复制了其'值'            //复制栈数据之后是“值”的传递，复制以后相互再无关联，修改其中一个不会影响另一个。
+                     例如1：
+                                 var str = "中智";      //定义栈数据
+                                 var a = str;              //复制栈数据
+                                 var str = "北京";      //修改栈数据
+                                 console.log(a);           //输出：中智           
+                                 console.log(str);         //输出：北京
+                     例如2：
+                                  var bool = true;     //定义栈数据
+                                  var b = bool;         //复制栈数据
+                                  var bool = false;   //修改栈数据
+                                  console.log("bool",bool);   //输出：false
+                                  console.log("b",b);              //输出：true
+
+    第二：详解堆数据结构
+                    特点： 1、3种引用类型数据的'值'都存放在堆内存。在栈中只保存其地址   //array、object、function
+                               2、堆数据是不遵循次序。                                                               //堆就像一个仓库，随机存，直接取。可以随心所欲的进行增加变量和删除变量，不用遵循次序。
+                               3、 一般由程序员分配、释放内存空间，                                         //执行完之后，不会自动释放。堆是在程序运行时才触发(申请空间)，而不是在程序编译时(申请空间)。
+                               4、堆数据的复制等价于浅拷贝。(重点) 即复制的是其'地址'            //复制堆数据，仅仅只是复制了他的"值"的地址，相互之间有关联，修改其中一个也会影响另一个。
+
+                    例如1：
+                                  var arr = [2,4,7,8];            //创建一个堆数据
+                                  var brr = arr;                   //复制一个堆对象
+                                  arr[1] = 999;                  //改变堆内存里面的值
+                                  console.log("arr",arr);   //输出：[2,999,7,8]
+                                  console.log("brr",brr);   //输出：[2,999,7,8]
+
+                    例如2：
+                                 var obj = {name:'中智', age:'20岁'};                //创建一个堆数据，地址存在栈中，真实数据则存在堆中
+                                 var happyObj = obj;                                       //复制一个堆对象
+                                 obj.name = "上海";                                         //改变堆数据的结构 
+                                  var happyObj = {sex:'男',height:'180cm'}    //重新定义一个堆对象，划分一个堆空间给他，在栈中保存的地址不在指向obj
+                                  console.log("obj",obj);                                  //输出：{name:'上海', age:'20岁'}      
+                                  console.log("happyObj",happyObj);            //输出：{sex:'男',height:'180cm'}   
+                      例如3：
+                                 var a = {n:1};
+                                 var b = a;
+                                 a = {n:2};
+                                 console.log("a",a);     //输出：{n: 2}
+                                 console.log("b",b);    //输出：{n: 1}
+                        
+           
+
+
+        第三：函数存在哪里？
+
+                 var str_a = "Hello World";
+function fn_a(arg){
+    console.log(arg); // #1 --> Hello World
+    arg = "Hai";
+    console.log(str_a,arg); // #2 --> Hello World , Hai
+};
+fn_a(str_a);
+
+
+
+                      
+          
+                     
+
+实例：
+var str_a = "a"; // 为str_a分配栈内存:str_a:"a"
+var str_b = str_a; // 原始类型直接访问值,so,为str_b新分配栈内存:str_b:"a"
+str_b = "b"; // 栈内存中:str_b:"b"。str_b的值为"b",而str_a的值仍然是"a"
+
+// 分隔 str 和 obj -----------------------------------------------------------//
+var obj_a = {v:"a"}; // 为obj_a分配栈内存访问地址:obj_a,堆内存中存对象值:{v:"a"};
+var obj_b = obj_a; // 为obj_b分配栈内存访问地址:obj_b,引用了堆内存的值{v:"a"}
+obj_b.v = "b"; // 通过obj_b访问(修改)堆内存的变量,这时候堆内存中对象值为:{v:"b"},由于obj_a和obj_b引用的是堆内存中同一个对象值，所以这时候打印都是{v:"b"}
+obj_b = {v:"c"}; // 因为改的是整个对象，这里会在堆内存中创建一个新的对象值:{v:"c"},而现在的obj_b引用的是这个对象，所以这里打印的obj_a依旧是{v:"b"},而obj_b是{v:"c"}(两者在内存中引用的是不同对象了)。
+
+总结：栈是用来存放基本类型数据的值，和存放引用类型数据的地址的
+           堆是用来存储引用类型的真实值，而栈内的地址就指向这个真实值。
+
+    栈：所有在“方法中”定义的变量都是放在栈内存中，随着方法的执行结束，这个方法的内存栈也自然销毁。
+    值类型是存在栈里的，存取速度都很快。
+    栈的特点：先进后出，类似羽毛球桶，先放进去的羽毛球，要想拿出来，必须先把后放进去的羽毛球拿出来。
+   引用类型的真实数据存在堆里。  堆的特点：堆就像一个仓库，随机存，直接取，没有像栈这么麻烦。
+   栈(stack)会自动分配内存空间，会自动释放。堆(heap)动态分配的内存，大小不定也不会自动释放。
+   为什么编程语言中需要堆和栈 ? 参考：    https://blog.csdn.net/u010632868/article/details/79465569 
+   为什么既需要栈又需要堆   https://blog.csdn.net/u010632868/article/details/79465569
+
+
+ 
+
+
+          computed和watch 怎么监听对象，怎么监听数组，深度监听
+===========================================================================================
+
+
+第一：watch监听整个对象:   handler + deep
+
+data:{
+      result:1,
+      obj:{
+        name:'tom',
+        age:'22岁',
+        sex:'男'
+      },
+      company:'中智'
+    },
+    
+    watch: {
+       //监听对象，固定格式：handler + deep
+       //只要obj中的属性发生变化，便会执行handler函数
+       obj: {
+         handler(){
+           this.result --;
+         },
+         deep:true,
+       },
+       //监听普通变量 
+       company( newValue, oldValue ){
+         this.result ++;
+       },
+    },
+
+第一：watch监听整个数组:   handler + deep
+
+
+
+第二：watch监听对象中的某个属性:   computed + watch
+
+data:{
+      result:1,
+      obj:{
+        name:'tom',
+        age:'22岁',
+        sex:'男'
+      },
+      company:'中智'
+    },
+
+    computed: {
+      //先注册一个变量ageModel,来存放对象obj里面的age值；
+      ageModel(){
+        return this.obj.age;
+      },
+    },
+    
+    watch: {
+       //再在通过watch来监听ageModel变量，
+       //就达到了监听对象中的具体属性值的变化啦。牛逼
+       ageModel(newValue, oldValue){
+          this.result ++ ;
+       },
+    },
+
+
+第三：computed的get和set用法：
+
+     computed是用来进行数据双向绑定的。
+     get方法是用来获取值得，展示值得，需要一个return值。
+     set是用来触发函数的，就是让他去干活，让别人做事。
+
+data:{
+      result:1,
+      fristName:'叶',
+      lastName:'龙',
+    },
+
+    computed: {
+      fullName:{
+        get(){
+          return this.fristName + this.lastName;
+        },
+        set( newValue ){
+          this.result ++ ;
+          this.fristName = 1;
+          this.lastName = 2;
+          console.log(newValue);
+        }
+      },
+    },
+
+
+
+第四：watch 和 computed的区别？
+
+       1.计算属性computed相当于在data里面注册了一个新的属性
+       2.计算属性computed是多对一，其他几个变量的变化可以汇聚给一个变量使用
+       3.computed必须要配合return。
+       4.watch是一对多，即可以监听data里面的某一个变量也可以监听computed里面的某一个变量，然后就可触动函数，让他干活
+       5.watch 和 computed 与 methods没有关系，他们是平行的等级。
+       6.methods下的数据，是每次都会进行计算的
+       7.watch擅长处理的场景：一个数据影响多个数据 ，computed擅长处理的场景：一个数据受多个数据影响
+
+
+
+
+
+
+
+          Vue的机制和原理  参考：https://www.jianshu.com/p/c02cb881bea8        https://www.cnblogs.com/ranyonsue/p/9717685.html
+          Object.defineProperty
+===========================================================================================
+
+
+
+
+
+
+
+          连续赋值与求值顺序 var a = b = 8
+===========================================================================================
+
+           参考：      https://www.cnblogs.com/huaan011/p/4381703.html
+           参考：      https://blog.csdn.net/qq_34035425/article/details/83085564
+
+
+
+
+
+          什么是队列
+===========================================================================================
+
+
+
+
+          false、0、null、undefined和空字符串( 五种基本类型数据之间的关系 )
+===========================================================================================
+         
+let a = true;                  //console.log(Number(a))  转换结果：1     if(a) 执行true分支
+let b = 0;                      //console.log(Number(b))  转换结果：0      if(b) 执行false分支
+let c = '';                      //console.log(Number(c))  转换结果：0        if(c) 执行false分支
+let d = null;                 //console.log(Number(d))  转换结果：0        if(d) 执行false分支
+let e = undefined;      //console.log(Number(e))  转换结果：NaN   if(e) 执行false分支
+let f = false;                //console.log(Number(f))   转换结果：0         if(f) 执行false分支
+
+//第一类：
+0 == '', '' == false , false == 0 ,  //结果：true
+
+//第二类：
+null == undefined  //结果：true
+
+//第三类：以下结果全是：false
+null == false ,   
+null == 0,
+null == '',
+undefined == false , 
+undefined == 0 ,   
+undefined == '',
+
+//总结：null和undefined可以互等，但是null和undefined不能和其他三个(0,false,'')互等，而这3个却可以互等。但是在使用if(a)语句的时候，null和undefined却可以转换为0
+
+
+if(e){
+  alert('真的');
+}else{
+  alert('假的');
+};
+
+结论：把0、空字符串和false归为一类，称为“假值”；把null和undefined归为一类，称为“空值”。
+当你用==操作符将这个5个对象进行比较的时候，你会发现：
+只有0、空字符串和false可以互相相等==，
+而null和undefined和其他三个都不相等，
+但null和undefined是相等的。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
