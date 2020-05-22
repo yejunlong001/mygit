@@ -1,142 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript" src="../../js/jquery.md5.js"></script>
+  <script type="text/javascript" src="../../js/vue.js"></script>
+  <script type="text/javascript" src="../../js/axios.js"></script>
+  <script type="text/javascript" src="../../js/qs.js"></script>
+  <script type="text/javascript" src="../../js/vue-resource.js"></script>
+  <script type="text/javascript" src="../../js/polyfill.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script type="text/javascript" src="../../js/element-ui-index.js"></script>
+  <title>Êñ∞Â¢û</title>
+</head>
 
+<body>
+  <div id="app">
+    <el-row>
+      <el-col :span="24">
+        <el-button type="primary" size="small" @click="add" class='btnAdd'>Êñ∞Â¢ûËµÑËÆØ</el-button>
+        <el-row>
+          <el-col :span="24" align="right">
+            <el-button type="primary" size="small" @click="queryReset">ÂÖ±{{total}}Êù°</el-button>
+          </el-col>
+        </el-row>
+      </el-col>
+    </el-row>
+    <!-- ËøôÊòØÂàóË°® -->
+    <el-table :data="listData" size="small" class='t' border stripe :header-cell-style="{background:'#fafafa'}">
+      <el-table-column prop="id" align="center"  label="ÊéíÂ∫è">
+        <template slot-scope="scope">{{scope.$index +1}}</template>
+      </el-table-column>
+      <el-table-column prop="id" align="center"  label="Ê†áÈ¢ò">
+        <template slot-scope="scope">{{scope.$index +1}}</template>
+      </el-table-column>
+      <el-table-column prop="name" align="center" :show-overflow-tooltip="false" label="‰ΩúËÄÖ">
+        <template slot-scope="scope"><strong>{{scope.row.name}}</strong></template>
+      </el-table-column>
+      <el-table-column prop="enName" align="center" label="Ë°®"></el-table-column>
+      <el-table-column prop="model" align="center" label="È¢ëÈÅì"></el-table-column>
+      <el-table-column prop="country" align="center" label="Êù•Ê∫ê"></el-table-column>
+      <el-table-column prop="city" align="center" label="Êó∂Èó¥"></el-table-column>
+      <el-table-column prop="foundTime" align="center" label="ÊèèËø∞"></el-table-column>
+      <el-table-column prop="forumUrl" align="center" label="ÊñáÁ´†"></el-table-column>
+      <el-table-column prop="logo" align="center" label="ÂΩìÂâçÈ°µÂú∞ÂùÄ"></el-table-column>
+      <el-table-column prop="author" align="center" label="Êìç‰Ωú">
+        <template slot-scope="scope">
+          <el-button @click='toArticles(scope.row)' type='primary' size='mini'>Ê∑ªÂä†ËΩ¶Âûã</el-button>
+          <el-button @click='update(scope.row)' type='primary' size='mini' plain>‰øÆÊîπ</el-button>
+          <el-button @click='deleteRow(scope.row)' type='danger' size='mini' plain>Âà†Èô§</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column prop="homeUrl" align="center" label="È¢ëÈÅìÈ¶ñÈ°µ"></el-table-column>
+      <el-table-column prop="keyId" align="center" :show-overflow-tooltip="true" label="keyId"></el-table-column>
+    </el-table>
+    <!-- ÂºπÊ°ÜÂºÄÂßã -->
+    <el-dialog
+      title="Êñ∞Â¢ûÊñ∞Èóª"
+      width="60%"
+      :visible.sync="dialogVisible"
+      :before-close="handleClose">{{pindao}}--{{whichTable}}
+      <el-row><el-col align='center' style="margin-bottom: 15px;">
+        <el-button type="primary" @click="save" size="small">Êèê ‰∫§</el-button>
+      </el-col></el-row>
+      <el-form ref="form" label-width="90px" size="small">
+        <el-form-item label="Ê†áÈ¢ò"><el-input v-model="title"></el-input></el-form-item>
+        <el-form-item label="È¢ëÈÅì">
+          <el-checkbox-group v-model="pindao">
+            <el-checkbox v-for='(item,index) in checkBox' :label="item.name"  @change='changeBox(item,index)' :key='item.value'></el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+        <el-form-item label="Êù•Ê∫ê"><el-input  v-model="source"/></el-form-item>
+        <el-form-item label="‰ΩúËÄÖ"><el-input v-model="author"></el-input></el-form-item>
+        <el-form-item label="Êó∂Èó¥"><el-date-picker style="width:100%" v-model="foundTime"type="date" placeholder="ÈÄâÊã©Êó•Êúü" value-format="yyyy-MM-dd"></el-date-picker></el-form-item>
+        <el-form-item label="ÊèèËø∞"><el-input type='textarea' rows="3" v-model="description"/></el-form-item>
+        <el-form-item label="ÊñáÁ´†"><el-input type='textarea' rows="30" v-model="article"/></el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="save" size="medum">Êèê ‰∫§</el-button>
+      </span>
+    </el-dialog>
+    <!-- ÂºπÊ°ÜÁªìÊùü -->
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data: {
+        dialogVisible:false,
+        listData:[],
+        checkBox:[
+          {name:'ËµÑËÆØ',value:'zixun'},
+          {name:'Êñ∞ËΩ¶',value:'xinche'},
+          {name:'ËßÜÈ¢ë',value:'shipin'},
+          {name:'ÊµãËØÑ',value:'ceping'},
+          {name:'Â§¥Êù°',value:'toutiao'},
+          {name:'ËΩ¶Ê®°',value:'chemo'},
+          {name:'ÂÅ•Â∫∑',value:'jiankang'},
+          {name:'Êë©Êâò',value:'motuo'},
+          {name:'Âç°ËΩ¶',value:'kache'},
+          {name:'ËΩªÂÆ¢',value:'qingke'}
+        ],
+        
+        foundTime:'',
+        article:'',
+        description:'',
+        keyId:'',
+        title:'',
+        pindao:'',
+        author:'Ê±ΩËΩ¶Âàä',
+        pindao:[],
+        source:'',
 
- ◊“≥Õ∆ºˆ
-∏€Ã®µÁ”∞
-≈∑√¿µÁ”∞
-∫´π˙µÁ”∞
-»’±æµÁ”∞
-¥Û¬ΩµÁ”∞
-◊Ó–¬µÁ”∞
-∫√∆¿µÁ”∞/»»À—µÁ”∞/»»√≈µÁ”∞
+        whichTable:'brand',  //Â≠òÊîæÊï∞ÊçÆÁöÑË°®
+        isDisabled:false,
+        total:0,
+        searchName:'',
+      },
+      computed: {
+        homeUrl:{
+          get:function(){
+            return "page/"+ this.enName +"/index.html";
+          },
+          set:function(){}
+        },
+        forumUrl:{
+          get:function(){
+            return "page/"+ this.enName +"/luntan.html";
+          },
+          set:function(){}
+        },
+        logo:{
+          get:function(){
+            return "images/logo/"+ this.enName +".png";
+          },
+          set:function(){}
+        },
+      },
+      methods: {
+        changeBox(item,index){
+          console.log(item);
+          console.log(index);
+          this.pindao = [item.name];
+          this.whichTable = item.value;
+        },
+        //Ëé∑ÂèñÂîØ‰∏ÄÁöÑid
+        getId() {
+          axios.get('getInit.php').then(res => {
+            this.keyId = res.data.id;
+          });
+        },
+        //Êñ∞Â¢û
+        add(){
+          this.flag = "create";
+          this.dialogVisible = true;
+          this.isDisabled = false;
+          this.reset();
+          this.getId();
+        },
+        //ÂÖ≥Èó≠ÂºπÁ™ó
+        handleClose(){
+          this.dialogVisible = false;
+        },
+        //Êèê‰∫§
+        save(){
+          let form = {
+            name:this.name,
+            enName:this.enName,
+            model:this.model,
+            country:this.country,
+            city:this.city,
+            foundTime:this.foundTime,
+            logo:this.logo,
+            forumUrl:this.forumUrl,
+            homeUrl:this.homeUrl,
+            hot:this.hot,
+            description:this.description,
+            detail:this.detail,
+            keyId:this.keyId,
+            whichTable:this.whichTable
+          };
+          for(let key in form){
+            if(form[key].length === 0){
+              this.error('ÊúâÊú™Â°´È°πÔºåËØ∑Â°´ÂÆå.');
+              return;
+            };
+          };
+          let params = Qs.stringify({ 
+             params: form,
+          });
+          let url = '';
+          this.flag == "create" ? url = "create.php" : url = "update.php";
+          if(this.flag == "create"){
+            url = "create.php";
+            this.list();
+            for(let i=0;i<this.listData.length;i++){
+              if(this.listData[i].enName == this.enName){
+                this.error('ÂêçÁß∞ÈáçÂ§çÂï¶,ËØ∑ÈáçÊñ∞ÂëΩÂêçËã±ÊñáÂêçÁß∞');
+                return;
+              };
+            };
+          }else{
+            url = "update.php";
+          };
+          axios.post(url , params).then(res=>{
+             if(res.data.result == true){
+               this.success('ÊàêÂäüÂï¶');
+               this.reset();
+               this.getId();
+             }else{
+               this.error('Â§±Ë¥•‰∫Ü');
+             };
+             this.list();
+             this.dialogVisible = false;
+          });
+        },
+        //Êü•Êâæ
+        query(){
+          this.list();
+        },
+        //ÈáçÁΩÆÊü•Êâæ
+        queryReset(){
+          this.searchName = '';
+          this.list();
+        },
+        //Ëé∑ÂèñÂàóË°®
+        list(size){
+          let pageSize = 1;
+          size ? pageSize = size : pageSize = 10000000;
+          let params = Qs.stringify({ 
+            searchName:this.searchName,
+            pageSize:pageSize,
+          });
+          axios.post('list.php' , params).then(res=>{
+            this.listData = res.data.result;
+            this.total = this.listData.length;
+          });
+          this.dialogVisible = false;
+        },
+        //Âà†Èô§
+        deleteRow(row){
+          this.$confirm('Á°ÆÂÆöË¶ÅÂà†Èô§ËØ•Êñá‰ª∂Âêó?', 'ÊèêÁ§∫', {
+            confirmButtonText: 'Á°ÆÂÆö',
+            cancelButtonText: 'ÂèñÊ∂à',
+            type: 'warning'
+          }).then(() => {
+            let params = Qs.stringify({ 
+              whichTable:row.whichTable,
+              keyId:row.keyId,
+            });
+            axios.post('delete.php', params).then(res=>{
+            if(res.data.result == true){
+                this.success('Âà†Èô§ÊàêÂäü');
+                this.list();
+              }else{
+                this.error('Âà†Èô§Â§±Ë¥•');
+              };
+            });
+          }).catch(() => {
+            this.error('ÂèñÊ∂àÂà†Èô§‰∫Ü');          
+          });
+        },
+        //Êõ¥Êñ∞ÁºñËæë
+        update(row){
+          this.flag = "update";
+          this.dialogVisible = true;
+          this.isDisabled = true;
+          this.name = row.name;
+          this.enName = row.enName;
+          this.country = row.country;
+          this.city = row.city;
+          this.forumUrl = row.forumUrl;
+          this.foundTime = row.foundTime;
+          this.hot = row.hot;
+          this.model = row.model;
+          this.description = row.description;
+          this.detail = row.detail;
+          this.keyId = row.keyId;
+          this.whichTable = row.whichTable;
+          this.logo = row.logo;
+          this.homeUrl = row.homeUrl;
+        },
+        //ÈáçÁΩÆ
+        reset(){
+          this.name = '';
+          this.enName = undefined;
+          this.country = '';
+          this.city = '';
+          this.foundTime = '';
+          this.hot = 1;
+          this.model = '';
+          this.description = '';
+          this.detail = '';
+          this.keyId = '';
+          this.whichTable = 'brand';
+        },
+        //ÂéªÊñ∞Â¢ûÊñáÁ´†È°µÈù¢
+        toArticles(row){
+          let url = "../category/index.php?" 
+              + "cnName=" + row.name 
+              + "&enName=" + row.enName 
+              + "&country=" + row.country 
+              + "&city=" + row.city 
+              + "&foundTime=" + row.foundTime 
+              + "&whichTable=" + row.whichTable 
+              + "&keyId=" + row.keyId;
+          window.open(url);        
+        },
+        success(a){
+          this.$message({ type:'success', message:a });
+        },
+        error(a){
+          this.$message({ type:'error', message:a });
+        },
+      },
+      created() {
+        this.getId();
+        this.list();
+      },
+    });
+  </script>
+  <style type="text/css">
+    .hrefStyle {
+      color: #fff;
+      text-decoration: none;
+    }
+    a {
+      color: #66b1ff;
+      text-decoration: none;
+    }
 
-¿Ó¿ˆ’‰
-÷”¿ˆÁæ
-—Ó√›
-Ã¿Œ®
-µ‘¡Ë
-’≈∞ÿ÷•
-÷”–¿Õ©
-“∂◊”Èπ
-π®´h∑∆
-¿Ó◊⁄»
-
-
-
-
-
-www.xigua66.com
-www.yakuhd.com
-www.xigua110.com
-www.vodxc.com
-
-www.qiqipu.tv  ¡˜≥©
-www.liaocao.com ¡˜≥©
-
-www.manmankan.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[
-{name:"∏ﬂ∑÷µÁ”∞Õ¯", Alexa:1,url:"http://www.gaofenfilm.com/"},  
-{name:"”≈ø·", Alexa:2,url:"https://www.youku.com/"}, 
-{name:"∞Æ∆Ê“’", Alexa:3,url:"http://www.iqiyi.com/"}, 
-{name:"Ã⁄—∂ ”∆µ", Alexa:4,url:"https://v.qq.com/"}, 
-{name:"√¢π˚TV", Alexa:5,url:"https://www.mgtv.com/"}, 
-{name:"Õ¡∂π ”∆µ", Alexa:6,url:"http://www.tudou.com/"}, 
-{name:"À—∫¸ ”∆µ", Alexa:7,url:"https://tv.sohu.com/"}, 
-{name:"¿÷ ” ”∆µ", Alexa:8,url:"http://www.le.com/"},  
-{name:"PPtv", Alexa:9,url:"http://www.pptv.com/"}, 
-{name:"ø¥ø¥ ”∆µ", Alexa:10,url:"http://www.kankan.com/"}, 
-{name:"∂π∞ÍµÁ”∞", Alexa:11,url:"https://movie.douban.com/"}, 
-{name:"ª™ ˝TV", Alexa:12,url:"https://www.wasu.cn/"}, 
-{name:"IMDB", Alexa:13,url:"https://www.imdb.com.cn/"}, 
-{name:"MEGA", Alexa:14,url:"http://www.megavideo.com/"},  
-{name:"HuLu", Alexa:15,url:"https://www.hulu.com"}, 
-{name:"Youtube", Alexa:16,url:"http://www.youtube.com"}, 
-{name:"—≈ø·∏ﬂ«Â",Alexa:38000,url:"http://www.yakuhd.com"},
-{name:" ±ø’µÁ”∞", Alexa:56000,url:"http://www.skmov.com/"},
-{name:"∆ÊÃÿµÁ”∞", Alexa:53000,url:"https://www.666kao.com"},      
-{name:"—≈ø·∏ﬂ«Â", Alexa:36000,url:"https://www.xigua110.com"},  
-{name:"”∞ ”¥Û»´", Alexa:21000,url:"http://www.yingshidaquan.cc"},  
-{name:"–«≥Ω”∞‘∫", Alexa:33000,url:"http://www.vodxc.com/"},  
-{name:"∞Õ∞Õ”∞‘∫", Alexa:34000,url:"https://www.baba.cc/"},  
-{name:"Œ˜πœ”∞‘∫", Alexa:44000,url:"http://www.xigua66.com/"},  
-{name:"…Ò¬Ì”∞‘∫", Alexa:33000,url:"https://www.2341.tv"},  
-{name:"∆ﬂ∆ﬂ∆Ã", Alexa:29000,url:"http://www.qiqipu.com/"},  
-{name:"¬˛¬˛ø¥", Alexa:17000,url:"http://www.manmankan.com"},  
-{name:"÷–π˙»À”∞", Alexa:55000,url:"http://www.520885.com"},  
-{name:"∆∑…∆Õ¯", Alexa:89000,url:"http://www.pinshan.com/"},  
-{name:"–˛ÃÏ”∞ ”", Alexa:82000,url:"http://www.4pcc.com/"},  
-{name:"”∆æ√”∞‘∫", Alexa:50000,url:"https://www.eqq9.com"},  
-{name:"CK”∞‘∫", Alexa:26000,url:"http://www.ckck.tv"},  
-{name:"IDµÁ”∞", Alexa:11000,url:"http://www.id97.com/"},  
-{name:"ÃÏÃÏ”∞‘∫", Alexa:67000,url:"http://www.ttvdo.com/"},  
-{name:"”∞ ”¥Û»´", Alexa:38000,url:"http://www.meikanguo.com/"}, 
-{name:"≤›√ÒµÁ”∞", Alexa:96000,url:"http://www.cmdy5.com"}, 
-{name:"ﬂ’ﬂ’Õ√", Alexa:399000,url:"https://m.jlszyy.cc/"}, 
-{name:"”∞ ”¥Û»´", Alexa:38000,url:"http://www.km.com/"}, 
-{name:"À¢æÁ∞…", Alexa:38000,url:"http://www.shuajuba.com/"}, 
-{name:"¿◊π‚Õ¯", Alexa:340000,url:"https://www.leiguang.cc/"}, 
-{name:"ŒÂ…±µÁ”∞", Alexa:38000,url:"https://www.lol5s.com"},  
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"ŒÂ…±”∞‘∫1", Alexa:37000,url:"https://s.lol5s.com/"}, 
-{name:"¡ ≤›Õ¯2", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"«‡∆ªπ˚3", Alexa:100000,url:"http://m.qpgyy.com/"}, 
- {name:"”∞ ”¥Û»´4", Alexa:20000,url:"http://m.yingshidaquan.cc"}, 
-{name:"ÃÏ¿«”∞‘∫5", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"∆ﬂ∆ﬂ∆Ã6", Alexa:28000,url:"http://m.qiqipu.com"},  
-{name:"µÁ”∞123-7", Alexa:55000,url:"http://m.dy123.cc"}, 
-{name:"Œ˜πœ”∞‘∫8", Alexa:38000,url:"https://m.xigua110.com"}, 
-{name:"≤ø¬‰”∞‘∫9", Alexa:87000,url:"http://m.vbuluo.com"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"µÁ”∞ ◊∑¢’æ0", Alexa:19000,url:"http://www.tl95.com/"},
-{name:"’ΩµÿµÁ”∞0", Alexa:19000,url:"http://m.zhandi.cc"}, 
-{name:"¡ ≤›Õ¯0", Alexa:150000,url:"http://m.liaocao.com"},
-{name:"ÃÏ¿«”∞‘∫0", Alexa:21000,url:"https://m.ttll.cc"}, 
-{name:"TTTTTTTT", Alexa:38000,url:"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}, 
-{name:"¿◊π‚Õ¯", Alexa:35000,url:"https://www.leiguang.cc/"}, 
-{name:"Á˜Á˜≤º", Alexa:190000,url:"https://www.qiqibu99.com"}, 
-{name:"6VµÁ”∞", Alexa:5000,url:"http://www.hao6v.com/"}, 
-{name:"∆Æª®µÁ”∞", Alexa:3070,url:"https://www.piaohua.com/"},  
-{name:"µÁ”∞∫–◊”", Alexa:97000,url:"http://www.5iwanyouxi.com/"}, 
-{name:"µÁ”∞∏€", Alexa:5200,url:"http://www.dygang.net/ys/"}, 
-{name:"µÁ”∞ÃÏÃ√", Alexa:991,url:"http://www.dytt8.net/"}, 
-{name:"µÁ”∞∞…", Alexa:1904,url:"https://www.dy2018.com"}, 
-{name:"±ªŒ—", Alexa:26000,url:"http://www.beiwo.tv/"}, 
-{name:"µÁ”∞ÃÏÃ√", Alexa:8900,url:"https://www.dygod.net/"},  
-{name:"ø¥∞Õ ø", Alexa:13000,url:"http://www.kan84.net/"}, 
-{name:"K8æ≠µ‰Õ¯", Alexa:41000,url:"http://www.k8jdwang.com/"}, 
-{name:"≈£±¶±¶", Alexa:21000,url:"http://niubaobao.cc/"}, 
-{name:"µÁ”∞123", Alexa:53000,url:"http://www.dy123.cc"}, 
-{name:"–«ø’µÁ”∞", Alexa:55000,url:"https://www.xkdy.net/"}
-
-
-
-
-
-
-
-
-
-
-
-
-]
+    a:hover {
+      color: #ff0000;
+    }
+    .btnAdd {
+      position: fixed;
+      top: 6px;
+      left: 6px;
+      z-index: 8888888;
+    }
+    .t{
+      margin-top: 15px;
+    }
+    .el-dialog__header{
+      border-bottom: 1px #eee solid;
+    }
+    .el-dialog__title{
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .el-icon-close:before{
+      content: "close"
+    }
+    .el-dialog__footer{
+      border-top: 1px #eee solid;
+      padding-top: 20px; 
+      text-align: center;
+    }
+    .el-dialog__body{
+      padding-bottom: 10px;
+    }
+    .el-icon-warning:before{
+      content: "."
+    }
+    .el-dialog__body{
+      padding-top: 15px;
+    }
+  </style>
+</body>
+</html>
