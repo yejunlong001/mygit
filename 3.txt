@@ -1,40 +1,167 @@
-<?php
-    
-    // 1、范例代码：
-    ignore_user_abort(true);  // 设置与客户机断开是否会终止脚本的执行。
-    set_time_limit(0);        // 设置脚本超时时间，为0时不受时间限制
-    ob_end_clean();           // 清空缓存
-    ob_start();               // 开始缓冲数据
-    while(1){
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript" src="../../js/jquery.md5.js"></script>
+  <script type="text/javascript" src="../../js/vue.js"></script>
+  <script type="text/javascript" src="../../js/axios.js"></script>
+  <script type="text/javascript" src="../../js/qs.js"></script>
+  <script type="text/javascript" src="../../js/vue-resource.js"></script>
+  <script type="text/javascript" src="../../js/polyfill.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script type="text/javascript" src="../../js/element-ui-index.js"></script>
+  <title>新增文章资讯</title>
+</head>
 
-        echo str_repeat(" ",1024);  // 写满IE有默认的1k buffer
-        ob_flush();                 // 将缓存中的数据压入队列
-        flush();                    // 输出缓存队列中的数据
-        echo "now time is ".date('h:i:s');  // 打印数据，其实是先将数据存入了缓存中
+<body>
+  <div id="app">
+    <el-row>
+      <el-col :span="24" align='center'>
+         <el-button @click="Btn(1)" :type="b1" size="small">新车</el-button>
+         <el-button @click="Btn(2)" :type="b2" size="small">论坛</el-button>
+         <el-button @click="Btn(3)" :type="b3" size="small">视频</el-button>
+         <el-button @click="Btn(4)" :type="b4" size="small">评测</el-button>
+         <el-button @click="Btn(5)" :type="b5" size="small">头条</el-button>
+         <el-button @click="Btn(6)" :type="b6" size="small">摩托</el-button>
+         <el-button @click="Btn(7)" :type="b7" size="small">官网</el-button>
+         <el-button @click="Btn(8)" :type="b8" size="small">模特</el-button>
+         <el-button @click="Btn(9)" :type="b9" size="small">健康</el-button>
+         <el-button @click="Btn(10)" :type="b10" size="small">百科</el-button>
+      </el-col>
+   </el-row>
+   <el-table 
+      :data="tableData" 
+      @row-click="rowClick" 
+      :highlight-current-row="true" 
+      ref="tableDataDom" 
+      :stripe="true" 
+      border 
+      :header-cell-style="{background:'#fafafa'}">
+      <el-table-column label="雇员编号" prop="employeeNumber" align="center" :show-overflow-tooltip="true" />
+      <el-table-column label="雇员姓名" prop="nameOfEmployee" align="center" :show-overflow-tooltip="true" />
+      <el-table-column label="连带人" prop="nameofjointinsured" align="center" :show-overflow-tooltip="true" />
+      <el-table-column label="案卷号" prop="fileNo" align="center" :show-overflow-tooltip="true" />
+    </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="pageIndex"
+      style="text-align:center;margin-top:15px"
+      background
+      :pager-count="5"
+      layout="total,prev, pager, next"
+      :total="total"
+    ></el-pagination>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data: {
+        b1:'primary',
+        b2:'plain',
+        b3:'plain',
+        b4:'plain',
+        b5:'plain',
+        b6:'plain',
+        b7:'plain',
+        b8:'plain',
+        b9:'plain',
+        b10:'plain',
+        tableData:[{}],
+        info:{},
+        pageIndex
+        total
 
-        file_put_contents("log.log","yejunlong",FILE_APPEND);//记录日志
+      },
 
-        usleep(10000000);            //延迟一秒（暂停一秒）
+      computed: {
+        
+      },
+      methods: {
+        //获取唯一的id
+        getId() {
+          axios.get('getInit.php').then(res => {
+            this.keyId = res.data.id;
+          });
+        },
+
+        Btn(index){
+
+        },
+        //选中一行
+        rowClick(row){
+          this.info = row;
+          
+        },
+        
+        handleSizeChange(val) {
+          this.pageSize = val;
+          this.List();
+        },
+        handleCurrentChange(val) {
+          this.pageIndex = val;
+          this.List();
+        },
+
+      },
+      created() {
+        this.getId();
+        
+      },
+    });
+  </script>
+  <style type="text/css">
+    .hrefStyle {
+      color: #fff;
+      text-decoration: none;
     }
-    // 该段程序实现的功能是每隔一秒钟输出一次包含当前时间的字符串。
+    a {
+      color: #66b1ff;
+      text-decoration: none;
+    }
 
-
-
-    // 2、说明：
-    // 经过测试，范例结果中会出现不连续输出，如果要求实现连续、均匀的输出效果（如输出时间），
-    // 则应设置缓存；为方便理解，提供相关函数作用说明如下：
-    /*
-    ①ignore_user_abort(bool):设置与客户机断开是否会终止脚本的执行。
-    ②set_time_limit(int seconds)设置允许脚本运行的时间，单位为秒。参数值为0时不受限制。
-    ③ob_end_clean()：清除服务端缓存的数据
-    ④ob_start()：开启一个缓存（可嵌套）
-    ⑤ob_flush()：将缓存中的数据压入队列
-    ⑥flush()：输出缓存队列中的数据
-    ⑦usleep(int m-seconds)：以指定的微秒数延缓程序的执行。
-    */
-    // 注：
-    // flush()和ob_flush()的正确顺序应是，先ob_flush()再flush()，不可弄混。
-    // usleep()函数可替换成sleep()函数，不同之处在于sleep()的参数是秒。
-
-    
-?>
+    a:hover {
+      color: #ff0000;
+    }
+    .btnAdd {
+      position: fixed;
+      top: 6px;
+      left: 6px;
+      z-index: 8888888;
+    }
+    .t{
+      margin-top: 15px;
+    }
+    .el-dialog__header{
+      border-bottom: 1px #eee solid;
+    }
+    .el-dialog__title{
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .el-icon-close:before{
+      content: "close"
+    }
+    .el-dialog__footer{
+      border-top: 1px #eee solid;
+      padding-top: 20px; 
+      text-align: center;
+    }
+    .el-dialog__body{
+      padding-bottom: 10px;
+    }
+    .el-icon-warning:before{
+      content: "."
+    }
+    .el-dialog__body{
+      padding-top: 15px;
+    }
+    /deep/.current-row > td {
+    background: #eff7ff !important;
+    color: #409EFF;
+    font-weight: bold;
+  }
+  </style>
+</body>
+</html>
