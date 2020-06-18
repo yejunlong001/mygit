@@ -97,7 +97,7 @@
        <el-col :span='24'><el-form-item label="本页地址"><el-input disabled v-model="form.url"></el-input></el-form-item></el-col>
        <el-col :span='24'><el-form-item label="图片地址"><el-input disabled v-model="form.photo"></el-input></el-form-item></el-col>
       </el-row>
-        <el-form-item label="所属频道"><el-input disabled v-model="form.nav"></el-input></el-form-item>
+        <el-form-item label="所属频道"><el-input type='textarea' rows="3" disabled v-model="form.nav"></el-input></el-form-item>
         <el-form-item label="描述"><el-input type='textarea' rows="3" v-model="form.description"/></el-form-item>
         <el-form-item label="正文"><el-input type='textarea' rows="40" v-model="form.content"/></el-form-item>
       </el-form>
@@ -246,7 +246,7 @@
         },
         other(){
           this.form.tableName = this.tableName;
-          this.form.nav = "<a href='http://www.qichekan.com/'>首页</a> <em>&gt;</em> <a href='http://www.qichekan.com/'>汽车刊</a> <em>&gt;</em> <a href='http://www.qichekan.com/"+this.channel+".html'>"+this.channelName+"</a> <em>&gt;</em> 正文";
+          this.form.nav = '<a href="http://www.qichekan.com/">首页</a> <em>&gt;</em> <a href="http://www.qichekan.com/">汽车刊</a> <em>&gt;</em> <a href="http://www.qichekan.com/'+this.channel+'.html">'+this.channelName+'</a> <em>&gt;</em> 正文';
         },
         getPath(){
           this.form.url = "page/"+ this.path +"/" + this.suiji() + ".html";
