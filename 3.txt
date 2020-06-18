@@ -17,17 +17,27 @@
 <body>
   <div id="app">
     <el-row>
+      <el-col :span="24">
+        <el-button type="danger" size="small" @click="add" class='Add'>新增文章</el-button>
+        <el-row>
+          <el-col :span="24" align="right">
+            <el-button type="primary" size="small" @click="queryReset">共{{total}}条</el-button>
+          </el-col>
+        </el-row>
+      </el-col>
+    </el-row>
+    <el-row class='btnList'>
       <el-col :span="24" align='center'>
-         <el-button @click="Btn(1)" :type="b1" size="small">新车</el-button>
-         <el-button @click="Btn(2)" :type="b2" size="small">论坛</el-button>
-         <el-button @click="Btn(3)" :type="b3" size="small">视频</el-button>
-         <el-button @click="Btn(4)" :type="b4" size="small">评测</el-button>
-         <el-button @click="Btn(5)" :type="b5" size="small">头条</el-button>
-         <el-button @click="Btn(6)" :type="b6" size="small">摩托</el-button>
-         <el-button @click="Btn(7)" :type="b7" size="small">官网</el-button>
-         <el-button @click="Btn(8)" :type="b8" size="small">模特</el-button>
-         <el-button @click="Btn(9)" :type="b9" size="small">健康</el-button>
-         <el-button @click="Btn(10)" :type="b10" size="small">百科</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b1" size="small">新车</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b2" size="small">论坛</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b3" size="small">视频</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b4" size="small">评测</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b5" size="small">头条</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b6" size="small">摩托</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b7" size="small">官网</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b8" size="small">车模</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b9" size="small">健康</el-button>
+         <el-button class='btn' @click="Btn($event)" :type="b10" size="small">百科</el-button>
       </el-col>
    </el-row>
    <el-table 
@@ -38,10 +48,23 @@
       :stripe="true" 
       border 
       :header-cell-style="{background:'#fafafa'}">
-      <el-table-column label="雇员编号" prop="employeeNumber" align="center" :show-overflow-tooltip="true" />
-      <el-table-column label="雇员姓名" prop="nameOfEmployee" align="center" :show-overflow-tooltip="true" />
-      <el-table-column label="连带人" prop="nameofjointinsured" align="center" :show-overflow-tooltip="true" />
-      <el-table-column label="案卷号" prop="fileNo" align="center" :show-overflow-tooltip="true" />
+      <el-table-column label="标题" prop="employeeNumber" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="时间" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="导航" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="页面地址" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="操作" prop="fileNo" align="center" :show-overflow-tooltip="true" width="220">
+        <template slot-scope="scope">
+          <el-button @click='createArticle(scope.row)' type='success' size='mini'>生成</el-button>
+          <el-button @click='update(scope.row)' type='primary' size='mini' plain>修改</el-button>
+          <el-button @click='deleteRow(scope.row)' type='danger' size='mini' plain>删除</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column label="正文" prop="nameOfEmployee" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="描述" prop="nameofjointinsured" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="所属频道" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="来源" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="作者" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column label="keyId" prop="fileNo" align="center" :show-overflow-tooltip="true"></el-table-column>
     </el-table>
     <el-pagination
       @size-change="handleSizeChange"
@@ -53,11 +76,45 @@
       layout="total,prev, pager, next"
       :total="total"
     ></el-pagination>
+    <!-- 弹框开始 -->
+    <el-dialog
+      title="内容概述"
+      width="75%"
+      :close-on-click-modal='true'
+      :visible.sync="dialogVisible"
+      :before-close="handleClose">
+      <el-row><el-col align='center' style="margin-bottom: 15px;">
+        <el-button type="primary" @click="save" size="small">提 交</el-button>
+      </el-col></el-row>
+      <el-form :model="form" ref="form" label-width="90px" size="small">
+      <el-row>
+       <el-col :span='24'><el-form-item label="标题"><el-input v-model="form.title"></el-input></el-form-item></el-col>
+       <el-col :span='6'><el-form-item label="作者"><el-input v-model="form.author"></el-input></el-form-item></el-col>
+       <el-col :span='6'><el-form-item label="来源"><el-input v-model="form.source"></el-input></el-form-item></el-col>
+       <el-col :span='6'><el-form-item label="父keyId"><el-input v-model="form.prentKeyId" disabled="disabled"></el-input></el-form-item></el-col>
+       <el-col :span='6'><el-form-item label="keyId"><el-input v-model="form.keyId" disabled="disabled"></el-input></el-form-item></el-col>
+       <el-col :span='24'><el-form-item label="表"><el-input disabled v-model="form.tableName"></el-input></el-form-item></el-col>
+       <el-col :span='24'><el-form-item label="本页地址"><el-input disabled v-model="form.url"></el-input></el-form-item></el-col>
+       <el-col :span='24'><el-form-item label="图片地址"><el-input disabled v-model="form.photo"></el-input></el-form-item></el-col>
+      </el-row>
+        <el-form-item label="所属频道"><el-input disabled v-model="form.nav"></el-input></el-form-item>
+        <el-form-item label="描述"><el-input type='textarea' rows="3" v-model="form.description"/></el-form-item>
+        <el-form-item label="正文"><el-input type='textarea' rows="40" v-model="form.content"/></el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="save" size="medum">提 交</el-button>
+      </span>
+    </el-dialog>
+    <!-- 弹框结束 -->
   </div>
   <script>
+    btnLength = $('.btn').length;
     var app = new Vue({
       el:'#app',
       data: {
+        path:'file1',  //这里可以修改路径
+        channel:'xinche',
+        channelName:'新车',
         b1:'primary',
         b2:'plain',
         b3:'plain',
@@ -68,10 +125,63 @@
         b8:'plain',
         b9:'plain',
         b10:'plain',
+        dialogVisible:true,
         tableData:[{}],
-        info:{},
-        pageIndex
-        total
+        form:{
+          title:'',
+          author:'龙豌豆',
+          source:'汽车刊',
+          prentKeyId:'',
+          keyId:'',
+          tableName:'',
+          url:'',
+          photo:'',
+          description:'',
+          content:'',
+          nav:""
+        },
+        row:{},
+        pageIndex:1,
+        pageSize:10,
+        total:0,
+        suijiNum:undefined,    //随机8位数
+        tableName:'article_xinche',   //表名称
+        obj:{
+          "新车":"article_xinche",
+          "论坛":"article_luntan",
+          "视频":"article_shipin",
+          "评测":"article_pingce",
+          "头条":"article_toutiao",
+          "摩托":"article_motuo",
+          "官网":"article_guanwang",
+          "车模":"article_chemo",
+          "健康":"article_jiankang",
+          "百科":"article_baike",
+        },
+        index:{
+          "新车":"b1",
+          "论坛":"b2",
+          "视频":"b3",
+          "评测":"b4",
+          "头条":"b5",
+          "摩托":"b6",
+          "官网":"b7",
+          "车模":"b8",
+          "健康":"b9",
+          "百科":"b10",
+        },
+        channelPinyin:{
+          "新车":"xinche",
+          "论坛":"luntan",
+          "视频":"shipin",
+          "评测":"pingce",
+          "头条":"toutiao",
+          "摩托":"motuo",
+          "官网":"guanwang",
+          "车模":"chemo",
+          "健康":"jiankang",
+          "百科":"baike",
+        },
 
       },
 
@@ -82,11 +192,33 @@
         //获取唯一的id
         getId() {
           axios.get('getInit.php').then(res => {
-            this.keyId = res.data.id;
+            this.form.keyId = res.data.id;
           });
         },
-
-        Btn(index){
+        //随机一个8位数
+        suiji(){
+          var arr  = new Array;
+          var brr = new Array("0","1","2","3","4","5","6","7","8","9");
+          for(var i=0;i<8;i++){
+            var n = Math.floor(Math.random()*10);
+            arr[i] =brr[n] ;
+          };
+          val = arr.join("")
+          return val;    
+        },
+        //单击按钮
+        Btn(e){
+          let innerText = e.target.innerText;
+          let index = this.index[innerText];
+          for(let i=0;i<btnLength;i++){
+            this["b"+i] = 'plain';
+          };
+          this[index] = 'primary';
+          this.tableName = this.obj[innerText]; 
+          this.channelName = innerText;
+          this.channel = this.channelPinyin[innerText];
+          
+          this.other();
 
         },
         //选中一行
@@ -103,11 +235,28 @@
           this.pageIndex = val;
           this.List();
         },
-
+        add(){
+          this.dialogVisible = true;
+        },
+        save(){},
+        queryReset(){},
+        //关闭弹窗
+        handleClose(){
+          this.dialogVisible = false;
+        },
+        other(){
+          this.form.tableName = this.tableName;
+          this.form.nav = "<a href='http://www.qichekan.com/'>首页</a> <em>&gt;</em> <a href='http://www.qichekan.com/'>汽车刊</a> <em>&gt;</em> <a href='http://www.qichekan.com/"+this.channel+".html'>"+this.channelName+"</a> <em>&gt;</em> 正文";
+        },
+        getPath(){
+          this.form.url = "page/"+ this.path +"/" + this.suiji() + ".html";
+          this.form.photo = "images/"+ this.path +"/" + "xxxxxxxx.jpg";
+        },
       },
       created() {
         this.getId();
-        
+        this.getPath();
+        this.other();
       },
     });
   </script>
@@ -156,6 +305,9 @@
     }
     .el-dialog__body{
       padding-top: 15px;
+    }
+    .btnList{
+      padding: 14px 0 20px;
     }
     /deep/.current-row > td {
     background: #eff7ff !important;
