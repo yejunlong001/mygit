@@ -2,17 +2,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>测试1234567</title>
-<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="js/vue.js" type="text/javascript"></script>
+<title>测试1</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 
 <body>
 <div id="app">
-<span>周杰伦vs刘德华=是好朋友啊</span>
-88888888888888888888888----------99999999999999999999999----yejunlog
-	<h3>what22222222222222</h3>
-	<h4>fu999ck888888</h4>
+  <p>{{productList}}</p>
+   <el-cascader
+   v-model="productList"
+    :options="options"
+    :props="props"
+    clearable></el-cascader>
 </div>
 
 
@@ -23,9 +27,131 @@
 	
 var app = new Vue({
 	 el:'#app',
-	 data:{}
+
+   created(){
+
+       
+      //这里start
+      function findPath( data , value , val){    //value可以换成id,而val是数组
+         let arr = val;
+         //先遍历第一层
+         for(let i=0;i<data.length;i++){
+            arr.push( data[i].value );
+            if(data[i].value === value){  //第一次就匹配上，结束
+               return arr; //递归到这里，满足这个条件就结束所有程序
+            };
+            //若是没有匹配上，就找子节点
+            let children = data[i].children;
+            if(children && children.length){
+               let res = findPath( children , value , arr);  //若是存在子节点就继续深度遍历
+               //直到递归完了，就返回结果
+               if(res){
+                 return res;
+               };
+            };
+            arr.pop();  //若没有子节点就删掉最后一位成员,重新往下遍历
+         };
+         return false;  //啥都没匹配上返回false
+      };
+     let data = this.options;
+     this.haveData.map(item=>{
+        this.productList.push( findPath( data , item , []) );
+     });
+
+
+
+
+   },
+
+	 data() {
+      return {
+        haveData:[10,23],
+        productList:[ ],
+        props: { multiple: true },
+
+
+        options: [{
+          value: 1,
+          label: '东南',
+          children: [{
+            value: 2,
+            label: '上海',
+            children: [
+              { value: 3, label: '普陀' },
+              { value: 4, label: '黄埔' },
+              { value: 5, label: '徐汇' }
+            ]
+          }, {
+            value: 7,
+            label: '江苏',
+            children: [
+              { value: 8, label: '南京' },
+              { value: 9, label: '苏州' },
+              { value: 10, label: '无锡' }
+            ]
+          }, {
+            value: 12,
+            label: '浙江',
+            children: [
+              { value: 13, label: '杭州' },
+              { value: 14, label: '宁波' },
+              { value: 15, label: '嘉兴' }
+            ]
+          }]
+        }, {
+          value: 17,
+          label: '西北',
+          children: [{
+            value: 18,
+            label: '陕西',
+            children: [
+              { value: 19, label: '西安' },
+              { value: 20, label: '延安' }
+            ]
+          }, {
+            value: 21,
+            label: '新疆维吾尔族自治区',
+            children: [
+              { value: 22, label: '乌鲁木齐' },
+              { value: 23, label: '克拉玛依' }
+            ]
+          }]
+        }],
+
+
+
+      };
+    },
+
+
+
+
 
 });
+
+
+
+
+ let x = [ {c:[1,2,3],d:'姚明'} ];
+// //console.log(a[0].b.length);
+
+// //先判断c是否存在
+// var arr = Object.keys(a[0]);
+// console.log(arr);
+
+console.log(x[0].hasOwnProperty('d'));
+ 
+
+
 </script>
+
+
+<style>
+	
+  
+</style>
+
+
+
 </body>
 </html>
