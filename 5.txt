@@ -1,9 +1,147 @@
 
 
-销售中心搜索输入框添加回车事件及优化-2
+1733 , 
 
 
-git@172.16.4.127:AFOne/Portal.git
+http://172.16.4.127:8089/AFOne/AFOne.Portal.git
+
+客户编号
+183294083
+
+用户名
+jiubijiu@126.com
+
+
+这个是新的前端AFOne2.0地址：
+http://172.16.4.127:8089/AFOne/AFOne.Portal.git
+
+\\Rczp-yangjun\接口文档
+
+
+
+开机密码：Hao417788569
+
+http://172.16.4.127:8089/users/sign_in
+
+
+
+
+档案业务系统 后端代码
+http://172.16.4.127:8089/AFOne/PFileSystem
+
+{
+  "UserName": "system",
+  "Password": "1111"
+}
+git@localhost:AFOne/PFileSystem.git
+====================
+
+前端代码：
+git@172.16.4.127:AFOne/Portal.git       >> 分支：Retire-File-Center  
+
+后端代码：
+git@172.16.4.127:AFOne/PFileSystem.git
+
+页面登录：
+用户名：system 
+密码：1111
+
+
+=====================
+
+
+
+
+1 ： 集团及公司管理
+           集团管理
+           公司管理
+           雇员管理
+           文件目录设置
+
+
+2 ： 系统设置
+             角色管理
+             账户管理
+             数据权限
+             用户信息
+
+
+git@172.16.4.127:AFOne/Benifit_EMarket.git
+
+
+前端框架： elementUi ， mintui ，vantui
+
+
+SH0588  钱玮    福利中心
+SH1494  沙晓雯  互联网产品中心
+
+
+http://localhost:8060/#/InternetProductCenter/SpecialActivity
+
+
+
+记得多用短路取值：
+this.easing = easing || jQuery.easing._default;
+
+
+
+
+git@172.16.4.127:AFOne/BenifitCenter.git  弹性福利中心，dev分支
+
+https://yesno.wtf/api      json测试
+
+git@172.16.4.127:AFOne/Portal.git  下载地址dev
+
+http://172.16.4.127:8089/AFOne/BenifitCenter/tree/dev/Portal/portal/src/page  弹性福利中心
+
+
+el-table-搜索功能-1.html
+
+https://blog.csdn.net/qq_45074127/article/details/103325568
+
+
+//光标处插入dom
+    <el-button @click="insertDom" plain size="mini" type="primary">插入</el-button>
+    <el-input type="textarea" @blur="getPosition($event)" v-model="desc"></el-input>
+getPosition(e){
+      this.indexP = e.srcElement.selectionStart;
+    },
+    insertDom(){
+      let start = this.desc.substring(0,this.indexP);
+      let end   = this.desc.substring(this.indexP);
+      let arr = [start,this.insertValue,end];
+      let res = arr.join("");
+      this.desc = res;
+    },
+
+
+获取时间
+let t = new Date();
+      this.form.YearMonth = t.getFullYear() + "-" + (t.getMonth() + 1);
+      this.todayDate = t.getFullYear() + "-" + (t.getMonth() + 1);
+
+
+
+
+
+异步化为同步函数
+async function fn(){
+      let a = await api.GetMiProNewNo();
+      let c = await new Promise((resolve,b)=>{ resolve(100); console.log(2222); });
+      let b = await api.MedProChoice();
+      console.log(a);
+      console.log(b);
+      console.log(c);
+    };
+    fn();
+    console.log(33333);
+
+    //执行顺序为：
+    //先输出同步代码33333, 在输出Promise执行器里面的2222，再输出异步promise里面的100，再输出异步a,b里面的结果。
+
+
+
+
 
 页面元素权限添加
 
@@ -20,22 +158,6 @@ git@172.16.4.127:AFTransfer/AFTransfer.git          //这个是后端的swagger
 
 
 
-@孟妍 @赵阳 @李瑞 @叶俊龙 http://172.16.4.127:8089/AFTransfer/AFTransfer
-git@172.16.4.127:8089:AFTransfer/AFTransfer.git
-
-
-
-
-投保操作   http://localhost:8070/#/MedicalCenter/insureHandle   
-退保操作   http://localhost:8070/#/MedicalCenter/outInsureHandle
-医疗查询   http://localhost:8070/#/MedicalCenter/medicaQuery
-错误列表   http://localhost:8070/#/MedicalCenter/errorList
-任务单      http://localhost:8070/#/MedicalCenter/medicalTaskList
-
-
-商旅保障任务单
-体检任务单
-用退工任务单
 
 
 
@@ -45,11 +167,6 @@ git@172.16.4.127:8089:AFTransfer/AFTransfer.git
 
 
 
-
-
-AFOne2.0
-customer-service-center
-dev
 
 <el-input-number
                 class="pcmaa-input"
@@ -62,188 +179,17 @@ dev
                 style="width:100%;"
               />
 
+/deep/.el-input-number.is-without-controls .el-input__inner{
+    text-align: left;
+  }
 
 
-postMan
-yejl001/hao456789/417788569@qq.com
-
-
-
-
-2020-5月份工作清单
-雇员列表-任务单管理-公积金模块制作
-雇员管理-预录用-入职体检修改
-事务申请-外地生育津贴打印页面调整
-雇员列表-任务单管理-材料任务单制作
-任务单管理-社保任务单列表页制作
-任务单管理-公积金任务单列表页制作
-
-
-
-
-
-
+按回车搜索：
 @keyup.enter.native="querySearch"
 
 
 
-SH1969     周舟
-SH0237     贺晓东
-SH1970     熊霓君
-SH0465     侯君
-SH0442     陈迪
-
-
-SH0293     张理婷
-SH0102     徐雯艳
-SH0125      李明慧
-
-
-发防守打法是     
-额外24           KH2012028,KH1906984
-派生100860947    KH201911001013
-
-
-
-特殊事项审批  -- 打印ok  ----公司名称+申请单号右移 -ok  -- 已好
-
-其他垫付  --- 打印ok  ----公司名称+申请单号右移 -ok  -好了  -- 已好
-
-工资垫付  --  打印ok ----公司名称+申请单号右移 -ok   -好了  -- 已好
- 
-付款申请   --  打印ok  ---公司名称长度+申请单号右移 -ok  -好了 -- 已好
-
-
-
-财务数据提供  --  打印ok  ----公司名称+申请单号右移 -ok   -好了   -- 已好
-
-外地生育津贴  --  打印ok  ----公司名称+申请单号右移  -ok  -好了    -- 已好
- 
-弹性福利定制  --  打印ok  ----公司名称+申请单号右移   -ok   -好了  -- 已好
-
-建汇食堂饭票  --  打印ok - 公司名称长度+申请单号右移 -ok   -好了  -- 已好
-
-
-
-git 创建分支相当于复制当前的分支，
-git 切换分支相当于隐藏了其他的分支的文件，而只显示当前所切换的所有分支，切换后在git pull最新的
-git 合并分支相当于把当前文件夹里面所有的可看见的文件和所有的隐藏文件进行合并，git merge dev ，这里的dev放在后面，就表示要被合并的分支，是要把dev合并到某个分支去。
-    当两个分支合并后，会有大段提示，只要输入  :wp  就可以继续输入git命令，然后在 add , commit , push
-
-
-
-
-
-
-api/CustomerAuditApplication?_cid=03bc47a1730d4847ae921f7038db2b89&
-
-
-
-D:\workspace\service\source\CIIC.AFOne.Services\Services\CIIC.AFOne.Services
-
-
-
-
-
-api/ComAdminUserRealtion/list  ComAdminId
-api/ComAdminUserRealtion/create  ComAdminId  UserId
-api/ComAdminUserRealtion/delete/80BA2F6F-9504-4B2F-80DA-AC4D2375E33A  
-
-
-徐雯艳
-
-
-ManagementFeeMonthChange
-
-
-
-这句话是属于1300年前写好的预言，是预言一个国家的领袖，相当于猜字谜，字谜里面有当今领袖的名字或者偏旁部首等等。把羽字拆开就是两个习，意味着能当4届皇帝，同时习的大写字体是‘習’，是不是就是含有偏旁羽字呢？是不是很巧？另外四足，说明该人或者该物体站立的非常平稳，四平八稳，就有“平”的意思。所以联想起来，你们知道大概指的是谁了吧。
-
-百灵来朝，双羽四足，说的其实就是上面这个领袖要带我们走向辉煌的开始啦。
-
-
-http://localhost:8070/#/PersonCenter/contractApproval?applyType=CT001&applyId=7b48ec04-c814-4131-9079-2257d09c3400&taskId=128152
-http://localhost:8070/#/PersonCenter/contractApproval?applyType=CT001&applyId=7b48ec04-c814-4131-9079-2257d09c3400&taskId=128152
-
-
-
-
-SH0690  黄静  //提起审批，我是员工
-
-SH0535  周密  //法务审批人,我是领导
-
-SH0442  陈迪  
-
-
-
-projectUserListGet  //获取参与人
-
-
-handleSelect //选择参与人
-
-
-
-
-mingxingri.com
-mingxingda.com
-mingxingsi.com
-kanjuma.com
-juqingchi.com   池子
-juqingzi.com
-
-
-
-
-
-在项目新增的时候，邀标书需上传4个文件，
-
-只要其中一个上传了，都给保存。
-
-但是现在，后台报错，提示邀标书字段是必传啊
-
-projectInvitation.invitationFile:?"......."
-"
-Error converting value "" to type 'System.Guid'. Path 'projectInvitation.invitationFile'
-
-
-
-@海风 @豌豆娃的小池塘 http://172.16.4.37:8088/SubModule/UnitiveDocument/MyDesk.aspx
-账号：0770
-密码：123456
-
-
-
-
-共16个请求：
-/Customer/list
-/ProjectUserRelation/list
-
-
-
-=========================================
-
-http://localhost:8070/sockjs-node/info
-http://localhost:8070/api/workflow/tasks/count
-http://localhost:8070/api/UserProfile/getUserFields
-http://localhost:8070/api/Project/?projectId
-http://localhost:8070/api/Customer/list ***
-http://localhost:8070/api/ProjectUserRelation/list   ***
-http://localhost:8070/api/ProjectEvaluate?projectId
-http://localhost:8070/api/ProjectCommunication/list
-http://localhost:8070/api/Contract/listbyproject
-http://localhost:8070/api/Quotation/list
-http://localhost:8070/api/UserProfile/getUserSign
-http://localhost:8070/api/Permission/GetCenter
-http://localhost:8070/api/Permission/GetAllMenu
-http://localhost:8070/api/Customer/list
-
-http://localhost:8070/api/Attachment/d0aca427-7a61-418b-9a00-9d6d18172f33?
-http://localhost:8070/api/Attachment/76ac446b-40b9-452d-a03d-ae7e6826d880
-
-
-
-
-登录开机密码：Hao123456
+登录开机密码：Hao123456   / Hao15921007291
 
 登录开机密码：Hao654321
 
@@ -264,44 +210,6 @@ url: Fw_JMYW/{Id}??????? (获取单个)
 =====================================
 另外：ApplyId 审批单号 我提交了，但是每次返回都是null
 
-
-
-
-1.前道客户咨询  ==
-2.前道客服咨询  ==
-3.劳动争议      ==
-
-5.全国社保审核  ==
-
-6.财务合同 FinanceContract
-7.催款     AskMoney
-8.减免业务 ReduceAndExempt
-9.代收代付 CollectionAndPaymentMoney
-
-4.营业执照审核  ==
-
-
-
-
-
-
-
-
-
-
-
-
-
-d盘是最新的，2019-10-8写,放假前
-
-
-
-nba35.com
-nba27
-nba46
-nba49.com
-nba74
-nba120
 
 
 cnpm?install?--save-dev?less-loader
@@ -354,127 +262,6 @@ POST/api/ProjectEvaluate/update
 POST/api/ProjectEvaluate/delete/{ProjectEvaluateId}
 
 git@172.16.4.127:AFOne/Portal.git
-
-
-
-wb.zouyl
-wb.yejl
-
-
-@豌豆娃的小池塘 @请叫我邹小多 前端日期格式，用that.$dateFormat
-格式化
-
-
-const params = {
-AfCompanyNo: "AF25617,AF32185,AF41995"
-};
-
-
-
-http://localhost:8070/api/Dict/List  这个列表展示页接口传入第二页，但是始终返回的是第一页的结果吗 
-PageAndWhereBase:?{pageIndex: 2, pageSize: 10, where: ""}
-
-
-
-
-是返回的结果，不是我想要的结果呀
-是不是点击“查询按钮”应该这样：
-const PageAndWhereBase = {
-pageIndex:1,
-pageSize:10,
-dictId:'c7ea8fdb-4fd4-4281-9cc7-01c4cd853905',
-name: "公积金",
-};
-
-
-
-
-//sort
-      sortClick(property){
-         if(this.sortStatus==true){ 
-            this.sortStatus = false;
-            var arr = [];
-            for(let i=0;i<this.dictItemList.length;i++){
-              arr.push(this.dictItemList[i].sort);
-            }
-            function sortNumber(a,b){
-                return a - b
-            };
-            arr.sort(sortNumber);
-            console.log(arr);
-         }
-         else{
-            this.sortStatus = true;
-            var arr = [];
-            for(let i=0;i<this.dictItemList.length;i++){
-              arr.push(this.dictItemList[i].sort);
-            }
-            function sortNumber(a,b){
-                return b - a
-            };
-            arr.sort(sortNumber);
-            console.log(arr);
-         }
-      },
-
-
-
-
-
-
-
-
-public enum WorkflowApprovalStatus
-       
- {
-  [EnumDescription("All", "请选择", "请选择")]
-                All = -1,
-
-           
-    [EnumDescription("Draft", "草稿", "草稿")]
-                  Draft = 0,
-
-          
-    [EnumDescription("Submitted", "已提交", "已提交")]
-            Submitted = 1,
-
-        
-    [EnumDescription("Processing", "审批中", "审批中")]
-            InProcess = 2,
-
-          
-    [EnumDescription("Approved", "已通过", "已通过")]
-            Approved = 3,
-
-           
-    [EnumDescription("Rejected", "已拒绝", "已拒绝")]
-            Rejected = 4,
-
-         
-    [EnumDescription("Canceled", "已取消", "已取消")]
-            Canceled = 5,
-
-          
-    [EnumDescription("Returned", "已退回", "已退回")]
-            Returned = 6,
-
-         
-    [EnumDescription("PROCESSING", "处理中", "处理中")]
-            PROCESSING = 99
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -568,6 +355,80 @@ origin  git@github.com:michaelliao/learngit.git (push)
 5.这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
 
+===========================================================
+
+当官当久了有时候就只有职权，没有义务和纪律了
+
+你是不是带着性别歧视在执法，是不是带着有色眼镜在执法，是不是带着情绪在执法，是不是带着完成指标在执法
+
+某些人尝到了权利的滋味，就更加的猖狂了
+
+我作为中华人民共和国合格守法的公民，我的人格尊严不是用来被你如此践踏。
+
+是人民给你的权利，你却反咬人民一口
+
+在拍摄不影响正常执法的情况下，民警要自觉接受监督，要习惯在“镜头”下执法
+
+遇到群众对查验身份证不理解的情况，民警应该使用文明规范用语，做好解释工作
+
+一方面，民警要依法依规进行查验，明确查验范围，增强针对性，减少随意性；另一方面，公民有配合查验的法定义务。
+
+民众在公共场合录像记录公共事务是合理的。何况公民有监督权呢。
+
+警察执法时，公民bai可以对其du执法过程进行录音录像。这zhi是公民的监督权
+
+公安部治安管理局、户政管理研究中心负责人关于社会舆论高度关注人民警察查验居民身份证等问题作出解释：人民警察依法查验居民身份证，首先要表明身份并出示执法证件；在执法过程中，要始终做到理性、平和、文明、规范执法，因情施策，确保安全。
+
+《公安机关人民警察着装管理规定》
+　　第十一条 公安民警着装时，应当随身携带《公安机关人民警察证》。
+
+《公安机关人民警察内务条令》
+(三)在依法执行职务时，除法律、法规另有规定外，公安民警应当随身携带证件，并主动出示以表明人民警察身份。
+
+
+第十五条人民警察依法执行职务，遇有下列情形之一的，经出示执法证件，可以查验居民身份证：
+
+    （一）对有违法犯罪嫌疑的人员，需要查明身份的；
+
+    （二）依法实施现场管制时，需要查明有关人员身份的；
+
+    （三）发生严重危害社会治安突发事件时，需要查明现场有关人员身份的；
+
+    （四）在火车站、长途汽车站、港口、码头、机场或者在重大活动期间设区的市级人民政府规定的场所，需要查明有关人员身份的；
+
+    （五）法律规定需要查明身份的其他情形。
+
+    有前款所列情形之一，拒绝人民警察查验居民身份证的，依照有关法律规定，分别不同情形，采取措施予以处理。
+
+    任何组织或者个人不得扣押居民身份证。但是，公安机关依照《中华人民共和国刑事诉讼法》执行监视居住强制措施的情形除外。
+
+
+首先bai，公民用手机拍摄执法机关的行为不违反任何du法zhi律规定，任何执法机关在执法的时候除涉及国家秘dao密之外，任何公民和组织均有权进行以各种方式监督，而且，如果发现行政机关的违法行为，有权提出质疑，曝光，以让社会大众知晓，如果违法行为是针对自己或影响到自己利益的，还可以提起行政复议和行政诉讼。温总理说，要创造条件让人民监督政府。因此，公安局不仅不应当阻拦，而且还应敞开大门，欢迎和鼓励公民以各种方式包括拍摄的方式进行监督，这与有没有记者证等没有任何关系。
+　　其次，警察强行删除拍摄的内容是违法的。因为拍摄也是合法监督或鼓励方式之一，因此，警察应当予以尊重和欢迎。如果警察的执法是正当的和合法的，对于公民的拍摄，不应当有任何疑惑或顾虑，警察根本没有权利对拍摄的手机或相机进行检查甚至删除，这种检查和删除行为从法律上讲也是一种行政行为，但是是一种违法行政行为，针对这种违法行政行为，公民有权提起行政复议和行政诉讼，要求确认这种行为违法，并公开赔礼道歉。
+　　我国的行政机关从法律上讲是应当接受公民监督的，而且每一个每一级的行政机关都会表示欢迎社会各界进行依法监督。任何单位和个人都应当自律，但是不能完全相信自律，他律才是最重要的，公民强有力的监督才是最重要的他律，政府执法机关能不能有效地执行法律，能不能真正有效的为人民服务，真正当好人民的“仆人”，在很大程度上取决于对他们强有力的监督，这也是目前能够做到的。
+
+
+人民警察依法执行职务，遇有下列情形之一的，
+经出示执法证件，可以查验居民身份证： 
+（一）对有违法犯罪嫌疑的人员，需要查明身份的；
+ （二）依法实施现场管制时，需要查明有关人员身份的；
+ （三）发生严重危害社会治安突发事件时，需要查明现场有关人员身份的； 
+（四）在火车站、长途汽车站、港口、码头、机场或者在重大活动期间设区的市级人民政府规定的场所，需要查明有关人员身份的； 
+（五）法律规定需要查明身份的其他情形。 
+有前款所列情形之一，拒绝人民警察查验居民身份证的，依照有关法律规定，分别不同情形，采取措施予以处理。
+ 任何组织或者个人不得扣押居民身份证。
+但是，公安机关依照《中华人民共和国刑事诉讼法》执行监视居住强制措施的情形除外。
+
+
+公安部要求，各地公安机关要进一步研究细化执法情形和执法规范，不断提升执法能力和执法水平，努力让人民群众在每一项执法活动、每一起案件办理中感受到公平正义。
+
+
+
+
+
+===========================================================
+
+
 
 小结
 查看远程库信息，使用git remote -v；
@@ -622,13 +483,34 @@ Git鼓励大量使用分支：
       前后端数据交流主要通过API接口交互。项目的版本控制主要用git。样式用less。
 
 
-具体负责的事务：
+具体负责的事务一 (销售中心)：
  1.销售中心有添加项目:创建项目名称，上传文件，新增联系人，联系人认领，新增合同，项目列表，提交各个字段等等。
  2.新增管理方：创建管理方，更改管理方名字，新增客户，文件上传。
  3.外企内控中心：字典项新增，字典项管理，光荣榜新增和维护，操作手册说明的新增和下载，客户权限的管理，
  4.供应商采购中心：采购供应商管理，新增，编辑，列表，准入，供应商产品添加，供应商证件上传，供应商添加参与人和联系人，供应商采购目录清单管理，供应商合同管理
  5.事务申请：工资垫付申请 ，付款申请 ，财务数据提供申请 ，特殊事项申请，外地生育津贴申请，弹性福利定制申请，食堂饭票申请，有上传文件，创建账单，创建审批流，拒绝申请，撤回申请，同意申请，以及打印申请
  6.法务中心：前道客户咨询 ，前道客服咨询 ，劳动争议，全国社保审核 ，财务合同 ，催款 ，减免业务，代收代付，营业执照审核 ，这几个的新增，编辑，查询，删除等等。
+
+具体负责的事务二 (医疗中心)：
+ 1.医疗报销：批量报销，综合查询，医疗报销，雇员理赔数据接口，雇员报销明细。
+ 2.医疗理赔管理：医疗受理，受理动态，理赔详细，综合查询，日常维护，未处理查询等等。
+ 3.未投保医疗：新增未投保，未投保医疗，投保列表等。
+ 4.医疗投退保：投保操作，退保操作，医疗查询，任务单列表，套餐列表，医疗报销产品添加，医疗备注，错误列表
+ 
+具体负责的事务三 (福利中心)：
+  1.福利兑换管理：福利发放记录，年节福利列表，年节福利套餐列表，非雇员账号维护，用户列表。
+  2.订单管理：福利实物商品订单列表，福利虚拟商品订单列表，退款单列表
+  3.商品管理：商户管理，商品列表，商品规格管理，商品分类，商品标签。
+  4.结算管理：结算单管理，订单结算查询
+  5.系统设置：个人中心，预警设置，交易设置信息，数据中心等等。
+ 
+
+
+
+
+
+
+
 
 
 工作认真负责态度好，能高质量的完成任务，能及时完成上级交待的工作任务。
@@ -653,7 +535,7 @@ Git鼓励大量使用分支：
 
 
 
-
+this.#set(obj, key, value)
 
 学习资料
 ===============================================================================
@@ -888,7 +770,22 @@ j();
 这里this指向的是window，是不是有些蒙了？
 虽然函数fn是被对象b所引用，但是在将fn赋值给变量j的时候并没有执行所以最终指向的是window
 
+总结：谁调用函数，那么this就指向这个谁。也可以理解为 指向函数的上一级。
 
+          比如1：
+             var age = 100;
+             function aaa(){ 
+                        console.log(this.age)   //输出100
+             };
+            aaa();   //等价于 window.aaa() ,  是window调用了函数，所以这里的this指向的是window
+
+          比如2：
+             var age = 200;
+             var obj = {
+                    age : 300,
+                    bbb(){ console.log( this.age ) },  //输出300
+                 };    
+            obj.bbb();    //等价于 window.obj.bbb()  , 指向函数的上一级obj
 
 
 Vue校验是否数字
@@ -1249,6 +1146,7 @@ export default new VueRouter({
 
 方法一：
 this.$set(this.form, 'name', '')
+语法：this.#set(obj, key, value)        //key要加引号
 
 例如：
 list:[
@@ -1266,6 +1164,28 @@ this.list.forEach(item=>{
 
 方法二：
 只能改变整个form才能避免这种情况 this.form=Object.assign({name:'张三'},this.form)
+
+//先在data注册test
+test:{
+     title:'1111',
+ },
+
+//再方法里面：
+let obj = {
+          title: this.test.title,
+          id : result.results[0].insureId
+        };
+this.test = Object.assign({}, obj);
+
+或者：
+this.test.id = '22222';
+this.test = Object.assign({} ,  this.test );
+
+这样就能触动视图的更新了
+
+
+
+
 
 
 
@@ -1335,6 +1255,8 @@ console.log(g);                //输出{name: "北京长城", age: "45岁", addr
 
 
 
+但是，我们十多年前就住的远也是改变不了的事实，我们不是说甩锅，让你爸去挣这个，而是文章叔说，实在是看不惯你爸总是被他们欺负打压，我们大家在后面尽量出一点力气和方案支援一下，
+我们可能抓住重阳宝这个痛点，看看有机会弄一下他。你说了这么多，也对，可能帮倒忙了。那就当我没说！村里那班人确实坏，也怪大家不能统一到一起，任其摆布！
 
 
 
@@ -2272,12 +2194,285 @@ data:{
 
 
 
+        如何判断数组是否存在？
+=============================================================================================
+      答案：
+     let arr = [];
+     if( arr && arr.length ){ .....do something.......}
+   
 
 
-          Vue的机制和原理  参考：https://www.jianshu.com/p/c02cb881bea8        https://www.cnblogs.com/ranyonsue/p/9717685.html
-          Object.defineProperty
+        如何判断他是数组还是对象呢？
+=============================================================================================
+
+第一种方法：    
+       
+        constructor这个隐性的属性
+
+        答案：因为所有的js对象(包括数组，对象，函数这3个对象)都具有一个隐藏的属性，那就是constructor属性，他看不见但是实际又存在哦。
+                   
+        因typeof只能判断基本类型变量，不能判断出引用类型对象。所以可以利用constructor这个属性来判断是否是数组 哦。
+
+        总结：引用类型的数据，都具有constructor这个隐性的属性哦。
+                   
+        let arr = [1,2];
+        console.log('数组否',arr.constructor === Array);                 //true
+        //或者
+        console.log('数组否',arr.constructor.name === 'Array');     //true
+
+        let objj = {name:'刘德',age:22}
+        console.log(objj.constructor.name);    //Object
+
+ 第二种方法：
+   
+         答案：利用instanceof来判断。
+
+         先说说 typeof 和 instanceof 的区别？
+
+         两者都可以用来判断变量，
+         而typeof会返回"基本类型"
+         而instanceof只会返回一个"布尔值"
+
+         let brr = [7,8,9];
+         let flag = brr instanceof Array;
+         console.log('flag',flag);                 //true
+
+ 第三种方法：
+
+         答案：Array.isArray()方法
+
+         let crr = [7,7,9]
+         let flag = Array.isArray( crr );
+         console.log('flag', flag );            //true
+
+
+
+
+
+
+
+        什么是js原型，prototype,   (proto:原型) 原型; 雏形; 最初形态;
+
+=============================================================================================
+
+     我们知道原型是一个对象
+
+
+      第一：原型与原型链的区别？
+                 原型是指：prototype
+                 原型链是指：__proto__
+                 两者是独立分开的哦。。。。。。。。
+
+       第二：谁具有原型？
+                   只有函数才有prototype属性。
+                   只有对象拥有__proto__。
+
+
+      *注意：
+       1. 注意，千万不要使用字面量方式来定义属性和方法，否则原有属性和方法会被重写：// 字面量定义方法，原型被重写，原有属性和方法被更新
+       2. 通常使用构造器（函数体）定义属性，使用原型对象（prototype）定义方法。如此，构造器只包含属性定义，而方法则分装在不同的代码块，使代码更具可读性：
+
+       原型的作用 ？？？
+                /*原型的作用：数据共享
+		 * 不需要共享的数据写在构造函数中，需要共享的数据写在原型中
+		 * 
+		 */
+		
+		
+		function Strudent(name,age,sex){
+			this.name=name;
+			this.age=age;
+			this.sex=sex;
+		}
+		//使用人身高都是188，所有人的体重是55
+		
+		//所有学生都每天写500行代码
+		
+		//所有学生每天吃一顿饭
+		
+		Strudent.prototype.height="111";
+		Strudent.prototype.weight="55ke";
+		Strudent.prototype.study=function(){
+			console.log("ddd")
+		};
+		Strudent.prototype.eat=function(){
+			console.log("3333");
+		}
+ 
+
+
+
+
+
+        什么是js原型链
+=============================================================================================
+
+
+
+        什么是js构造函数：
+===========================================================   https://www.cnblogs.com/helena000/p/6501604.html   ==================================
+
+   JS中构造函数和普通函数有什么区别 ？？？
+
+
+  构造函数有什么作用？
+
+   答：生成对象并初始化，有点像自己封装一个方法，也有点像是自己创建了一个全新的对象/方法，里面有初始化的属性和方法可以调用。
+
+
+　构造函数都应该以 一个大写字母开头，eg:
+
+    任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数 ；
+
+　任何函数，如果不通过 new 操作符来调用，那它跟普通函数也没有什么两样。
+
+　　demo:
+
+　　//创建函数
+
+　　function Person(name,age,job){
+
+　　　　this.name = name;
+
+　　　　this.age = age;
+
+　　　　this.job = job;
+
+　　　　this.sayName = function(){
+
+　　　　　　alert(this.name);
+
+　　　　}
+
+　　}
+
+　　//当做构造函数使用
+
+　　var person = new Person('Nicholas',29,'Software Engineer');//this-->person      此时的this指向了person
+
+　　person.sayName();//'Nicholas'
+
+ 
+
+　　//当做普通函数调用
+
+　　Person('Greg',27,''Doctor);//this-->window      此时的this 指向 window
+
+　　window.sayName();//'Greg'
+
+
+
+
+
+
+        
+
+       Promise讲解
+============================================================================================
+
+  注意：创建一个Promise对象会立即执行里面的代码，所以为了更好的控制代码的运行时刻，可以将其包含在一个函数中，并将这个Promise作为函数的返回值。
+ function greet(){
+    var promise = new Promise(function(resolve,reject){
+        var greet = "hello  world";
+        resolve(greet);
+    });
+    return promise;
+    }
+    greet().then(v=>{
+    console.log(v);//*
+    })
+
+
+//实例
+//把异步的操作放在Promiss的执行器里面，then里面的代码一定会等到执行器里面的代码执行完之后，才会被执行。
+执行器只会有两种结果，一个是成功的resolve，一个是失败的reject。
+
+let p1 = new Promise(function(success , fail){
+
+	axios.get('https://yesno.wtf/api').then(result => {
+
+		console.log(result);
+
+		if(result.data.answer == "yes"){
+			success(result.data);
+		}else{
+			fail('对不起，找不到数据');
+		};
+	});
+
+});
+
+//链式反应
+p1.then(res=>{
+
+	console.log(res);
+
+	return res.answer
+
+}).then(ues =>{
+
+	console.log( ues );
+	
+}).catch(error => {
+	console.log("error:" + error);
+});
+
+
+
+
+
+
+
+
+
+        jQuery怎么访问函数中的内部变量
+=============================================================================================
+       答案：就是在函数外面定义一个全局的变量。
+
+       例如：
+
+程序开始
+//这是查看大图片
+     var imgIndex = undefined;   //再函数外面设置一个全局的变量          //设置当前被点击图片的是第几张图片
+
+//开始点击每一张图片
+$('.seePhoto ul li img').click(function(){
+    var imgs  = $('.seePhoto ul li img');
+    var self  = $(this)[0].src;
+    var index = arr.indexOf(self);
+    imgIndex = index; //赋值给全局变量
+});
+
+//上一张
+$('.pre').click(function(){
+    console.log( imgIndex  );   //在别的函数可以使用这个全局的变量，相当于间接的访问到了其他函数内部的值了。
+});
+
+//下一张
+$('.next').click(function(){
+    console.log( imgIndex  );   //在别的函数可以使用这个全局的变量相当于间接的访问到了其他函数内部的值了。
+});
+程序结束
+
+
+
+
+        vueX 语法糖？
+=============================================================================================
+
+
+
+        了解angular？
+=============================================================================================
+
+
+
+
+        Vue的机制和原理  Object.defineProperty                                                    参考：https://www.jianshu.com/p/c02cb881bea8        https://www.cnblogs.com/ranyonsue/p/9717685.html
+          
 ===========================================================================================
-
+       
+      Object.defineProperty
 
 
 
@@ -2294,8 +2489,31 @@ data:{
 
 
 
-          什么是队列
+          js运行机制 **************
 ===========================================================================================
+  
+第一：
+   js的运行分为两块：1.第一块是：主线程运行，
+                                  2.第二块是：事件队列运行，
+
+   所有的同步代码和同步函数都被放在主线程的执行栈里面。
+   所有的微任务和宏任务都被放在事件队列里面。
+
+   两者之间的关系是： js首先运行主线程，只有当主线程的执行栈为空，即排队的代码全部被执行完之后的时候，
+                                   主线程才会去调用事件队列表里面的微任务或者宏任务，先调用微任务，再调用宏任务，而且是不断循环的去检查事件队列表，直到为空。
+          
+
+  Event Loop（事件循环/或/任务队列）
+
+第二：
+     new Promise()是同步代码，会立即执行
+     new Promise.then() 是异步代码
+
+    参考：https://www.jianshu.com/p/e06e86ef2595
+
+
+
+
 
 
 
@@ -2339,6 +2557,282 @@ if(e){
 而null和undefined和其他三个都不相等，
 但null和undefined是相等的。
 
+
+
+什么是常量？ let 与 const的不同点
+================================================================
+
+1.什么是常量？
+
+常量就表示是一些固定不变的数据,。比如：出生是男生,那么就是男生,。女生就是女生,一辈子不会改变.
+
+2.常量有哪些
+   数字型常量
+   布尔型常量
+   字符串常量
+   
+   总结：基本类型数据就是常量
+
+
+
+
+      js对日期加减指定天、时、分、秒                    例如：当前日期为 2016-12-11 20:20:20
+
+            https://blog.csdn.net/qq395537505/article/details/78753237?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+===========================================================================
+var t = new Date();//你已知的时间
+ var t_s = t.getTime();//转化为时间戳毫秒数
+
+ 
+ t.setTime(t_s + 1000 * 60);//设置新时间比旧时间多一分钟
+ alert(t) // 2016-12-11 20:21:20
+ 
+ 
+t.setTime(t_s + 1000 * 60 * 60);//设置新时间比旧时间多一小时
+ alert(t) // 2016-12-11 21:20:20
+ 
+
+ t.setTime(t_s + 1000 * 60 * 60 * 24);//设置新时间比旧时间多一天
+ alert(t) // 2016-12-12 20:20:20
+
+
+var t = new Date();//你已知的时间
+ 
+t.setTime(t.setMinutes(t.getMinutes() + 1));//设置新时间比旧时间多一分钟
+alert(t) // 2016-12-11 20:21:20
+ 
+
+t.setTime(t.setHours(t.getHours() + 1));//设置新时间比旧时间多一小时
+alert(t) // 2016-12-11 21:20:20
+
+
+
+//往前减去10天
+let t = new Date();
+      let nowTime = t.getTime();      //把日期格式转化为毫秒数的时间戳格式
+      let newTime = nowTime - (1000 * 60 * 60 * 24)*10;  //设置新时间比旧时间少10天，转化成毫秒
+      let end  = t.setTime( nowTime );  //把时间戳格式转化为日期格式
+      let star = t.setTime( newTime );  //把时间戳格式转化为日期格式
+      this.upLoadTime = [ star, end ];
+
+
+//往前减去一个月
+      let t = new Date();
+      let nowT = t.getFullYear() + "-" + (t.getMonth() + 1);  //组装到了当前的年月
+      let standard = new Date( nowT );                        //将当前的日期格式转换为(中国标准时间)
+      let yue = standard.getMonth() - 1;                      //得到当前月，从标准时间里面提取月份，需要减去1一个月，
+      let stamp = standard.setMonth( yue );                   //将日期转化成时间戳毫秒格式
+      let r = new Date( stamp );                              //将时间戳转化成(中国标准时间)
+      let newT = r.getFullYear() + "-" + (r.getMonth() + 1);  //最后再次组装时间
+      this.upLoadTime = [ newT , nowT ]; 
+
+
+
+
+     new Map()   总结：
+=================================================================
+
+   1.与new Array()的区别？
+     答：new Map()是一个对象格式
+            new Array()是一个数组格式
+
+  2.特点？
+     答：(1)键值对结构                          //在new Map 里面主要强调是"键"
+            (2)键和值可以是任何数据类型 // { "true"=>"19", "name"=>"姚明", {age:"22"} => "88" , [2,3] => "99" }
+
+  3.键名相同就覆盖
+     答：如果同一Map对象中的两个"键名"相同，那么后面的这个键值对，会覆盖前面的那个键值对，即只要健名相同( 即严格相等 )就会覆盖。这样就不会有重复的。
+ 
+           例如：let map = new Map();
+           map.set( "a" , 1000 );
+           map.set( "b" , '刘德华' );
+           map.set( {age:'33'} , 2000 );
+           map.set( "a" , 99 );
+           map.set( NaN , NaN );
+           //结果
+           0: {"a" => 99}
+           1: {"b" => "刘德华"}
+           2: {Object => 2000}
+           3: {NaN => NaN}
+           //后面的a覆盖了前面的a
+
+   4.方法：
+      newMap.set( "name" , "姚明" )              //设置键名
+      newMap.delete( "4rrrttttt" );                 //删除项，输入键名
+      newMap.clear();                                    //清空所有的项
+      newMap.forEach(（value,key,arr）);    //遍历所有的项
+      newMap.has( "4rrrttttt" );                     //判断“该键名”是否存在
+      newMap.get( "4rrrttttt" );                     //获取“该键名”的值
+      newMap.size                                         //测量new map对象的长度，类似数组的length
+    
+
+    5.Map 和 Array的对比 
+    答：
+    let newMap = new Map();
+
+         //增：newMap.set('a',1);
+         //删：newMap.delete('a');
+         //改：newMap.set('a',2);
+         //查：newMap.has('a');
+
+    let arr = new Array();
+
+         //增： arr.push({'a': 2});
+         //删： arr.splice( arr.findIndex( item=>item.id === 2 ) , 1 );  //或者arr.splice( arr.map( item => item.id ).indexOf( 'xxxx' ) , 1 );  //找下标
+         //改： arr.forEach(item=>item.a?item.a=3:'');
+         //查： arr.find(item=>item.a);
+
+
+   6.去重的实例
+      答：
+      let newMap = new Map();
+let arr = [
+            {name:'tom',id:"1abb4455"},
+            {name:'lisa',id:"2errrrt"},
+            {name:'shasha',id:"3ewrrtggg"},
+            {name:'jim',id:"4rrrttttt"},
+            {name:'lisa',id:"2errrrt"},
+            {name:'shasha',id:"3ewrrtggg"},
+          ];
+arr.map(item =>{
+   newMap.set(item.id , item)
+});
+let brr = [];
+newMap.forEach( (value,key,arr) => {
+	console.log("value",value);
+	console.log("key",key);
+	console.log("arr",arr);
+	brr.push(value);
+});
+console.log(brr);   //brr就是去重的结果啦
+
+      
+
+      new Set() 总结                                       https://www.runoob.com/w3cnote/es6-map-set.html
+==========================================================================
+
+
+
+
+
+
+
+       扩展运算符                             JS中三个点（...）是什么鬼？          答：就是 深拷贝 的意思
+=======================================================================
+
+//扩展运算符 其实就是通过遍历（类似：forEach）来拷贝、复制【对象或者数组】的每一个成员。
+//理解对象的扩展运算符其实很简单，只要记住一句话就可以： 
+//【对象或者数组】中的扩展运算符(...)用于遍历出当前【对象或者数组】中的所有可遍历“对象成员”，"拷贝到"新的【对象或者数组】之中。
+
+ 1.“对象”的扩展运算符.   ：  
+                                              
+      例子：
+      let obj1 = {a:1,b:2,c:3};
+      let obj2 = { ... obj1 };
+      console.log(obj2);      //输出：{a: 1, b: 2, c: 3}
+
+
+ 2.“数组”的扩展运算符.
+
+      例子：
+      let arr1 = [{a:1},{b:2},3,4];
+      let arr2 = [ ... arr1];
+      console.log(arr2);    //输出 [{a:1} , {b:2} , 3, 4]
+
+
+
+总结：扩展运算符就是简单的 深拷贝 。
+
+
+
+
+
+
+     indexOf 与 findIndex   总结：都是用来找数组下标的
+=================================================================
+
+     let arr = [
+            {name:'tom',id:"1abb4455"},
+            {name:'lisa',id:"2errrrt"},
+            {name:'shasha',id:"3ewrrtggg"},
+            {name:'jim',id:"4rrrttttt"}
+          ];
+
+     let index1  = arr.map( item => item.id ).indexOf( "3ewrrtggg" );
+     let index2  = arr.findIndex( item => item.name === 'jim' );
+ 
+     console.log( index1  );
+     console.log( index2  );
+ 
+    //findIndex有点类似于map的遍历。最终返回一个所在数组的"下标"的值
+
+
+
+
+
+
+
+
+
+
+ 
+     Object.assign    在vue当中的使用总结：
+=================================================================
+
+   语法： Object.assign(target , ...sources);     
+ 
+   第一：assign处理对象，更新视图
+              this.form = Object.assign( { } , this.form );  
+
+  第二：assign怎么把对象或者数组添加到this当中，更新视图
+            把对象或者数组分别添加到this里面去
+                               let arr = [1,2,5,7];
+                               let obj = {name:'中智', age:'33岁'}
+                               Object.assign(this, { arr , obj });
+                               console.log(this);
+                              公式：就是把记得要用大括号{ }把他们括起来，才能复制到this里面去哦。
+
+
+
+
+        vue视图不更新的几种情况
+=================================================================
+  
+     第一：若一个"对象"的"属性"没有在data里面初始化注册的话，不容易更新视图。     
+     
+
+     //怎么让vue更新触动视图呢？
+
+           ******* 方法一：********  
+                      首先在data里面随便注册一个数组arr，当点击按钮的时候，把this.arr = [1,2,3] 随便等于一个数组，写进该逻辑，就能触发视图。然后把它在页面隐藏掉就行。   // <h5 v-show="false">{{ arr }}</h5>
+
+            *******方法二：*******
+                          
+                          1.触动对象
+                          利用Object.assign( { } , 自己本身 ),  
+                          例如
+                          this.form = Object.assign( { } , this.form );  
+                          或者：
+                           let obj = { a:11, b:22 , c:999 , d: 111};
+                           this.form = Object.assign( { 空的 } , obj  );
+                           console.log( this.form );                                  //输出：{ a:11, b:22 , c:999 , d: 111 }
+
+                           2.触动数组
+                              this.arr.map( item => {
+                                   this.$set( item , "key" , "108" );
+                               });
+
+                          3. 把对象或者数组分别添加到this里面去
+                               let arr = [1,2,5,7];
+                               let obj = {name:'中智', age:'33岁'}
+                               Object.assign( this ,  { arr , obj } );
+                               console.log(this);
+                              公式：就是把记得要用大括号{ }把他们括起来，才能复制到this里面去哦。
+
+
+
+
+ 
 
 
 
