@@ -2,81 +2,7 @@
 
 
 
-  ====个人中心====
-     我的消息       /BenefitCenter/MyMessageBox
 
-====系统设置====
-     预警设置          /BenefitCenter/EarlyWarningSet
-     交易设置信息   /BenefitCenter/TradeInfoSet
-
-
-
-
-40857
-
-SH0789
-  123456
-
-画好了的页面：
-
-http://localhost:8060/#/BenefitCenter/NotEmployee          非雇员账号维护
-http://localhost:8060/#/BenefitCenter/UserList                    用户列表
-http://localhost:8060/#/BenefitCenter/BenefitRecordList    福利发放记录
-http://localhost:8060/#/BenefitCenter/FestivalBenefitList   年节福利列表
-http://localhost:8060/#/BenefitCenter/RelationManage     产品包对应关系维护
-http://localhost:8060/#/BenefitCenter/BenefitSetMeal       年节福利套餐列表
-
-
-
-
-http://localhost:8060/#/BenefitCenter/BenefitVirtualList    福利虚拟商品订单列表
-http://localhost:8060/#/BenefitCenter/BenefitEntityList      福利实物商品订单列表
-http://localhost:8060/#/BenefitCenter/BenefitSetMealAddDetail      添加套餐
-
-
-
-git@172.16.4.127:AFOne/BenifitCenter.git  弹性福利中心，dev分支
-
-https://yesno.wtf/api      json测试
-
-git@172.16.4.127:AFOne/Portal.git  下载地址dev
-
-http://172.16.4.127:8089/AFOne/BenifitCenter/tree/dev/Portal/portal/src/page  弹性福利中心
-
-
-el-table-搜索功能-1.html
-
-https://blog.csdn.net/qq_45074127/article/details/103325568
-
-
-//光标处插入dom
-    <el-button @click="insertDom" plain size="mini" type="primary">插入</el-button>
-    <el-input type="textarea" @blur="getPosition($event)" v-model="desc"></el-input>
-getPosition(e){
-      this.indexP = e.srcElement.selectionStart;
-    },
-    insertDom(){
-      let start = this.desc.substring(0,this.indexP);
-      let end   = this.desc.substring(this.indexP);
-      let arr = [start,this.insertValue,end];
-      let res = arr.join("");
-      this.desc = res;
-    },
-
-
-
-EL-TABLE中通过RENDERHEADER方法为表头添加HOVER等效果
-https://www.cnblogs.com/wzfwaf/p/11957765.html
-
-
-element-ui table表格展开行每次只能展开一行
-https://www.cnblogs.com/qianjin888/p/10246108.html
-https://blog.csdn.net/Sunshine0508/article/details/89948744?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.nonecase
-
-
-
-
-工作认真，态度端正，能高效有质量的完成任务，服从领导安排。
 
 
 获取时间
@@ -179,67 +105,7 @@ dev
 
 
 
-postMan
-yejl001/hao456789/417788569@qq.com
 
-
-
-
-2020-5月份工作清单
-雇员列表-任务单管理-公积金模块制作
-雇员管理-预录用-入职体检bug修改
-事务申请-外地生育津贴打印页面调整
-雇员列表-任务单管理-材料任务单制作
-任务单管理-社保任务单列表页制作
-任务单管理-公积金任务单列表页制作
-任务单管理-用退工任务单列表页制作
-任务单管理-商旅任务单列表页制作
-任务单管理-体检任务单列表页制作
-雇员管理-预录用-bug修改
-医疗理赔-医疗保险产品模块制作
-
-
-
-
-@keyup.enter.native="querySearch"
-
-
-
-SH1969     周舟
-SH0237     贺晓东
-SH1970     熊霓君
-SH0465     侯君
-SH0442     陈迪
-
-
-SH0293     张理婷
-SH0102     徐雯艳
-SH0125      李明慧
-
-
-发防守打法是     
-额外24           KH2012028,KH1906984
-派生100860947    KH201911001013
-
-
-
-特殊事项审批  -- 打印ok  ----公司名称+申请单号右移 -ok  -- 已好
-
-其他垫付  --- 打印ok  ----公司名称+申请单号右移 -ok  -好了  -- 已好
-
-工资垫付  --  打印ok ----公司名称+申请单号右移 -ok   -好了  -- 已好
- 
-付款申请   --  打印ok  ---公司名称长度+申请单号右移 -ok  -好了 -- 已好
-
-
-
-财务数据提供  --  打印ok  ----公司名称+申请单号右移 -ok   -好了   -- 已好
-
-外地生育津贴  --  打印ok  ----公司名称+申请单号右移  -ok  -好了    -- 已好
- 
-弹性福利定制  --  打印ok  ----公司名称+申请单号右移   -ok   -好了  -- 已好
-
-建汇食堂饭票  --  打印ok - 公司名称长度+申请单号右移 -ok   -好了  -- 已好
 
 
 
@@ -328,14 +194,6 @@ juqingzi.com
 projectInvitation.invitationFile:?"......."
 "
 Error converting value "" to type 'System.Guid'. Path 'projectInvitation.invitationFile'
-
-
-
-@海风 @豌豆娃的小池塘 http://172.16.4.37:8088/SubModule/UnitiveDocument/MyDesk.aspx
-账号：0770
-密码：123456
-
-
 
 
 共16个请求：
