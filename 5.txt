@@ -48,101 +48,10 @@
 1733 , 
 
 
-http://172.16.4.127:8089/AFOne/AFOne.Portal.git
-
-客户编号
-183294083
-
-用户名
-jiubijiu@126.com
-
-
-这个是新的前端AFOne2.0地址：
-http://172.16.4.127:8089/AFOne/AFOne.Portal.git
-
-\\Rczp-yangjun\接口文档
-
-
-
-开机密码：Hao417788569
-
-http://172.16.4.127:8089/users/sign_in
-
-
-
-
-档案业务系统 后端代码
-http://172.16.4.127:8089/AFOne/PFileSystem
-
-{
-  "UserName": "system",
-  "Password": "1111"
-}
-git@localhost:AFOne/PFileSystem.git
-====================
-
-前端代码：
-git@172.16.4.127:AFOne/Portal.git       >> 分支：Retire-File-Center  
-
-后端代码：
-git@172.16.4.127:AFOne/PFileSystem.git
-
-页面登录：
-用户名：system 
-密码：1111
-
-
-=====================
-
-
-
-
-1 ： 集团及公司管理
-           集团管理
-           公司管理
-           雇员管理
-           文件目录设置
-
-
-2 ： 系统设置
-             角色管理
-             账户管理
-             数据权限
-             用户信息
-
-
-git@172.16.4.127:AFOne/Benifit_EMarket.git
-
-
-前端框架： elementUi ， mintui ，vantui
-
-
-SH0588  钱玮    福利中心
-SH1494  沙晓雯  互联网产品中心
-
-
-http://localhost:8060/#/InternetProductCenter/SpecialActivity
-
-
-
-记得多用短路取值：
-this.easing = easing || jQuery.easing._default;
-
-
-
-
-git@172.16.4.127:AFOne/BenifitCenter.git  弹性福利中心，dev分支
 
 https://yesno.wtf/api      json测试
 
-git@172.16.4.127:AFOne/Portal.git  下载地址dev
 
-http://172.16.4.127:8089/AFOne/BenifitCenter/tree/dev/Portal/portal/src/page  弹性福利中心
-
-
-el-table-搜索功能-1.html
-
-https://blog.csdn.net/qq_45074127/article/details/103325568
 
 
 //光标处插入dom
@@ -188,18 +97,6 @@ async function fn(){
 
 
 
-页面元素权限添加
-
-第一：git查看某个文件的修改历史  :  git log --pretty=oneline 文件名
-
-第二：git show 356f6def9d3fb7f3b9032ff5aa4b9110d4cca87e
-
-http://172.16.4.127:8089/AFOne/Portal/commits/health_2.0
-
-git@172.16.4.127:AFTransfer/AFTransfer.git          //这个是后端的swagger
-
-后端server包下载：  http://172.16.4.127:8089/AFOne/service
-前端包下载：            http://172.16.4.127:8089/AFOne/Portal
 
 
 
@@ -233,10 +130,6 @@ git@172.16.4.127:AFTransfer/AFTransfer.git          //这个是后端的swagger
 @keyup.enter.native="querySearch"
 
 
-
-登录开机密码：Hao123456   / Hao15921007291
-
-登录开机密码：Hao654321
 
 
 { "invitationFile": "86bb3feb-22b1-4fec-b36b-a95ce81b90b7", "feedbackFile": "579ba1f6-39be-4e5b-836a-7f420670270b", "otherFile1": "a3598a23-f1ab-4146-bc4a-351aadb0c9b4", "otherFile2": "79c3b886-f6d8-4413-a9d4-cd39c84900db" }
@@ -301,12 +194,6 @@ POST/api/Project/list 这个加了个参数{
      129.3  20:01
 
 
-GET/api/ProjectEvaluate
-POST/api/ProjectEvaluate/create
-POST/api/ProjectEvaluate/update
-POST/api/ProjectEvaluate/delete/{ProjectEvaluateId}
-
-git@172.16.4.127:AFOne/Portal.git
 
 
 
@@ -326,23 +213,6 @@ VSCode关闭代码参考线和当前选中行高亮
 选择：gutter
 
 
-kai ji mi ma
-AAAaaa1234
-\\172.16.4.33\部门共享\张军\Microsoft Visual Studio
-
-
-gif地址：
-操作：在所在文件夹 右键git bash
-浏览器打开网址：http://172.16.4.127:8089/groups/AFOne
-请选择：SSH： 地址： git@172.16.4.127:AFOne/Prototype.git
-然后在gif中输入：$ gif clone git@172.16.4.127:AFOne/Prototype.git 
-用户名：wb.yejl@ciicsh.com
-mimi: Hao417788569
-
-
-
-
-git@172.16.4.127:AFOne/Portal.git
 
 
 
