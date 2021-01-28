@@ -138,27 +138,6 @@ async function fn(){
         //setTimeout(()=>{this.dataObj.quotationType = response.result.form.contractCategoryId;},1);
 
 
-@瘋癲牛小邪 
-减免业务
-api/Fw_JMYW/list
-服务项目 ， 项目负责人 ，这两个字段的中文名称有空能返给我吗..
-====================================
-url: Fw_JMYW/{Id}??????? (获取单个)
-这个接口的：公司名称 ， 参与人 ，客服人员， 这3个字段的中文名称能返给我吗.....
-=====================================
-另外：ApplyId 审批单号 我提交了，但是每次返回都是null
-
-
-
-cnpm?install?--save-dev?less-loader
-
-汤吾子:
-那你接下去可以看供应商这一块了
-
-
-汤吾子:
-先话页面
-
 
 
 
@@ -167,20 +146,6 @@ a2ec5775-842b-4d19-afc3-08d72467d091
 projectCommCompanies
 
 
-http://localhost:8070/api/ProjectCommunication?projectCommunicationId=90c0785d-dab8-4ce1-bf1c-e6aa660b33
-
-
-POST/api/Project/list 这个加了个参数{
-  "comadmincode": "string",
-  "comadminname": "string",
-  "customername": "string",
-  "customercode": "string",
-  "projectname": "string",
-  "projectcode": "string",
-  "projectstatus": 0,
-  "pageIndex": 0,
-  "pageSize": 0
-}
 
 
 
